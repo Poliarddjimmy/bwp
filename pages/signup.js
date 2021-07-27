@@ -1,33 +1,42 @@
 import Image from 'next/image'
 import { useState, useEffect } from "react"
+import { useForm } from "react-hook-form";
+// also Alert component from bootstrap
+import { Alert } from 'react-bootstrap';
 
 export default function Login() {
 
   const [checked, setChecked] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  // const [phoneNumber, setPhoneNumber] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  function onChangeCheckBoxStatus() {
-    setChecked(!checked)
-  }
+  // useForm()
+  // 1. register -> register input
+  // 2. handleSubmit -> extract data from the form
+  // 3. errors -> object containing errors
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
-  function getPhoneValue() {
-    const _phoneNumber = document.getElementById("phoneInputId").value
-    setPhoneNumber(_phoneNumber)
-  }
+  // function onChangeCheckBoxStatus() {
+  //   setChecked(!checked)
+  // }
 
-  function getFirstNameValue() {
-    const _firstName = document.getElementById("firstNameInputId").value
-    setFirstName(_firstName)
-  }
+  // function getPhoneValue() {
+  //   const _phoneNumber = document.getElementById("phoneInputId").value
+  //   setPhoneNumber(_phoneNumber)
+  // }
 
-  function getLastNameValue() {
-    const _lastName = document.getElementById("lastNameInputId").value
-    setLastName(_lastName)
-  }
+  // function getFirstNameValue() {
+  //   const _firstName = document.getElementById("firstNameInputId").value
+  //   setFirstName(_firstName)
+  // }
+
+  // function getLastNameValue() {
+  //   const _lastName = document.getElementById("lastNameInputId").value
+  //   setLastName(_lastName)
+  // }
 
   function getPasswordValue() {
     const _password = document.getElementById("passwordInputId").value
@@ -39,40 +48,85 @@ export default function Login() {
     setConfirmPassword(_confirmPassword)
   }
 
-  function passwordValidation() {
-    return true
+  // function to output form data
+  // we need to pass it to onSubmit of form element
+  const onSubmit = formData => {
+    alert(JSON.stringify(formData))
+    console.log(JSON.stringify(formData))
   }
+
 
   return <main>
     <div className="signup-form-wrapper">
       <h1 className="create-acc text-center">Create An Account</h1>
       <div className="signup-inner text-center">
         <h3 className="title">Welcome to One Bet Hub</h3>
-        <form className="signup-inner--form">
+        <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-12">
-              <input type="number" className="single-field" placeholder="Phone Number" id="phoneInputId" onChange={getPhoneValue} />
+              <input type="number" className="single-field" placeholder="Phone Number" {...register('phone', { required: true, minLength: 8, maxLength: 12, pattern: /^\d{4}$/ })} />
+              {errors.phone &&
+                <Alert variant="danger">
+                  {errors.phone?.type === "required" && <p>Phone number is required</p>}
+                  {errors.phone?.type === "minLength" && <p>Min length of phone number is 8 characters!</p>}
+                  {errors.phone?.type === "maxLength" && <p>Max length of phone number is 12 characters!</p>}
+                  {errors.phone?.type === "pattern" && <p>Only number please!</p>}
+                </Alert>
+              }
             </div>
             <div className="col-md-6">
-              <input type="text" className="single-field" placeholder="First Name" id="firstNameInputId" onChange={getFirstNameValue} />
+              <input type="text" className="single-field" placeholder="First Name"  {...register('firstName', { required: true, minLength: 3, maxLength: 15 })} />
+              {errors.firstName &&
+                <Alert variant="danger">
+                  {errors.firstName?.type === "required" && <p>First name is required</p>}
+                  {errors.firstName?.type === "minLength" && <p>Min length of first name is 3 characters!</p>}
+                  {errors.firstName?.type === "maxLength" && <p>Max length of first name is 15 characters!</p>}
+                </Alert>
+              }
             </div>
             <div className="col-md-6">
-              <input type="text" className="single-field" placeholder="Last Name" id="lastNameInputId" onChange={getLastNameValue} />
+              <input type="text" className="single-field" placeholder="Last Name" {...register('lastName', { required: true, minLength: 3, maxLength: 15 })} />
+              {errors.lastName &&
+                <Alert variant="danger">
+                  {errors.lastName?.type === "required" && <p>Last name is required</p>}
+                  {errors.lastName?.type === "minLength" && <p>Min length of last name is 3 characters!</p>}
+                  {errors.lastName?.type === "maxLength" && <p>Max length of last name is 15 characters!</p>}
+                </Alert>
+              }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" onChange={getPasswordValue} />
+              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
+              {errors.password &&
+                <Alert variant="danger">
+                  {errors.password?.type === "required" && <p>Password is required</p>}
+                  {errors.password?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
+                  {errors.password?.type === "maxLength" && <p>Max length of password is 10 characters!</p>}
+                </Alert>
+              }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId" onChange={getConfirmPasswordValue} />
+              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId" {...register('confirmPassword', { required: true, minLength: 4, maxLength: 10 })} />
+              {errors.confirmPassword &&
+                <Alert variant="danger">
+                  {errors.confirmPassword?.type === "required" && <p>Password confirmation is required</p>}
+                  {errors.confirmPassword?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
+                  {errors.confirmPassword?.type === "maxLength" && <p>Max length of password is 10 characters!</p>}
+                </Alert>
+              }
             </div>
           </div>
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={checked} onChange={onChangeCheckBoxStatus} />
+            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" {...register('checkBox', { required: true })} />
             <label className="form-check-label" htmlFor="flexCheckChecked"> I have read & accepted the <a href="#">terms of use</a>
+              {errors.checkBox &&
+                <Alert variant="danger">
+                  {errors.checkBox?.type === "required" && <p>Terms of use is required</p>}
+                </Alert>
+              }
             </label>
           </div>
           <div className="col-12">
-            <button className="submit-btn">Create Account</button>
+            <button className="submit-btn" type="submit" >Create Account</button>
           </div>
         </form>
       </div>

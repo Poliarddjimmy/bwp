@@ -40,11 +40,13 @@ export default function Login() {
 
   function getPasswordValue() {
     const _password = document.getElementById("passwordInputId").value
+    console.log("password--- ", _password)
     setPassword(_password)
   }
 
   function getConfirmPasswordValue() {
     const _confirmPassword = document.getElementById("confirmPasswordInputId").value
+    console.log("confirm----- ", _confirmPassword)
     setConfirmPassword(_confirmPassword)
   }
 
@@ -55,6 +57,11 @@ export default function Login() {
     console.log(JSON.stringify(formData))
   }
 
+  function verifyPassword() {
+    const isEqual = password === confirmPassword ? true : false
+    console.log("equal---- ", isEqual, password, confirmPassword)
+    return isEqual
+  }
 
   return <main>
     <div className="signup-form-wrapper">
@@ -64,7 +71,7 @@ export default function Login() {
         <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-12">
-              <input type="number" className="single-field" placeholder="Phone Number" {...register('phone', { required: true, minLength: 8, maxLength: 12, pattern: /^\d{4}$/ })} />
+              <input type="number" className="single-field" placeholder="Phone Number" {...register('phone', { required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ })} />
               {errors.phone &&
                 <Alert variant="danger">
                   {errors.phone?.type === "required" && <p>Phone number is required</p>}
@@ -74,7 +81,7 @@ export default function Login() {
                 </Alert>
               }
             </div>
-            <div className="col-md-6">
+            <div className="col-md-12">
               <input type="text" className="single-field" placeholder="First Name"  {...register('firstName', { required: true, minLength: 3, maxLength: 15 })} />
               {errors.firstName &&
                 <Alert variant="danger">
@@ -84,7 +91,7 @@ export default function Login() {
                 </Alert>
               }
             </div>
-            <div className="col-md-6">
+            <div className="col-md-12">
               <input type="text" className="single-field" placeholder="Last Name" {...register('lastName', { required: true, minLength: 3, maxLength: 15 })} />
               {errors.lastName &&
                 <Alert variant="danger">
@@ -95,7 +102,7 @@ export default function Login() {
               }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
+              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" onChange={getPasswordValue} {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
               {errors.password &&
                 <Alert variant="danger">
                   {errors.password?.type === "required" && <p>Password is required</p>}
@@ -105,12 +112,13 @@ export default function Login() {
               }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId" {...register('confirmPassword', { required: true, minLength: 4, maxLength: 10 })} />
+              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId" onChange={getConfirmPasswordValue} {...register('confirmPassword', { required: true, minLength: 4, maxLength: 10, validate: { verifyPassword } })} />
               {errors.confirmPassword &&
                 <Alert variant="danger">
                   {errors.confirmPassword?.type === "required" && <p>Password confirmation is required</p>}
                   {errors.confirmPassword?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
                   {errors.confirmPassword?.type === "maxLength" && <p>Max length of password is 10 characters!</p>}
+                  {errors.confirmPassword?.type === "verifyPassword" && <p>Password must be verified!</p>}
                 </Alert>
               }
             </div>

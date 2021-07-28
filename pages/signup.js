@@ -7,60 +7,29 @@ import { Alert } from 'react-bootstrap';
 export default function Login() {
 
   const [checked, setChecked] = useState(false);
-  // const [phoneNumber, setPhoneNumber] = useState('');
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
   // useForm()
   // 1. register -> register input
   // 2. handleSubmit -> extract data from the form
   // 3. errors -> object containing errors
-  const { register, handleSubmit, formState: { errors }, } = useForm();
-
-  // function onChangeCheckBoxStatus() {
-  //   setChecked(!checked)
-  // }
-
-  // function getPhoneValue() {
-  //   const _phoneNumber = document.getElementById("phoneInputId").value
-  //   setPhoneNumber(_phoneNumber)
-  // }
-
-  // function getFirstNameValue() {
-  //   const _firstName = document.getElementById("firstNameInputId").value
-  //   setFirstName(_firstName)
-  // }
-
-  // function getLastNameValue() {
-  //   const _lastName = document.getElementById("lastNameInputId").value
-  //   setLastName(_lastName)
-  // }
-
-  function getPasswordValue() {
-    const _password = document.getElementById("passwordInputId").value
-    console.log("password--- ", _password)
-    setPassword(_password)
-  }
-
-  function getConfirmPasswordValue() {
-    const _confirmPassword = document.getElementById("confirmPasswordInputId").value
-    console.log("confirm----- ", _confirmPassword)
-    setConfirmPassword(_confirmPassword)
-  }
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm({
+    defaultValues: {
+      phoneNumber: '',
+      firstName: "",
+      lastName: "",
+      password: "",
+      confirmPassword: ""
+    }
+  })
 
   // function to output form data
   // we need to pass it to onSubmit of form element
   const onSubmit = formData => {
-    alert(JSON.stringify(formData))
-    console.log(JSON.stringify(formData))
-  }
+    if (formData.password === formData.confirmPassword) {
+      alert(JSON.stringify(formData))
+    } else {
+      alert('Password must be equal')
+    }
 
-  function verifyPassword() {
-    const isEqual = password === confirmPassword ? true : false
-    console.log("equal---- ", isEqual, password, confirmPassword)
-    return isEqual
   }
 
   return <main>
@@ -71,13 +40,13 @@ export default function Login() {
         <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-12">
-              <input type="number" className="single-field" placeholder="Phone Number" {...register('phone', { required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ })} />
-              {errors.phone &&
+              <input type="number" className="single-field" placeholder="Phone Number" {...register('phoneNumber', { required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ })} />
+              {errors.phoneNumber &&
                 <Alert variant="danger">
-                  {errors.phone?.type === "required" && <p>Phone number is required</p>}
-                  {errors.phone?.type === "minLength" && <p>Min length of phone number is 8 characters!</p>}
-                  {errors.phone?.type === "maxLength" && <p>Max length of phone number is 12 characters!</p>}
-                  {errors.phone?.type === "pattern" && <p>Only number please!</p>}
+                  {errors.phoneNumber?.type === "required" && <p>Phone number is required</p>}
+                  {errors.phoneNumber?.type === "minLength" && <p>Min length of phone number is 8 characters!</p>}
+                  {errors.phoneNumber?.type === "maxLength" && <p>Max length of phone number is 12 characters!</p>}
+                  {errors.phoneNumber?.type === "pattern" && <p>Only number please!</p>}
                 </Alert>
               }
             </div>
@@ -102,7 +71,7 @@ export default function Login() {
               }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" onChange={getPasswordValue} {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
+              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
               {errors.password &&
                 <Alert variant="danger">
                   {errors.password?.type === "required" && <p>Password is required</p>}
@@ -112,7 +81,7 @@ export default function Login() {
               }
             </div>
             <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId" onChange={getConfirmPasswordValue} {...register('confirmPassword', { required: true, minLength: 4, maxLength: 10, validate: { verifyPassword } })} />
+              <input type="password" className="single-field" placeholder="Password Confirmation" id="confirmPasswordInputId"  {...register('confirmPassword', { required: true, minLength: 4, maxLength: 10 })} />
               {errors.confirmPassword &&
                 <Alert variant="danger">
                   {errors.confirmPassword?.type === "required" && <p>Password confirmation is required</p>}

@@ -29,7 +29,6 @@ export default function Signup() {
     } else {
       alert('Password must be equal')
     }
-
   }
 
   return <main>

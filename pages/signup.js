@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 // also Alert component from bootstrap
 import { Alert } from 'react-bootstrap';
+import { Router } from 'next/dist/client/router';
 
 export default function Login() {
 
@@ -29,7 +30,27 @@ export default function Login() {
     } else {
       alert('Password must be equal')
     }
+  }
 
+  async function signupProcess(_name, _email, _phone, _password) {
+    const userInfo = {
+      name: _name,
+      email: _email,
+      phone: _phone,
+      password: _password
+    }
+
+    const signup = await fetch(`https://server.betswinpro.com/api/v1/register`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    const signupResponse = await signup.json()
+
+    Router.push('/signin')
   }
 
   return <main>

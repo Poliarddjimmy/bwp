@@ -3,10 +3,12 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 // also Alert component from bootstrap
 import { Alert } from 'react-bootstrap';
+import { useRouter } from 'next/router'
 
-export default function Signup() {
+export default function Login() {
 
   const [checked, setChecked] = useState(false);
+  const router = useRouter()
   // useForm()
   // 1. register -> register input
   // 2. handleSubmit -> extract data from the form
@@ -25,10 +27,36 @@ export default function Signup() {
   // we need to pass it to onSubmit of form element
   const onSubmit = formData => {
     if (formData.password === formData.confirmPassword) {
-      alert(JSON.stringify(formData))
+      // alert(JSON.stringify(formData))
+      signupProcess(formData.firstName + ' ' + formData.lastName, formData.phoneNumber, formData.password)
     } else {
       alert('Password must be equal')
     }
+  }
+
+  async function signupProcess(name, phone, password) {
+    const userInfo = {
+      name: name,
+      phone: phone,
+      password: password
+    }
+
+    const signup = await fetch(`http://server.betswinpro.com/api/v1/register`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    // console.log(userInfo)
+    console.log(signup.status)
+    const signupResponse = await signup.json()
+    // console.log(signupResponse)
+    if (signup.status == 200) {
+      router.push('/signin')
+    }
+
   }
 
   return <main>

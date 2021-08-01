@@ -3,10 +3,12 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 // also Alert component from bootstrap
 import { Alert } from 'react-bootstrap';
+import { useRouter } from 'next/router'
 
 export default function Signin() {
 
   const [checked, setChecked] = useState(false);
+  const router = useRouter()
   // useForm()
   // 1. register -> register input
   // 2. handleSubmit -> extract data from the form
@@ -26,6 +28,32 @@ export default function Signin() {
     // } else {
     //   alert('Password must be equal')
     // }
+    signinProcess(formData.phoneNumber, formData.password)
+  }
+
+  async function signinProcess(phone, password) {
+    const userInfo = {
+      phone: phone,
+      password: password
+    }
+
+    const signin = await fetch(`http://server.betswinpro.com/api/v1/login`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    // console.log(userInfo)
+    console.log(signin.status)
+    const signinResponse = await signin.json()
+    // console.log(signupResponse)
+    if (signin.status == 200) {
+      router.push('/profile')
+    } else {
+      alert(Signin)
+    }
 
   }
 
@@ -62,11 +90,6 @@ export default function Signin() {
           <div className="form-check">
             <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" {...register('checkBox', { required: true })} />
             <label className="form-check-label" htmlFor="flexCheckChecked"> remember me
-              {errors.checkBox &&
-                <Alert variant="danger">
-                  {errors.checkBox?.type === "required" && <p>Terms of use is required</p>}
-                </Alert>
-              }
             </label>
           </div>
           <div className="col-12">

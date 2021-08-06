@@ -20,14 +20,13 @@ export default function Signin() {
     }
   })
 
+  useEffect(() => {
+    hideSpinner()
+  });
   // function to output form data
   // we need to pass it to onSubmit of form element
   const onSubmit = formData => {
-    // if (formData.password === formData.confirmPassword) {
-    //   alert(JSON.stringify(formData))
-    // } else {
-    //   alert('Password must be equal')
-    // }
+    showSpinner()
     signinProcess(formData.phoneNumber, formData.password)
   }
 
@@ -50,12 +49,25 @@ export default function Signin() {
     const signinResponse = await signin.json()
     // console.log(signupResponse)
     if (signin.status == 200) {
+      hideSpinner()
       router.push('/profile')
     } else {
-      alert(Signin)
+      alert('Incorrect credentials, please digit your credentials again !')
     }
-
   }
+
+  // Function to hide the Spinner
+  function hideSpinner() {
+    document.getElementById('spinner')
+      .style.display = 'none';
+  }
+
+  // Function to show the Spinner
+  function showSpinner() {
+    document.getElementById('spinner')
+      .style.display = 'inline-block';
+  }
+
 
   return <main>
     <div className="signup-form-wrapper">
@@ -93,7 +105,10 @@ export default function Signin() {
             </label>
           </div>
           <div className="col-12">
-            <button className="submit-btn" type="submit" >Log In</button>
+            <button className="submit-btn" type="submit" >
+              <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner"></span>
+              Signin
+            </button>
           </div>
         </form>
       </div>

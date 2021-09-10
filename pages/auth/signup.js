@@ -7,7 +7,7 @@ import { Alert } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux"
 import { useRouter } from 'next/dist/client/router';
 
-export default function Login() {
+export default function Signup() {
   const router = useRouter()
   const [checked, setChecked] = useState(false);
   const { loading, currentUser, error } = useSelector(state => state.user)

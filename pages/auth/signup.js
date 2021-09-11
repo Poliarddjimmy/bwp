@@ -1,20 +1,13 @@
-import Image from 'next/image'
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useForm, Controller } from "react-hook-form";
 import { registerAction, clearMessageAction } from '../../redux/actions/userActionCreators';
-// also Alert component from bootstrap
 import { Alert } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux"
 import { useRouter } from 'next/dist/client/router';
 
 export default function Signup() {
   const router = useRouter()
-  const [checked, setChecked] = useState(false);
   const { loading, currentUser, error } = useSelector(state => state.user)
-  // useForm()
-  // 1. register -> register input
-  // 2. handleSubmit -> extract data from the form
-  // 3. errors -> object containing errors
   const {
     control,
     handleSubmit,
@@ -26,34 +19,12 @@ export default function Signup() {
 
   const dispatch = useDispatch()
 
-  // function to output form data
-  // we need to pass it to onSubmit of form element
   const onSubmit = formData => {
     const payload = {
       phone: formData.phone,
       name: `${formData.first_name} ${formData.last_name}`,
       password: formData.password
     }
-  }
-
-  async function signupProcess(_name, _email, _phone, _password) {
-    const userInfo = {
-      name: _name,
-      email: _email,
-      phone: _phone,
-      password: _password
-    }
-
-    const signup = await fetch(`https://server.betswinpro.com/api/v1/register`, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userInfo)
-    })
-    const signupResponse = await signup.json()
-
     dispatch(registerAction(payload))
   }
 
@@ -173,13 +144,13 @@ export default function Signup() {
                       }`}
                   />
                 )}
-                rules={{ required: true, minLength: 4, maxLength: 10 }}
+                rules={{ required: true, minLength: 4, maxLength: 16 }}
               />
               {errors.password && (
                 <Alert variant="danger">
                   {errors.password?.type === "required" && <p>Password is required</p>}
                   {errors.password?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
-                  {errors.password?.type === "maxLength" && <p>Max length of password is 10 characters!</p>}
+                  {errors.password?.type === "maxLength" && <p>Max length of password is 16 characters!</p>}
                 </Alert>
               )}
             </div>

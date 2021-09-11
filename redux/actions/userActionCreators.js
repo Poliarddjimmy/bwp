@@ -9,7 +9,7 @@ export const loginAction = createAsyncThunk(
   async (payload) => {
     try {
       const response = await API.login(payload)
-      return response
+      return response.data
     } catch (e) {
       console.log(e)
     }

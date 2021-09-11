@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { logoutAction } from '../../redux/actions/userActionCreators'
+import { useDispatch } from 'react-redux'
 
 // local import
 import Nav from './nav'
 
 const Header = () => {
+  const dispatch = useDispatch()
   return (
     <>
       <Head>
@@ -23,7 +26,7 @@ const Header = () => {
                 <div className="header-top-navigation">
                   <nav>
                     <ul>
-                      <li className="active"><Link href="/">home</Link></li>
+                      <li className="active" onClick={() => dispatch(logoutAction())}><Link href="/">home</Link></li>
                       <li className="msg-trigger"><a className="msg-trigger-btn" href="#a">message</a>
                         <span className="message-dropdown" id="a">
                           <span className="dropdown-title">

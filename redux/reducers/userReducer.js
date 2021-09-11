@@ -21,11 +21,13 @@ const UserReducer = createReducer(initialState, (builder) => {
       state.loading = true;
     })
     .addCase(loginAction.fulfilled, (state, action) => {
-      const { user, token } = action.payload;
       state.loading = false;
-      state.currentUser = user;
-      state.token = token;
-      state.error = null
+      if (!action.payload?.error) {
+        state.currentUser = action.payload?.current_user;
+        state.access_token = action.payload?.access_token
+      } else {
+        state.error = "This phone number is already taken"
+      }
     })
     .addCase(loginAction.rejected, (state, action) => {
       state.loading = false;

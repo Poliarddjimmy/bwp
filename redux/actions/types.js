@@ -11,6 +11,9 @@ const DELETE_USER = "users/delete"
 const CHANGE_PASSWORD = "users/change-password"
 const USER_CONFIRM = "users/confirm"
 
+const SHOW_PROFILE = "users/profile"
+const EDIT_PROFILE = "users/profile/edit"
+
 const CLEAR = "clear"
 
 const Auth = {
@@ -30,6 +33,11 @@ const Users = {
   USER_CONFIRM,
 }
 
+const Profiles = {
+  SHOW_PROFILE,
+  EDIT_PROFILE,
+}
+
 const Clear = {
   CLEAR,
 }
@@ -38,4 +46,5 @@ export {
   Auth,
   Users,
   Clear,
+  Profiles,
 }

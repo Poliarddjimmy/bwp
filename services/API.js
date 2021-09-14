@@ -8,6 +8,15 @@ class API {
   static signup = (payload) => {
     return axiosService.post(`/register`, payload)
   }
+
+  static showProfile = (payload) => {
+    return axiosService.post(`/profile/${payload}`)
+  }
+
+  static editProfile = (payload, id) => {
+    return axiosService.post(`/profile/${id}`, payload)
+  }
+
 }
 
 export default API

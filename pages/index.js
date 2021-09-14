@@ -1,11 +1,11 @@
 import Link from "next/link"
 import Image from 'next/image'
-
-
-//local import
 import Layout from '../components/layouts/layout'
+import { useSelector, useDispatch } from "react-redux"
+
 
 const Home = () => {
+  const { loading, currentUser, error } = useSelector(state => state.user)
   return (
     <Layout>
       <div className="container">
@@ -16,15 +16,15 @@ const Home = () => {
               <div className="card card-profile widget-item p-0">
                 <div className="profile-banner">
                   <figure className="profile-banner-small">
-                    <a href="profile.html">
+                    <a href="/profile">
                       <Image width="800" height="400" src="/images/banner/banner-small.jpg" alt="" />
                     </a>
-                    <a href="profile.html" className="profile-thumb-2">
+                    <a href="/profile" className="profile-thumb-2">
                       <Image width="700" height="700" src="/images/profile/profile-midle-1.jpg" alt="" />
                     </a>
                   </figure>
                   <div className="profile-desc text-center">
-                    <h6 className="author"><a href="profile.html">Dimbel Lebmid</a></h6>
+                    <h6 className="author"><a href="/profile">{currentUser?.name}</a></h6>
                     <p>Any one can join with but Social network us if you want Any one can join with us if you want</p>
                   </div>
                 </div>
@@ -43,7 +43,6 @@ const Home = () => {
                           </figure>
                         </a>
                       </span>
-
 
                       <span className="unorder-list-info">
                         <h3 className="list-title"><a href="#">Travel The World</a></h3>

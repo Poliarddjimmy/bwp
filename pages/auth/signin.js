@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearMessageAction, loginAction } from "../../redux/actions/userActionCreators";
 
 export default function Signin() {
-
   const router = useRouter()
   const { loading, currentUser, error } = useSelector(state => state.user)
   const {

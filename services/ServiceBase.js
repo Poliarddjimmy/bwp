@@ -1,7 +1,5 @@
 import axios from "axios"
 import { API_URL } from "../utils/constant"
-import { Auth } from "../redux/actions/types"
-import { decodeToken } from "react-jwt"
 
 const axiosService = axios.create({
   baseURL: API_URL,
@@ -10,8 +8,10 @@ const axiosService = axios.create({
 const interceptor = (store) => {
   axiosService.interceptors.request.use(
     (config) => {
-      const token = store.getState().user.token
+      const token = store.getState().user.access_token
       const mutableConfig = { ...config }
+
+      console.log(token)
 
       if (token) {
         mutableConfig.headers.common.Authorization = `Bearer ${token}`
@@ -23,42 +23,43 @@ const interceptor = (store) => {
   )
 
   axiosService.interceptors.response.use(
-    async (response) => {
-      if (response.data?.token) {
-        // 1. decode the token
-        const decodedUser = await decodeToken(response.data.token)
-
-        decodedUser.isPasswordReset = response.data.isPasswordReset
-        console.log(decodedUser)
-
-        // 2. save the user and the token to the state
-        store.dispatch({
-          type: Auth.LOGIN,
-          payload: { user: decodedUser, token: response.data.token },
-        })
-      }
-
-      return response
+    async (res) => {
+      return res
     },
-    async (error) => {
-      if (error.message.includes("401")) {
-        store.dispatch({
-          type: "users/logout/pending",
-        })
+    async (err) => {
+      const originalConfig = err.config
+
+      if (originalConfig.url !== "/auth/login" && err.response) {
+        // Access Token was expired
+        if (err.response.status === 401 && !originalConfig._retry) {
+          originalConfig._retry = true
+
+          const refresh_token = store.getState().users.authData.refresh_token
+          try {
+            const rs = await axiosService.post("/auth/token/refresh", {
+              token: refresh_token,
+            })
+
+            if (rs.status === 200) {
+              const { data } = rs.data
+              store.dispatch({
+                type: "auth/refresh-tokens/fulfilled",
+                payload: data,
+              })
+            } else {
+              store.dispatch({
+                type: "users/logout/fulfilled",
+              })
+            }
+
+            return axiosService(originalConfig)
+          } catch (_error) {
+            return Promise.reject(_error)
+          }
+        }
       }
-      if (error.response?.data?.token) {
-        // 1. decode the token
-        const decodedUser = await decodeToken(error.response.data.token)
-        store.dispatch({
-          type: Auth.LOGIN,
-          payload: {
-            user: decodedUser,
-            token: error.response.data.token,
-          },
-        })
-        // 2. save the user and the token to the state
-      }
-      return Promise.reject(error)
+
+      return Promise.reject(err)
     }
   )
 }

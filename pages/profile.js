@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import React, { Fragment } from 'react'
 import Layout from '../components/layouts/layout'
+import { useSelector, useDispatch } from "react-redux"
+
 
 export default function Profile() {
+  const { loading, currentUser, error } = useSelector(state => state.user)
+
   return <Layout>
 
     <div className="profile-banner-large bg-img mt-n4" data-bg="/images/banner/profile-banner.jpg">
@@ -49,7 +53,7 @@ export default function Profile() {
           <aside className="widget-area profile-sidebar">
 
             <div className="card widget-item">
-              <h4 className="widget-title">kate palson</h4>
+              <h4 className="widget-title">{currentUser?.name}</h4>
               <div className="widget-body">
                 <div className="about-author">
                   <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p>

@@ -304,7 +304,11 @@
     redux "^4.1.0"
     redux-thunk "^2.3.0"
     reselect "^4.0.0"
+<<<<<<< HEAD
 >>>>>>> 11ce8854c6cd583e4d85cadecf230fb45065202d
+=======
+>>>>>>> 776e9641260c5956945fe7a5e6d2c343552a4abe
+>>>>>>> signup
 
 "@restart/context@^2.1.4":
   version "2.1.4"
@@ -1190,7 +1194,11 @@ chokidar@3.5.1:
     is-glob "~4.0.1"
     normalize-path "~3.0.0"
     readdirp "~3.5.0"
+<<<<<<< HEAD
 >>>>>>> 11ce8854c6cd583e4d85cadecf230fb45065202d
+=======
+>>>>>>> 776e9641260c5956945fe7a5e6d2c343552a4abe
+>>>>>>> signup
   optionalDependencies:
     fsevents "~2.3.1"
 

@@ -3,12 +3,13 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form";
 // also Alert component from bootstrap
 import { Alert } from 'react-bootstrap';
-import { useRouter } from 'next/router'
+import { useSelector, useDispatch } from "react-redux"
+import { useRouter } from 'next/dist/client/router';
 
 export default function Login() {
 
   const [checked, setChecked] = useState(false);
-  const router = useRouter()
+  const { loading, currentUser, error } = useSelector(state => state.user)
   // useForm()
   // 1. register -> register input
   // 2. handleSubmit -> extract data from the form
@@ -26,11 +27,10 @@ export default function Login() {
   // function to output form data
   // we need to pass it to onSubmit of form element
   const onSubmit = formData => {
-    if (formData.password === formData.confirmPassword) {
-      // alert(JSON.stringify(formData))
-      signupProcess(formData.firstName + ' ' + formData.lastName, formData.phoneNumber, formData.password)
-    } else {
-      alert('Password must be equal')
+    const payload = {
+      phone: formData.phone,
+      name: `${formData.first_name} ${formData.last_name}`,
+      password: formData.password
     }
   }
 

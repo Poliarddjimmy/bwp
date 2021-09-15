@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import { Alert } from 'react-bootstrap';
 import { useRouter } from 'next/router'
 
-export default function Signin() {
-
+export default function PasswordRecovery() {
   const [checked, setChecked] = useState(false);
   const router = useRouter()
   // useForm()
@@ -16,7 +15,7 @@ export default function Signin() {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm({
     defaultValues: {
       phoneNumber: '',
-      password: "",
+
     }
   })
 
@@ -55,7 +54,6 @@ export default function Signin() {
       alert('Incorrect credentials, please digit your credentials again !')
     }
   }
-
   // Function to hide the Spinner
   function hideSpinner() {
     document.getElementById('spinner')
@@ -67,14 +65,13 @@ export default function Signin() {
     document.getElementById('spinner')
       .style.display = 'inline-block';
   }
-
-
   return <main>
     <div className="signup-form-wrapper">
       <h1 className="create-acc text-center"></h1>
       <div className="signup-inner text-center">
-        <h3 className="title">Sign In</h3>
-        <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
+        <h3 className="title">Password Recovery</h3>
+        <form className="signup-inner--form" //onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="row">
             <div className="col-12">
               <input type="number" className="single-field" placeholder="Phone Number" {...register('phoneNumber', { required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ })} />
@@ -87,35 +84,12 @@ export default function Signin() {
                 </Alert>
               }
             </div>
-            <div className="col-12">
-              <input type="password" className="single-field" placeholder="Password" id="passwordInputId" {...register('password', { required: true, minLength: 4, maxLength: 10 })} />
-              {errors.password &&
-                <Alert variant="danger">
-                  {errors.password?.type === "required" && <p>Password is required</p>}
-                  {errors.password?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
-                  {errors.password?.type === "maxLength" && <p>Max length of password is 10 characters!</p>}
-                </Alert>
-              }
-            </div>
 
-          </div>
-          <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" {...register('checkBox', { required: true })} />
-            <label className="form-check-label" htmlFor="flexCheckChecked"> remember me
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label" htmlFor="flexCheckChecked"> Please singup if you don't have an acount <a href="signup">SIGNUP</a>
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label" htmlFor="flexCheckChecked"> Don't remember your password? <a href="passwordRecovery">Password Recovery</a>
-            </label>
           </div>
           <div className="col-12">
             <button className="submit-btn" type="submit" >
               <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner"></span>
-              Signin
+              Send password
             </button>
           </div>
         </form>

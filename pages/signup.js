@@ -61,9 +61,9 @@ export default function Login() {
 
   return <main>
     <div className="signup-form-wrapper">
-      <h1 className="create-acc text-center">Create An Account</h1>
+      <h1 className="create-acc text-center"></h1>
       <div className="signup-inner text-center">
-        <h3 className="title">Welcome to One Bet Hub</h3>
+        <h3 className="title">Create An Account</h3>
         <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-12">
@@ -129,8 +129,12 @@ export default function Login() {
               }
             </label>
           </div>
+          <div className="form-check">
+            <label className="form-check-label" htmlFor="flexCheckChecked"> Please login if you have an acount <a href="signin">LOGIN</a>
+            </label>
+          </div>
           <div className="col-12">
-            <button className="submit-btn" type="submit" >Create Account</button>
+            <button className="submit-btn" type="submit" >Create</button>
           </div>
         </form>
       </div>

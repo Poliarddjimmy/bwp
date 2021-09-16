@@ -1,11 +1,9 @@
 import Image from 'next/image'
-import React, { Fragment } from 'react'
 import Layout from '../components/layouts/layout'
-import { useSelector, useDispatch } from "react-redux"
+import WithAuth from "../components/hocs/withAuth"
 
 
-export default function Profile() {
-  const { loading, currentUser, error } = useSelector(state => state.user)
+const Profile = ({ currentUser }) => {
 
   return <Layout>
 
@@ -1084,3 +1082,5 @@ export default function Profile() {
 
   </Layout>
 }
+
+export default WithAuth(Profile)

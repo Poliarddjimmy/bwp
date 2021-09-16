@@ -11,7 +11,6 @@ const interceptor = (store) => {
       const token = store.getState().user.access_token
       const mutableConfig = { ...config }
 
-      console.log(token)
 
       if (token) {
         mutableConfig.headers.common.Authorization = `Bearer ${token}`

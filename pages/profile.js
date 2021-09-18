@@ -1,9 +1,26 @@
 import Image from 'next/image'
 import Layout from '../components/layouts/layout'
-import WithAuth from "../components/hocs/withAuth"
+import withAuth from "../components/hocs/withAuth"
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { showProfileAction } from '../redux/actions/profileActionCreators'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 const Profile = ({ currentUser }) => {
+  const router = useRouter()
+  const { profile } = useSelector(state => state.profile)
+  const dispatch = useDispatch()
+
+  console.log(profile)
+
+  useEffect(() => {
+    if (router.query?.user) {
+      dispatch(showProfileAction(router.query?.user))
+    } else {
+      dispatch(showProfileAction(currentUser?.id))
+    }
+  }, [router.query?.user, currentUser, dispatch])
 
   return <Layout>
 
@@ -1083,4 +1100,4 @@ const Profile = ({ currentUser }) => {
   </Layout>
 }
 
-export default WithAuth(Profile)
+export default withAuth(Profile)

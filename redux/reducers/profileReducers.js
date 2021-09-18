@@ -18,6 +18,7 @@ const ProfileReducer = createReducer(initialState, (builder) => {
     .addCase(showProfileAction.fulfilled, (state, action) => {
       state.loading = false;
       if (!action.payload?.error) {
+        state.profile = action.payload
       } else {
       }
     })

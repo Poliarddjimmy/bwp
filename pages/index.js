@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from 'next/image'
 import Layout from '../components/layouts/layout'
-import WithAuth from "../components/hocs/withAuth"
+import withAuth from "../components/hocs/withAuth"
 
 
 const Home = ({ currentUser }) => {
@@ -1046,4 +1046,4 @@ const Home = ({ currentUser }) => {
   )
 }
 
-export default WithAuth(Home);
+export default withAuth(Home);

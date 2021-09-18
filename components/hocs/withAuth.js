@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { useRouter } from "next/router"
 
-const WithAuth = Component => {
-  const NewComponent = () => {
+const withAuth = WrappedComponent => {
+  const WithAuth = () => {
     const router = useRouter()
     const { loading, currentUser, error } = useSelector(state => state.user)
 
@@ -18,11 +18,11 @@ const WithAuth = Component => {
     }
 
     if (currentUser) {
-      return <Component currentUser={currentUser} />
+      return <WrappedComponent currentUser={currentUser} />
     }
     return <div></div>
   }
-  return NewComponent;
+  return WithAuth;
 }
 
-export default WithAuth;
+export default withAuth;

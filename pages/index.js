@@ -24,7 +24,7 @@ const Home = ({ currentUser }) => {
                   </figure>
                   <div className="profile-desc text-center">
                     <h6 className="author">
-                      <Link href="/profile">
+                      <Link href={`/profile?user=${currentUser?.id}`}>
                         {currentUser?.name}
                       </Link>
                     </h6>

@@ -17,6 +17,14 @@ class API {
     return axiosService.patch(`/profile/${id}`, payload)
   }
 
+  static fetchEvents = () => {
+    return axiosService.get(`/events`)
+  }
+
+  static showEvent = (id) => {
+    return axiosService.get(`/events/${id}`)
+  }
+
 }
 
 export default API

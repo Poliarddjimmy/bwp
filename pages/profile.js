@@ -5,14 +5,13 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { showProfileAction } from '../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
+import { current } from 'immer'
 
 
 const Profile = ({ currentUser }) => {
   const router = useRouter()
   const { profile } = useSelector(state => state.profile)
   const dispatch = useDispatch()
-
-  console.log(profile)
 
   useEffect(() => {
     if (router.query?.user) {
@@ -70,15 +69,15 @@ const Profile = ({ currentUser }) => {
             <div className="card widget-item">
               <h4 className="widget-title">{currentUser?.name}</h4>
               <div className="widget-body">
-                <div className="about-author">
-                  <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p>
-                  <ul className="author-into-list">
-                    <li><a href="#"><i className="bi bi-office-bag"></i>Graphic Designer</a></li>
-                    <li><a href="#"><i className="bi bi-home"></i>Melbourne, Australia</a></li>
-                    <li><a href="#"><i className="bi bi-location-pointer"></i>Pulshar, Melbourne</a></li>
-                    <li><a href="#"><i className="bi bi-heart-beat"></i>Travel, Swimming</a></li>
-                  </ul>
-                </div>
+                {/* <div className="about-author"> */}
+                {/* <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p> */}
+                <ul className="author-into-list">
+                  {/* <li><a href="#"><i className="bi bi-office-bag"></i>Graphic Designer</a></li> */}
+                  <li><a href="#"><i className="bi bi-home"></i>{profile?.city}, {profile?.country}</a></li>
+                  <li><a href="#"><i className="bi bi-location-pointer"></i>{profile?.address}</a></li>
+                  <li><a href="#"><i className="bi bi-heart-beat"></i>Travel, Swimming</a></li>
+                </ul>
+                {/* </div> */}
               </div>
             </div>
 

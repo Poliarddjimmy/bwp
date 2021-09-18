@@ -3,11 +3,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { logoutAction } from '../../redux/actions/userActionCreators'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { current } from "immer"
+
 
 const Header = () => {
+
   const dispatch = useDispatch()
   const [showMore, setShowMore] = useState(false)
+  const { currentUser } = useSelector(state => state.user)
+
   return (
     <>
       <Head>
@@ -205,12 +210,12 @@ const Header = () => {
                       </span>
                       <div className={`profile-dropdown d-${showMore ? "inline" : "none"}`} id="pf">
                         <div className="profile-head">
-                          <h5 className="name"><a href="#">Madison Howard</a></h5>
-                          <a className="mail" href="#">mailnam@mail.com</a>
+                          <h5 className="name"><a href="#">{currentUser?.name}</a></h5>
+                          <a className="mail" href="#">{currentUser?.phone}</a>
                         </div>
                         <div className="profile-body">
                           <ul>
-                            <li><a href="profile.html"><i className="flaticon-user"></i>Profile</a></li>
+                            <li><a href={`/profile?user=${currentUser?.id}`}><i className="flaticon-user"></i>Profile</a></li>
                             <li><a href="#"><i className="flaticon-message"></i>Inbox</a></li>
                             <li><a href="#"><i className="flaticon-document"></i>Activity</a></li>
                           </ul>

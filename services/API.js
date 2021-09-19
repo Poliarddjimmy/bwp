@@ -10,11 +10,19 @@ class API {
   }
 
   static showProfile = (payload) => {
-    return axiosService.post(`/profile/${payload}`)
+    return axiosService.get(`/profile/${payload}`)
   }
 
   static editProfile = (payload, id) => {
-    return axiosService.post(`/profile/${id}`, payload)
+    return axiosService.patch(`/profile/${id}`, payload)
+  }
+
+  static fetchEvents = () => {
+    return axiosService.get(`/events`)
+  }
+
+  static showEvent = (id) => {
+    return axiosService.get(`/events/${id}`)
   }
 
 }

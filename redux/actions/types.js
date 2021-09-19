@@ -14,6 +14,9 @@ const USER_CONFIRM = "users/confirm"
 const SHOW_PROFILE = "users/profile"
 const EDIT_PROFILE = "users/profile/edit"
 
+const FETCH_EVENTS = "events"
+const SHOW_EVENT = "events/id"
+
 const CLEAR = "clear"
 
 const Auth = {
@@ -42,9 +45,15 @@ const Clear = {
   CLEAR,
 }
 
+const Events = {
+  FETCH_EVENTS,
+  SHOW_EVENT
+}
+
 export {
   Auth,
   Users,
   Clear,
   Profiles,
+  Events
 }

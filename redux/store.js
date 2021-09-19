@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from "redux-persist"
 
-import rootReducer from "./reducers/routeReducer"
+import rootReducer from "./routeReducer"
 
 const store = configureStore({
   reducer: rootReducer,

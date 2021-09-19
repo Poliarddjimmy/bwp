@@ -1,12 +1,18 @@
+import { useEffect, useState } from "react"
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { logoutAction } from '../../redux/actions/userActionCreators'
-import { useDispatch } from 'react-redux'
-import Nav from './nav'
+import { useSelector, useDispatch } from 'react-redux'
+import { current } from "immer"
+
 
 const Header = () => {
+
   const dispatch = useDispatch()
+  const [showMore, setShowMore] = useState(false)
+  const { currentUser } = useSelector(state => state.user)
+
   return (
     <>
       <Head>
@@ -24,7 +30,7 @@ const Header = () => {
                 <div className="header-top-navigation">
                   <nav>
                     <ul>
-                      <li className="active" onClick={() => dispatch(logoutAction())}><Link href="/auth/signin">home</Link></li>
+                      <li className="active"><Link href="/">home</Link></li>
                       <li className="msg-trigger"><a className="msg-trigger-btn" href="#a">message</a>
                         <span className="message-dropdown" id="a">
                           <span className="dropdown-title">
@@ -197,25 +203,24 @@ const Header = () => {
 
                   <div className="profile-setting-box">
                     <div className="profile-thumb-small">
-                      <Link href="#pf" className="profile-triger" passHref>
+                      <span onClick={() => setShowMore(!showMore)} className="profile-triger cursor-pointer">
                         <figure>
                           <Image width="700" height="700" src="/images/profile/profile-small-1.jpg" alt="profile picture" />
                         </figure>
-                      </Link>
-                      <div className="profile-dropdown" id="pf">
+                      </span>
+                      <div className={`profile-dropdown d-${showMore ? "inline" : "none"}`} id="pf">
                         <div className="profile-head">
-                          <h5 className="name"><a href="#">Madison Howard</a></h5>
-                          <a className="mail" href="#">mailnam@mail.com</a>
+                          <h5 className="name"><a href={`/profile?user=${currentUser?.id}`}>{currentUser?.name}</a></h5>
+                          <a className="mail" href={`/profile?user=${currentUser?.id}`}>{currentUser?.phone}</a>
                         </div>
                         <div className="profile-body">
                           <ul>
-                            <li><a href="profile.html"><i className="flaticon-user"></i>Profile</a></li>
+                            <li><a href={`/profile?user=${currentUser?.id}`}><i className="flaticon-user"></i>Profile</a></li>
                             <li><a href="#"><i className="flaticon-message"></i>Inbox</a></li>
                             <li><a href="#"><i className="flaticon-document"></i>Activity</a></li>
                           </ul>
                           <ul>
-                            <li className="active" onClick={() => dispatch(logoutAction())}><a href="/auth/signin"><i className="flaticon-settings"></i>Setting</a></li>
-                            <li><a href="signup.html"><i className="flaticon-unlock"></i>Log out</a></li>
+                            <li onClick={() => dispatch(logoutAction())}><a className="cursor-pointer"><i className="flaticon-unlock"></i>Log out</a></li>
                           </ul>
                         </div>
                       </div>
@@ -398,8 +403,10 @@ const Header = () => {
                       <li><a href="#"><i className="flaticon-document"></i>Activity</a></li>
                     </ul>
                     <ul>
-                      <li onClick={() => dispatch(logoutAction())}><a href="/auth/signin"><i className="flaticon-settings"></i>Setting</a></li>
-                      <li><a href="signup.html"><i className="flaticon-unlock"></i>Log out</a></li>
+                      <li>
+                        <Link href="/auth/signin" passHref><span><i className="flaticon-settings"></i>Setting</span></Link>
+                      </li>
+                      <li onClick={() => dispatch(logoutAction())}><a><i className="flaticon-unlock"></i>Log out</a></li>
                     </ul>
                   </div>
                 </div>

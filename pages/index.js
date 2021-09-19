@@ -1,11 +1,10 @@
 import Link from "next/link"
 import Image from 'next/image'
 import Layout from '../components/layouts/layout'
-import { useSelector, useDispatch } from "react-redux"
+import withAuth from "../components/hocs/withAuth"
 
 
-const Home = () => {
-  const { loading, currentUser, error } = useSelector(state => state.user)
+const Home = ({ currentUser }) => {
   return (
     <Layout>
       <div className="container">
@@ -16,15 +15,19 @@ const Home = () => {
               <div className="card card-profile widget-item p-0">
                 <div className="profile-banner">
                   <figure className="profile-banner-small">
-                    <a href="/profile">
+                    <Link href="/profile" passHref>
                       <Image width="800" height="400" src="/images/banner/banner-small.jpg" alt="" />
-                    </a>
-                    <a href="/profile" className="profile-thumb-2">
-                      <Image width="700" height="700" src="/images/profile/profile-midle-1.jpg" alt="" />
-                    </a>
+                    </Link>
+                    <Link href="/profile" passHref>
+                      <a className="profile-thumb-2"><Image width="700" height="700" src="/images/profile/profile-midle-1.jpg" alt="" /></a>
+                    </Link>
                   </figure>
                   <div className="profile-desc text-center">
-                    <h6 className="author"><a href="/profile">{currentUser?.name}</a></h6>
+                    <h6 className="author">
+                      <Link href={`/profile?user=${currentUser?.id}`}>
+                        {currentUser?.name}
+                      </Link>
+                    </h6>
                     <p>Any one can join with but Social network us if you want Any one can join with us if you want</p>
                   </div>
                 </div>
@@ -1043,4 +1046,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default withAuth(Home);

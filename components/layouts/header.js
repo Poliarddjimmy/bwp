@@ -210,8 +210,8 @@ const Header = () => {
                       </span>
                       <div className={`profile-dropdown d-${showMore ? "inline" : "none"}`} id="pf">
                         <div className="profile-head">
-                          <h5 className="name"><a href="#">{currentUser?.name}</a></h5>
-                          <a className="mail" href="#">{currentUser?.phone}</a>
+                          <h5 className="name"><a href={`/profile?user=${currentUser?.id}`}>{currentUser?.name}</a></h5>
+                          <a className="mail" href={`/profile?user=${currentUser?.id}`}>{currentUser?.phone}</a>
                         </div>
                         <div className="profile-body">
                           <ul>

@@ -216,8 +216,12 @@ const Header = () => {
                         <div className="profile-body">
                           <ul>
                             <li><a href={`/profile?user=${currentUser?.id}`}><i className="flaticon-user"></i>Profile</a></li>
-                            <li><a href="#"><i className="flaticon-message"></i>Inbox</a></li>
-                            <li><a href="#"><i className="flaticon-document"></i>Activity</a></li>
+                            <li><a href="#"><i className="bi bi-money"></i>Balance : 0</a></li>
+                            <li><a href="#"><i className="bi bi-money"></i>Bonus-balance : 0</a></li>
+                            <li><a href="#"><i className="bi bi-money"></i>Withdraw</a></li>
+                            <li><a href="#"><i className="bi bi-money"></i>Deposit to account</a></li>
+                            <li><a href="#"><i className="flaticon-document"></i>Bet history</a></li>
+                            <li><a href="#"><i className="flaticon-document"></i>Payment history</a></li>
                           </ul>
                           <ul>
                             <li onClick={() => dispatch(logoutAction())}><a className="cursor-pointer"><i className="flaticon-unlock"></i>Log out</a></li>

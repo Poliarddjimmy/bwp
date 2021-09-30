@@ -12,6 +12,11 @@ const Header = () => {
   const dispatch = useDispatch()
   const [showMore, setShowMore] = useState(false)
   const { currentUser } = useSelector(state => state.user)
+  const [searchUser, setUserSearch] = useState('')
+
+  useEffect(() => {
+    // dispatch(searh)
+  }, []);
 
   return (
     <>
@@ -184,7 +189,7 @@ const Header = () => {
               <div className="col-md-2">
 
                 <div className="brand-logo text-center">
-                  <Link href="/" passHref>
+                  <Link href={`/`} passHref>
                     <Image width="20" height="20" src="/images/logo/logo.png" alt="brand logo" />
                   </Link>
                 </div>
@@ -196,8 +201,8 @@ const Header = () => {
 
                   <div className="header-top-search">
                     <form className="top-search-box">
-                      <input type="text" placeholder="Search" className="top-search-field" />
-                      <button className="top-search-btn"><i className="flaticon-search"></i></button>
+                      <input type="text" placeholder="Search" className="top-search-field" onChange={() => setUserSearch(event.target.value)} />
+                      <Link href={`/users?search=${searchUser}`} passHref><button className="top-search-btn"><i className="flaticon-search"></i></button></Link>
                     </form>
                   </div>
 

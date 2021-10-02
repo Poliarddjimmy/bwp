@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import Layout from '../components/layouts/layout'
-import withAuth from "../components/hocs/withAuth"
+import Layout from '../../components/layouts/layout'
+import withAuth from "../../components/hocs/withAuth"
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { showProfileAction } from '../redux/actions/profileActionCreators'
+import { showProfileAction } from '../../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import { current } from 'immer'
 
 
 const Profile = ({ currentUser }) => {

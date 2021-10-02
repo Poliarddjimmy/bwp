@@ -2,7 +2,8 @@ import {
   loginAction,
   logoutAction,
   registerAction,
-  clearMessageAction
+  clearMessageAction,
+  searchUserAction
 } from "../actions/userActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -56,6 +57,22 @@ const UserReducer = createReducer(initialState, (builder) => {
     .addCase(logoutAction.fulfilled, (state, action) => {
       state.token = null;
       state.currentUser = null;
+    })
+
+
+    .addCase(searchUserAction.pending, (state, action) => {
+      // state.loading = true;
+    })
+    .addCase(searchUserAction.fulfilled, (state, action) => {
+      state.loading = false;
+      if (!action.payload?.error) {
+        state.users = action.payload;
+      } else {
+        state.error = "Error detected"
+      }
+    })
+    .addCase(searchUserAction.rejected, (state, action) => {
+      state.loading = false;
     })
 
     .addCase(clearMessageAction.pending, (state, action) => {

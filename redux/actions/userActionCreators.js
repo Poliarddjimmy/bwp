@@ -36,3 +36,16 @@ export const logoutAction = createAsyncThunk(Auth.LOGOUT, async () => {
 export const clearMessageAction = createAsyncThunk(Clear.CLEAR, async () => {
   return
 })
+
+export const searchUserAction = createAsyncThunk(
+  Users.SEARCH_USER,
+
+  async (payload) => {
+    try {
+      const response = await API.searchUser(payload)
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)

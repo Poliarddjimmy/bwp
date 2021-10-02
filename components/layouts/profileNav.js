@@ -8,10 +8,10 @@ export default function ProfileNav() {
       <div className="main-menu-inner header-top-navigation">
         <nav>
           <ul className="main-menu">
-            <li className="active"><a href="#">timeline</a></li>
+            <li><a href="#">timeline</a></li>
             <li><a href="#">about</a></li>
-            <li><a href="#">Bet history</a></li>
-            <li><a href="#">Payment History</a></li>
+            <li><a href="historybet">Bet history</a></li>
+            <li><a href="paymenthistory">Payment History</a></li>
             <li className="d-inline-block d-md-none"><a href="editprofile">edit profile</a></li>
           </ul>
         </nav>

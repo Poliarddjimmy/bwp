@@ -33,7 +33,7 @@ const Home = ({ currentUser }) => {
                 </div>
               </div>
 
-              <div className="card widget-item">
+              {/* <div className="card widget-item">
                 <h4 className="widget-title">page you may like</h4>
                 <div className="widget-body">
                   <ul className="like-page-list-wrapper">
@@ -118,11 +118,11 @@ const Home = ({ currentUser }) => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
 
 
-              <div className="card widget-item">
+              {/* <div className="card widget-item">
                 <h4 className="widget-title">latest top news</h4>
                 <div className="widget-body">
                   <ul className="like-page-list-wrapper">
@@ -208,13 +208,13 @@ const Home = ({ currentUser }) => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
             </aside>
           </div>
 
           <div className="col-lg-6 order-1 order-lg-2">
-
+{/* 
             <div className="card card-small">
               <div className="share-box-inner">
 
@@ -258,142 +258,7 @@ const Home = ({ currentUser }) => {
                 </div>
 
               </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-1.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">merry watson</a></h6>
-                  <span className="post-time">20 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for  will uncover many web sites still
-                  in their infancy.
-                </p>
-                <div className="post-thumb-gallery">
-                  <figure className="post-thumb img-popup">
-                    <a href="/images/post/post-large-1.jpg">
-                      <Image width="510" height="270" src="/images/post/post-1.jpg" alt="post image" />
-                    </a>
-                  </figure>
-                </div>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 201 people like this</span>
-                    <strong>201</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>41</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>07</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-9.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Jon Wileyam</a></h6>
-                  <span className="post-time">15 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc pb-0">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for
-                </p>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 206 people like this</span>
-                    <strong>206</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>41</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>07</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
+            </div> */}
 
 
             <div className="card">
@@ -460,396 +325,13 @@ const Home = ({ currentUser }) => {
                 </div>
               </div>
             </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-37.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Kate Palson</a></h6>
-                  <span className="post-time">35 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for  will uncover many web sites still
-                  in their infancy.
-                </p>
-                <div className="post-thumb-gallery img-gallery">
-                  <div className="row no-gutters">
-                    <div className="col-8">
-                      <figure className="post-thumb">
-                        <a className="gallery-selector" href="/images/post/post-large-2.jpg">
-                          <Image width="339" height="270" src="/images/post/post-2.jpg" alt="post image" />
-                        </a>
-                      </figure>
-                    </div>
-                    <div className="col-4">
-                      <div className="row">
-                        <div className="col-12">
-                          <figure className="post-thumb">
-                            <a className="gallery-selector" href="/images/post/post-large-3.jpg">
-                              <Image width="170" height="90" src="/images/post/post-3.jpg" alt="post image" />
-                            </a>
-                          </figure>
-                        </div>
-                        <div className="col-12">
-                          <figure className="post-thumb">
-                            <a className="gallery-selector" href="/images/post/post-large-4.jpg">
-                              <Image width="170" height="90" src="/images/post/post-4.jpg" alt="post image" />
-                            </a>
-                          </figure>
-                        </div>
-                        <div className="col-12">
-                          <figure className="post-thumb">
-                            <a className="gallery-selector" href="/images/post/post-large-5.jpg">
-                              <Image width="170" height="90" src="/images/post/post-5.jpg" alt="post image" />
-                            </a>
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 70 people like this</span>
-                    <strong>70</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>28</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>12</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-4.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Robart Faul</a></h6>
-                  <span className="post-time">40 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc pb-0">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for Many desktop publishing packages and web page
-                  editors now use Lorem Ipsum as their default model text, and a search for Many
-                  desktop publishing duskam azer.
-                </p>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 250 people like this</span>
-                    <strong>250</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>80</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>10</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-8.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Halen Omaro</a></h6>
-                  <span className="post-time">45 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for  will uncover many web sites still
-                  in their infancy.
-                </p>
-                <div className="plyr__video-embed plyr-video">
-                  <iframe src="https://www.youtube.com/embed/odUtqDz4lEk" width="510" height="270" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                </div>
-                <p className="post-desc post-desc-secondary">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for
-                </p>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 160 people like this</span>
-                    <strong>160</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>42</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>05</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-2.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Mili Raoulin</a></h6>
-                  <span className="post-time">50 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for  will uncover many web sites still
-                  in their infancy.
-                </p>
-                <div className="post-thumb-gallery img-gallery">
-                  <div className="row no-gutters">
-                    <div className="col-6">
-                      <figure className="post-thumb">
-                        <a className="gallery-selector" href="/images/post/post-large-6.jpg">
-                          <Image width="255" height="270" src="/images/post/post-6.jpg" alt="post image" />
-                        </a>
-                      </figure>
-                    </div>
-                    <div className="col-6">
-                      <figure className="post-thumb">
-                        <a className="gallery-selector" href="/images/post/post-large-7.jpg">
-                          <Image width="255" height="270" src="/images/post/post-7.jpg" alt="post image" />
-                        </a>
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 30 people like this</span>
-                    <strong>30</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>65</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>04</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className="card">
-
-              <div className="post-title d-flex align-items-center">
-
-                <div className="profile-thumb">
-                  <a href="#">
-                    <figure className="profile-thumb-middle">
-                      <Image width="700" height="700" src="/images/profile/profile-small-9.jpg" alt="profile picture" />
-                    </figure>
-                  </a>
-                </div>
-
-
-                <div className="posted-author">
-                  <h6 className="author"><a href="profile.html">Jon Wileyam</a></h6>
-                  <span className="post-time">15 min ago</span>
-                </div>
-
-                <div className="post-settings-bar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <div className="post-settings arrow-shape">
-                    <ul>
-                      <li><button>copy link to adda</button></li>
-                      <li><button>edit post</button></li>
-                      <li><button>embed adda</button></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="post-content">
-                <p className="post-desc pb-0">
-                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for
-                </p>
-                <div className="post-meta">
-                  <button className="post-meta-like">
-                    <i className="bi bi-heart-beat"></i>
-                    <span>You and 320 people like this</span>
-                    <strong>320</strong>
-                  </button>
-                  <ul className="comment-share-meta">
-                    <li>
-                      <button className="post-comment">
-                        <i className="bi bi-chat-bubble"></i>
-                        <span>41</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="post-share">
-                        <i className="bi bi-share"></i>
-                        <span>07</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
           </div>
 
           <div className="col-lg-3 order-3">
             <aside className="widget-area">
 
               <div className="card widget-item">
-                <h4 className="widget-title">Recent Notifications</h4>
+                <h4 className="widget-title">Best player</h4>
                 <div className="widget-body">
                   <ul className="like-page-list-wrapper">
                     <li className="unorder-list">
@@ -937,7 +419,7 @@ const Home = ({ currentUser }) => {
 
 
 
-              <div className="card widget-item">
+              {/* <div className="card widget-item">
                 <h4 className="widget-title">Advertizement</h4>
                 <div className="widget-body">
                   <div className="add-thumb">
@@ -946,11 +428,11 @@ const Home = ({ currentUser }) => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
 
 
-              <div className="card widget-item">
+              {/* <div className="card widget-item">
                 <h4 className="widget-title">Friends Zone</h4>
                 <div className="widget-body">
                   <ul className="like-page-list-wrapper">
@@ -1036,7 +518,7 @@ const Home = ({ currentUser }) => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
             </aside>
           </div>

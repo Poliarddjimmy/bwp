@@ -66,7 +66,7 @@ const Profile = ({ currentUser }) => {
           <aside className="widget-area profile-sidebar">
 
             <div className="card widget-item">
-              <h4 className="widget-title">{currentUser?.name}</h4>
+              <h4 className="widget-title">{profile?.user.name}</h4>
               <div className="widget-body">
                 {/* <div className="about-author"> */}
                 {/* <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p> */}

@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import Layout from '../components/layouts/layout'
-import withAuth from "../components/hocs/withAuth"
+import Layout from '../../components/layouts/layout'
+import withAuth from "../../components/hocs/withAuth"
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { showProfileAction } from '../redux/actions/profileActionCreators'
+import { showProfileAction } from '../../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import { current } from 'immer'
 
 
 const Profile = ({ currentUser }) => {
@@ -67,7 +66,7 @@ const Profile = ({ currentUser }) => {
           <aside className="widget-area profile-sidebar">
 
             <div className="card widget-item">
-              <h4 className="widget-title">{currentUser?.name}</h4>
+              <h4 className="widget-title">{profile?.user.name}</h4>
               <div className="widget-body">
                 {/* <div className="about-author"> */}
                 {/* <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p> */}

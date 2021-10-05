@@ -5,6 +5,7 @@ const ADD_SESSION = "users/add_session"
 
 const FETCH_USER = "users"
 const SHOW_USER = "users/show"
+const SEARCH_USER = "users/search"
 const EDIT_USER = "users/update"
 const CREATE_USER = "users/create"
 const DELETE_USER = "users/delete"
@@ -29,6 +30,7 @@ const Auth = {
 const Users = {
   FETCH_USER,
   SHOW_USER,
+  SEARCH_USER,
   EDIT_USER,
   CREATE_USER,
   DELETE_USER,

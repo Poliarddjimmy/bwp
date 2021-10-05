@@ -14,3 +14,8 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.search-user-result{
+    min-height: 200px;
+
+}

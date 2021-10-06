@@ -2,16 +2,41 @@ import Image from 'next/image'
 import Layout from '../../components/layouts/layout'
 import withAuth from "../../components/hocs/withAuth"
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { showProfileAction } from '../../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import ProfileNav from '../../components/layouts/profileNav'
+import Profileform from '../../components/profile/form'
+import Link from 'next/link'
 
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 1
+  },
+};
 
 const Editprofile = ({ currentUser }) => {
   const router = useRouter()
   const { profile } = useSelector(state => state.profile)
   const dispatch = useDispatch()
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     if (router.query?.user) {
@@ -23,17 +48,27 @@ const Editprofile = ({ currentUser }) => {
 
   return <Layout>
 
+    <Modal
+      isOpen={modalIsOpen}
+      // onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+    >
+      <Profileform data={profile} />
+    </Modal>
+
     <div className="profile-banner-large bg-img mt-n4" data-bg="/images/banner/profile-banner.jpg">
     </div>
     <div className="profile-menu-area bg-white">
       <div className="container">
-        <div className="row align-items-center">
+        <div className={`row align-items-center ${modalIsOpen ? "d-none" : ""}`} >
           <div className="col-lg-3 col-md-3">
-            <div className="profile-picture-box">
+            <div className="profile-picture-box" >
               <figure className="profile-picture">
-                <a href="profile.html">
-                  <Image width="270" height="270" className="p-2" src="/images/profile/profile-1.jpg" alt="profile picture" />
-                </a>
+                {/* <a href="profile.html"> */}
+                <Image width="270" height="270" className="p-2" src="/images/profile/profile-1.jpg" alt="profile picture" />
+                {/* </a> */}
               </figure>
             </div>
           </div>
@@ -42,9 +77,7 @@ const Editprofile = ({ currentUser }) => {
 
           <div className="col-lg-2 col-md-3 d-none d-md-block">
             <div className="profile-edit-panel">
-              <a href="editprofile">
-                <button className="edit-btn">edit profile</button>
-              </a>
+              <button onClick={openModal} className="edit-btn">edit profile</button>
             </div>
           </div>
         </div>

@@ -43,9 +43,9 @@ export default function Signup() {
 
   return <main>
     <div className="signup-form-wrapper">
-      <h1 className="create-acc text-center">Create An Account</h1>
+      <h1 className="create-acc text-center"></h1>
       <div className="signup-inner text-center">
-        <h3 className="title">Welcome to One Bet Hub</h3>
+        <h3 className="title">Please create your account</h3>
         <div className="signup-inner--form">
           <div className="row">
             <div className="col-12">
@@ -191,6 +191,10 @@ export default function Signup() {
                   {errors.checkBox?.type === "required" && <p>Terms of use is required</p>}
                 </Alert>
               }
+            </label>
+          </div>
+          <div className="form-check">
+            <label className="form-check-label" htmlFor="flexCheckChecked"> If you have an account please <a href="signin">login</a>
             </label>
           </div>
           <div className="col-12">

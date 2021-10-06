@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect } from "react"
 import { useForm, Controller } from "react-hook-form";
 import { Alert } from 'react-bootstrap';
@@ -41,9 +42,9 @@ export default function Signin() {
 
   return <main>
     <div className="signup-form-wrapper">
-      <h1 className="create-acc text-center">Sign In</h1>
+      <h1 className="create-acc text-center"></h1>
       <div className="signup-inner text-center">
-        <h3 className="title">Welcome to One Bet Hub</h3>
+        <h3 className="title">Please login into your account</h3>
         <form className="signup-inner--form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-12">
@@ -104,7 +105,14 @@ export default function Signin() {
             </div>
 
           </div>
-
+          <div className="form-check">
+            <label className="form-check-label" htmlFor="flexCheckChecked"> If you don't have an account please <a href="signup">Signup</a>
+            </label>
+          </div>
+          <div className="form-check">
+            <label className="form-check-label" htmlFor="flexCheckChecked"> Don't remember your password ? <a href="passwordRecovery">Password Recovery</a>
+            </label>
+          </div>
           <div className="col-12">
             <button
               className="submit-btn"

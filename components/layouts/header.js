@@ -2,16 +2,27 @@ import { useEffect, useState } from "react"
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { logoutAction } from '../../redux/actions/userActionCreators'
+import { logoutAction, searchUserAction } from '../../redux/actions/userActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import { current } from "immer"
+import { useRouter } from "next/dist/client/router"
 
 
 const Header = () => {
 
   const dispatch = useDispatch()
+  const router = useRouter()
   const [showMore, setShowMore] = useState(false)
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser, users } = useSelector(state => state.user)
+  const [searchUser, setUserSearch] = useState('')
+  const [showSearchUserBox, setShowSearchUserBox] = useState(false)
+
+  useEffect(() => {
+    searchUser?.length >= 3 && dispatch(searchUserAction(searchUser))
+  }, [dispatch, searchUser]);
+
+  useEffect(() => {
+    router.asPath && setShowSearchUserBox(false)
+  }, [router.asPath])
 
   return (
     <>
@@ -184,7 +195,7 @@ const Header = () => {
               <div className="col-md-2">
 
                 <div className="brand-logo text-center">
-                  <Link href="/" passHref>
+                  <Link href={`/`} passHref>
                     <Image width="20" height="20" src="/images/logo/logo.png" alt="brand logo" />
                   </Link>
                 </div>
@@ -196,9 +207,37 @@ const Header = () => {
 
                   <div className="header-top-search">
                     <form className="top-search-box">
-                      <input type="text" placeholder="Search" className="top-search-field" />
-                      <button className="top-search-btn"><i className="flaticon-search"></i></button>
+                      <input type="text" placeholder="Search" onFocus={() => setShowSearchUserBox(true)} className="top-search-field" onChange={(event) => setUserSearch(event.target.value)} />
+                      <span className="top-search-btn"><i className="flaticon-search"></i></span>
                     </form>
+                    {showSearchUserBox &&
+                      <div className="bg-white position-absolute w-50 search-user-result mt-3 shadow-lg border">
+                        <strong className="p-2">Search result</strong>
+                        <hr className="m-0" />
+                        <div className="p-2">
+                          <ul className="like-page-list-wrapper">
+                            {users?.map(user =>
+                              <li className="unorder-list" key={user.id}>
+                                <Link href={`/profile?user=${user.id}`} passHref>
+                                  <span className=" d-flex align-items-center">
+                                    <span className="profile-thumb">
+                                      <a href="#">
+                                        <figure className="profile-thumb-small">
+                                          <Image width="700" height="700" src="/images/profile/profile-small-28.jpg" alt="profile picture" />
+                                        </figure>
+                                      </a>
+                                    </span>
+                                    <span className="unorder-list-info">
+                                      <h3 className="list-title"><a href="#">{user.name}</a></h3>
+                                    </span>
+                                  </span>
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      </div>
+                    }
                   </div>
 
                   <div className="profile-setting-box">

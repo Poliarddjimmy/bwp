@@ -9,6 +9,10 @@ class API {
     return axiosService.post(`/register`, payload)
   }
 
+  static searchUser = (payload) => {
+    return axiosService.get(`/users?search=${payload}`)
+  }
+
   static showProfile = (payload) => {
     return axiosService.get(`/profile/${payload}`)
   }

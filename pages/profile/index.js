@@ -1,12 +1,11 @@
 import Image from 'next/image'
-import Layout from '../components/layouts/layout'
-import withAuth from "../components/hocs/withAuth"
+import Layout from '../../components/layouts/layout'
+import withAuth from "../../components/hocs/withAuth"
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { showProfileAction } from '../redux/actions/profileActionCreators'
+import { showProfileAction } from '../../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import { current } from 'immer'
-import ProfileNav from '../components/layouts/profileNav'
+import ProfileNav from '../../components/layouts/profileNav'
 
 
 const Editprofile = ({ currentUser }) => {
@@ -38,13 +37,13 @@ const Editprofile = ({ currentUser }) => {
               </figure>
             </div>
           </div>
-          
-            <ProfileNav/>
-          
+
+          <ProfileNav />
+
           <div className="col-lg-2 col-md-3 d-none d-md-block">
             <div className="profile-edit-panel">
               <a href="editprofile">
-              <button className="edit-btn">edit profile</button>
+                <button className="edit-btn">edit profile</button>
               </a>
             </div>
           </div>
@@ -57,7 +56,7 @@ const Editprofile = ({ currentUser }) => {
           <aside className="widget-area profile-sidebar">
 
             <div className="card widget-item">
-              <h4 className="widget-title">{currentUser?.name}</h4>
+              <h4 className="widget-title">{profile?.user.name}</h4>
               <div className="widget-body">
                 {/* <div className="about-author"> */}
                 {/* <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p> */}

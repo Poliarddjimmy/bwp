@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { showProfileAction } from '../redux/actions/profileActionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import { current } from 'immer'
 import ProfileNav from '../components/layouts/profileNav'
 import Bethistory from '../components/layouts/bethistory'
 
@@ -38,13 +37,13 @@ const Profile = ({ currentUser }) => {
               </figure>
             </div>
           </div>
-          
-            <ProfileNav/>
-          
+
+          <ProfileNav />
+
           <div className="col-lg-2 col-md-3 d-none d-md-block">
             <div className="profile-edit-panel">
               <a href="edirprofile">
-              <button className="edit-btn">edit profile</button>
+                <button className="edit-btn">edit profile</button>
               </a>
             </div>
           </div>
@@ -74,9 +73,9 @@ const Profile = ({ currentUser }) => {
           </aside>
         </div>
 
-        <div className="col-lg-6 order-1 order-lg-2"> 
-    
-              <Bethistory />     
+        <div className="col-lg-6 order-1 order-lg-2">
+
+          <Bethistory />
         </div>
 
         <div className="col-lg-3 order-3">

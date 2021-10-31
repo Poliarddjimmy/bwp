@@ -21,7 +21,6 @@ const Layout = ({ children }) => {
           <div className="container" style={{ marginTop: 200, paddingTop: 20 }}>
             <div className="row">
               <div className="col-lg-3 bg-danger">
-                sdsd
               </div>
               <div className="col-lg-9">
                 {children}

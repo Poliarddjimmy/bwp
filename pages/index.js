@@ -8,7 +8,6 @@ const Home = ({ currentUser }) => {
   return (
     <Layout>
       <div>
-        jsdjfk
       </div>
     </Layout>
   )

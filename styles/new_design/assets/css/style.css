@@ -1478,7 +1478,7 @@ select:focus {
 /* Features Area End */
 /* Featured Game Area Start */
 .featured-game {
-  padding: 0px 0px 120px;
+  /* padding: 0px 0px 120px; */
   background: url(../images/featuredgame-bg.jpg);
   background-position: center;
   background-size: cover;

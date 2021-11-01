@@ -28,3 +28,29 @@ div.sticky {
     top: 0;
     width: 100%;
   }
+
+
+.w-80 {
+    width: 80%;
+}
+
+.border-danger {
+    border: 1px solid #dc3545 !important;
+}
+
+.seconary-bg-color {
+    background-color: #0e1652;
+}
+
+.chat-list {
+    border-bottom: 1px solid #dc354686;
+}
+
+.chat-list.active {
+    background-color: rgba(255,255,255, 0.1);
+    border-bottom: 0px solid #dc354686;
+}
+
+.min-vh-70 {
+    min-height: 70vh;
+}

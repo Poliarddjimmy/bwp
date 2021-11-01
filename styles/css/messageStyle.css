@@ -42,3 +42,9 @@
 .border-top {
     border-top: 1px solid #dee2e6!important;
 }
+
+.message .me  {
+    position: absolute;
+    right: 20px;
+
+}

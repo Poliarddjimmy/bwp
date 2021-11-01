@@ -16,11 +16,12 @@ const Layout = ({ children }) => {
         </section>
 
       </header>
-      <section className="featured-game" style={{ minHeight: "60.3vh" }}>
-        <div className="features">
-          <div className="container" style={{ marginTop: 200, paddingTop: 20 }}>
+      <section className="featured-game" style={{}}>
+        <div className="featuress">
+          <div className="container" style={{ paddingTop: 50 }}>
             <div className="row">
               <div className="col-lg-3 bg-danger">
+                jsjkhds
               </div>
               <div className="col-lg-9">
                 {children}

@@ -66,7 +66,7 @@ const Messages = () => {
             </div>
 
             <div className="col-12 col-lg-7 col-xl-7">
-              <div className="message p-2 d-flex flex-column border rounded min-vh-70">
+              <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-70">
 
                 <div className="inmessage">
                   <div className="other p-2 d-flex align-items-center">
@@ -84,12 +84,12 @@ const Messages = () => {
                   </div>
                   <div className="intext d-flex m-2">
                     <div className="message-box">
-                      <div className="bg-white text-dark rounded">Hey Billy.</div>
+                      <span className=" badge bg-white text-dark rounded">Hey Billy.</span>
                     </div>
                   </div>
                   <div className="intext d-flex">
                     <div className="message-box">
-                      <div className="bg-white text-dark rounded">How you doing Man.</div>
+                      <span className="badge bg-white text-dark rounded">How you doing Man.</span>
                     </div>
                   </div>
                   <div className="time">
@@ -119,10 +119,10 @@ const Messages = () => {
               </div>
 
               <div className="input">
-                <input type="text" className="form-control bg-transparent text-light" placeholder="Write your message..." />
+                <input type="text" className="form-control border-danger bg-transparent text-light" placeholder="Write your message..." />
               </div>
               <div className="button d-flex justify-content-end">
-                <button class="btn btn-main-color">Send</button>
+                <button class="btn btn-main-color ">Send</button>
               </div>
 
             </div>

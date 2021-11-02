@@ -38,6 +38,14 @@ div.sticky {
     border: 1px solid #dc3545 !important;
 }
 
+.color-one {
+    color: #dc3545;
+}
+
+chat-in-color{
+    border: 1px solid aliceblue !important;
+}
+
 .seconary-bg-color {
     background-color: #0e1652;
 }
@@ -53,4 +61,8 @@ div.sticky {
 
 .min-vh-70 {
     min-height: 70vh;
+}
+
+.bg-trans{
+    color: #252F56;
 }

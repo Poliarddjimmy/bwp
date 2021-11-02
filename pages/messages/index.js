@@ -66,7 +66,7 @@ const Messages = () => {
             </div>
 
             <div className="col-12 col-lg-7 col-xl-7">
-              <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-70">
+              <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-50">
 
                 <div className="inmessage">
                   <div className="other p-2 d-flex align-items-center">

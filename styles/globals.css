@@ -34,6 +34,10 @@ div.sticky {
     width: 80%;
 }
 
+.w-40 {
+    width: 40%;
+}
+
 .border-danger {
     border: 1px solid #dc3545 !important;
 }
@@ -46,7 +50,7 @@ chat-in-color{
     border: 1px solid aliceblue !important;
 }
 
-.seconary-bg-color {
+.bg-secondary {
     background-color: #0e1652;
 }
 
@@ -61,6 +65,10 @@ chat-in-color{
 
 .min-vh-70 {
     min-height: 70vh;
+}
+
+.min-vh-25 {
+    min-height: 25vh;
 }
 
 .bg-trans{

@@ -47,6 +47,74 @@ const TransactionHistory = () => {
 
         </div>
       </div>
+
+      <div className=" tablex d-flex flex-column border rounded border-danger min-vh-25 m-2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="">Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+
+            <tr>
+              <td>Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+
+            <tr>
+              <td>Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+            <tr>
+              <td>Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+
+            <tr>
+              <td>Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+
+            <tr>
+              <td>Game-01</td>
+              <td>07 nov 2021 3:30 pm</td>
+              <td>230$</td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="d-flex justify-content-end text-light align-middle p-2">
+          <p className="align-middle text-light fs-6">Row Per Page</p>
+          <div class="dropdown">
+            <button class="btn bg-transparent dropdown-toggle border-danger" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              5
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">25</a></li>
+              <li><a class="dropdown-item" href="#">50</a></li>
+              <li><a class="dropdown-item" href="#">100</a></li>
+            </ul>
+          </div>
+          <p className="align-middle text-light fs-6">1-5 of 30</p>
+          <div className="w-25">
+            <button class="btn"><i class="fa fa-caret-left btn-sm border-danger"></i></button>
+            <button class="btn"><i class="fa fa-caret-right btn-sm border-danger"></i></button>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </Layout>)
 }

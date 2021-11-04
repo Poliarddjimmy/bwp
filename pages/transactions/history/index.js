@@ -13,15 +13,18 @@ const TransactionHistory = () => {
         </strong>
       </div>
 
-      <div className="w-40 m-2">
-        <ul class="nav nav-pills border-danger rounded-pill d-flex justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link rounded-pill" href="#">Transaction History</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active bg-danger rounded-pill" aria-current="page" href="#">Bet History</a>
-          </li>
-        </ul>
+
+      <div className="tabs-container d-flex justify-content-center">
+        <div className="w-40 m-2">
+          <ul class="nav nav-pills border-danger rounded-pill d-flex justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="#">Transaction History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active bg-danger rounded-pill" aria-current="page" href="#">Bet History</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-25 m-2 bg-secondary">

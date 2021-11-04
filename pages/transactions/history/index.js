@@ -5,7 +5,15 @@ const TransactionHistory = () => {
 
   return (<Layout>
     <div className="history ">
-      <div className="w-40">
+
+      <div className="header-top bg-secondary p-2">
+        <h3>Bet and Transaction history</h3>
+        <strong className="color-one">
+          Check your progress
+        </strong>
+      </div>
+
+      <div className="w-40 m-2">
         <ul class="nav nav-pills border-danger rounded-pill d-flex justify-content-center">
           <li class="nav-item">
             <a class="nav-link rounded-pill" href="#">Transaction History</a>

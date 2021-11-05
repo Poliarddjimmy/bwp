@@ -118,7 +118,7 @@ const TransactionHistory = () => {
             </ul>
           </div>
           <p className="align-middle text-light fs-6">1-5 of 30</p>
-          <div className="w-25">
+          <div className="w-15">
             <button class="btn"><i class="fa fa-caret-left btn-sm border-danger"></i></button>
             <button class="btn"><i class="fa fa-caret-right btn-sm border-danger"></i></button>
           </div>

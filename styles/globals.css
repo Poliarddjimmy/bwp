@@ -38,6 +38,10 @@ div.sticky {
     width: 40%;
 }
 
+.w-15 {
+    width: 15%;
+}
+
 .border-danger {
     border: 1px solid #dc3545 !important;
 }

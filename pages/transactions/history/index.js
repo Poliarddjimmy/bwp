@@ -105,6 +105,7 @@ const TransactionHistory = () => {
             </tr>
           </tbody>
         </table>
+
         <div className="d-flex justify-content-end text-light align-middle p-2">
           <p className="align-middle text-light fs-6">Row Per Page</p>
           <div class="dropdown">

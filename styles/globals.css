@@ -71,6 +71,10 @@ chat-in-color{
     min-height: 70vh;
 }
 
+.min-vh-50 {
+    min-height: 50vh;
+}
+
 .min-vh-25 {
     min-height: 25vh;
 }

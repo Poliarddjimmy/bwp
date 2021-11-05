@@ -6,10 +6,13 @@ const Profiles = () => {
 
   return (
     <Layout>
-      <h4>Profile</h4>
+      <div className="d-flex justify-content-start">
+        <h4>Profile</h4>
+      </div>
+
       <div className="profile d-flex justify-content-start">
 
-        <div className="card-one border-danger rounded min-vh-70">
+        <div className="card-one w-25 border-danger rounded min-vh-70">
           <div className="profile pic m-2 d-flex justify-content-center">
             <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="100" height="100" />
           </div>
@@ -36,11 +39,14 @@ const Profiles = () => {
             <a type="button" class="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i></a>
             <a type="button" class="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i class="fab fa-instagram fa-sm" aria-hidden="true"></i></a>
           </div>
-
+          <div>
+            <hr class="bg-danger border-1 border-top border-danger m-4" />
+            <small className="color-one d-flex justify-content-center">Member since mar 21, 2021</small>
+          </div>
         </div>
 
-        <div className="container-fluid d-flex flex-column bg-secondary border rounded border-danger min-vh-70 ml-2">
-          <table className="table table-xl">
+        <div className="w-80 d-flex flex-column bg-secondary border rounded border-danger ml-2">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Recent Notifications</th>
@@ -133,6 +139,24 @@ const Profiles = () => {
         </div>
 
       </div>
+
+      <div className="best-players">
+
+        <div className="">
+          <small className="text-light">Best</small>
+        </div>
+        <div className="">
+          <h4 className="text-light">Players</h4>
+        </div>
+        <div className="min-vh-25 border-danger rounded w-20">
+          <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+          <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+          <div>
+            <hr class="bg-white border-1 border-top m-2" />
+          </div>
+        </div>
+      </div>
+
     </Layout>
   )
 }

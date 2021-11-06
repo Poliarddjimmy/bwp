@@ -48,3 +48,16 @@
     right: 20px;
 
 }
+
+.chat-in-color{
+    color: aliceblue;
+}
+
+.bg-trans{
+    color: #252F56;
+}
+
+.btn-main-color{
+    background-color: #dc3545;
+    color: #fff;
+}

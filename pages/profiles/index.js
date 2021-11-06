@@ -148,12 +148,128 @@ const Profiles = () => {
         <div className="">
           <h4 className="text-light">Players</h4>
         </div>
-        <div className="min-vh-25 border-danger rounded w-20">
-          <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
-          <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
-          <div>
+        <div className="col d-flex justify-content-sm-between">
+
+          <div className="min-vh-30 border-danger rounded w-20 bg-secondary">
+            <div className="d-flex justify-content-sm-between">
+              <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+              <div className="">
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-long-arrow-alt-up btn-sm color-white" /></button>
+              </div>
+            </div>
             <hr class="bg-white border-1 border-top m-2" />
+            <div className="">
+              <div className="profile pic m-2 d-flex justify-content-center">
+                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+              </div>
+              <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+              <div>
+                <div className="d-flex justify-content-center m-2">
+                  <small className="text-light">2345</small>
+                  <small className="color-one ml-1">Win</small>
+                </div>
+
+              </div>
+            </div>
           </div>
+
+          <div className="min-vh-30 border-danger rounded w-20 ml-1 bg-secondary">
+            <div className="d-flex justify-content-sm-between">
+              <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+              <div className="">
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-long-arrow-alt-up btn-sm color-white" /></button>
+              </div>
+            </div>
+            <hr class="bg-white border-1 border-top m-2" />
+            <div className="">
+              <div className="profile pic m-2 d-flex justify-content-center">
+                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+              </div>
+              <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+              <div>
+                <div className="d-flex justify-content-center m-2">
+                  <small className="text-light">2345</small>
+                  <small className="color-one ml-1">Win</small>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div className="min-vh-30 border-danger rounded w-20 ml-1 bg-secondary">
+            <div className="d-flex justify-content-sm-between">
+              <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+              <div className="">
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-long-arrow-alt-up btn-sm color-white" /></button>
+              </div>
+            </div>
+            <hr class="bg-white border-1 border-top m-2" />
+            <div className="">
+              <div className="profile pic m-2 d-flex justify-content-center">
+                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+              </div>
+              <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+              <div>
+                <div className="d-flex justify-content-center m-2">
+                  <small className="text-light">2345</small>
+                  <small className="color-one ml-1">Win</small>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div className="min-vh-30 border-danger rounded w-20 ml-1 bg-secondary">
+            <div className="d-flex justify-content-sm-between">
+              <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+              <div className="">
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-long-arrow-alt-up btn-sm color-white" /></button>
+              </div>
+            </div>
+            <hr class="bg-white border-1 border-top m-2" />
+            <div className="">
+              <div className="profile pic m-2 d-flex justify-content-center">
+                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+              </div>
+              <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+              <div>
+                <div className="d-flex justify-content-center m-2">
+                  <small className="text-light">2345</small>
+                  <small className="color-one ml-1">Win</small>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div className="min-vh-30 border-danger rounded w-20 ml-1 bg-secondary">
+            <div className="d-flex justify-content-sm-between">
+              <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i class="fab fa-trophy-alt fa-sm" aria-hidden="true" /> #1</span>
+              <div className="">
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-plus btn-sm border-danger color-one" /></button>
+                <button class="btn btn-sm justify-content-end"><i class="fa fa-long-arrow-alt-up btn-sm color-white" /></button>
+              </div>
+            </div>
+            <hr class="bg-white border-1 border-top m-2" />
+            <div className="">
+              <div className="profile pic m-2 d-flex justify-content-center">
+                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+              </div>
+              <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+              <div>
+                <div className="d-flex justify-content-center m-2">
+                  <small className="text-light">2345</small>
+                  <small className="color-one ml-1">Win</small>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

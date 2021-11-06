@@ -55,9 +55,12 @@ div.sticky {
 }
 
 .bg-white {
-    color: #fff;
+    background-color: #fff;
 }
 
+.color-white {
+    color: #fff;
+}
 
 chat-in-color{
     border: 1px solid aliceblue !important;
@@ -84,6 +87,9 @@ chat-in-color{
     min-height: 50vh;
 }
 
+.min-vh-30 {
+    min-height: 30vh;
+}
 .min-vh-25 {
     min-height: 25vh;
 }

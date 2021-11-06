@@ -57,6 +57,14 @@ div.sticky {
     border-bottom: 1px solid #dc3545 !important;
 }
 
+.border-left-danger {
+    border-left: 1px solid #dc3545 !important;
+}
+
+.border-right-danger {
+    border-right: 1px solid #dc3545 !important;
+}
+
 .color-one {
     color: #dc3545;
 }

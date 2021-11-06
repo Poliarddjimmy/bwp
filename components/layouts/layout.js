@@ -1,5 +1,5 @@
 import Header from "./header"
-import Footer from "./footer"
+import Link from "next/link"
 import { Fragment } from "react"
 import Image from "next/image"
 import Sidebar from "./sidebar"
@@ -57,8 +57,8 @@ const Layout = ({ children, currentUser }) => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant="dark">
-                      <Dropdown.Item href="#/action-1" active>
-                        profile
+                      <Dropdown.Item active>
+                        <Link href="/profile"> profile</Link>
                       </Dropdown.Item>
                       <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                       <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>

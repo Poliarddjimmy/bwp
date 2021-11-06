@@ -7,7 +7,7 @@ const BetHistory = ({ currentUser }) => {
     <main className="personal-area">
       <div className="history ">
 
-        <div className="header-top bg-secondary p-2">
+        <div className="header-top bg-secondary text-center rounded p-2">
           <h3>Bet and Transaction history</h3>
           <strong className="color-one">
             Check your progress
@@ -28,7 +28,7 @@ const BetHistory = ({ currentUser }) => {
           </div>
         </div>
 
-        <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-25 m-2 bg-secondary">
+        <div className="message p-2 d-flex flex-column border rounded border-danger  m-2 bg-secondary">
 
           <div className=" profile d-flex justify-content-center p-3">
             <div className="profile pic m-2">
@@ -62,14 +62,14 @@ const BetHistory = ({ currentUser }) => {
 
         <div className=" tablex d-flex flex-column border rounded border-danger min-vh-25 m-2">
           <table className="table">
-            <thead>
+            <thead className="text-white bg-secondary">
               <tr>
                 <th scope="col">Description</th>
                 <th scope="col">Date</th>
                 <th scope="col">Amount</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-white">
               <tr>
                 <td className="">Game-01</td>
                 <td>07 nov 2021 3:30 pm</td>

@@ -1620,17 +1620,19 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
 .footer {
   width: 100%;
   margin: 0 auto;
-  padding: 70px 55px 0;
+  /* padding: 70px 55px 0; */
   background-color: #fff;
   background-color: var(--olympus-white-color);
-  box-shadow: 0 0 34px 0 rgba(63, 66, 87, 0.1);
+  /* box-shadow: 0 0 34px 0 rgba(63, 66, 87, 0.1); */
   position: relative; }
   .footer .widget .title {
     margin-bottom: 25px; }
   .footer.footer-full-width {
     width: 100%; }
   .footer.has-not-copyright {
-    padding: 70px 55px; }
+    padding: 70px 55px;
+   
+  }
 
 .footer--dark {
   background-color: #3f4257;

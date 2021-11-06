@@ -50,6 +50,10 @@ div.sticky {
     border: 1px solid #dc3545 !important;
 }
 
+.border-bottom-danger {
+    border-bottom: 1px solid #dc3545 !important;
+}
+
 .color-one {
     color: #dc3545;
 }
@@ -100,4 +104,18 @@ chat-in-color{
 
 .bp-one {
     background-color: aqua !important;
+}
+
+.social-media .fab{
+    height: 25px;
+    width: 20px;
+}
+
+.card-button .fa{
+    font-size: 0.7em;
+    margin-left: 10px;
+}
+
+.card-layout {
+    border-radius: 20px;
 }

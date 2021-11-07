@@ -4,10 +4,12 @@ import { Fragment } from "react"
 import Image from "next/image"
 import Sidebar from "./sidebar"
 import { Dropdown, NavDropdown } from "react-bootstrap"
+import { logoutAction } from "../../redux/actions/userActionCreators"
+import { useDispatch } from "react-redux"
 
 
 const Layout = ({ children, currentUser }) => {
-  console.log(currentUser)
+  const dispatch = useDispatch()
   return (
     <Fragment>
       <header className="header">
@@ -19,7 +21,7 @@ const Layout = ({ children, currentUser }) => {
                 <strong>LOGO</strong>
                 <div className="d-flex align-items-center header-menu">
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
+                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                       <i className="bi bi-envelope fa-2x rounded-circle"></i>
                     </Dropdown.Toggle>
 
@@ -35,11 +37,11 @@ const Layout = ({ children, currentUser }) => {
                   </Dropdown>
 
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
+                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                       <i className="bi bi-bell fa-2x rounded-circle"></i>
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu variant="dark">
+                    <Dropdown.Menu variant="dark" className="bg-white-25">
                       <Dropdown.Item href="#/action-1" active>
                         Action
                       </Dropdown.Item>
@@ -52,18 +54,16 @@ const Layout = ({ children, currentUser }) => {
 
 
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
+                    <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                       <i className="bi bi-person fa-2x rounded-circle "></i>
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu variant="dark">
-                      <Dropdown.Item active>
-                        <Link href="/profile"> profile</Link>
-                      </Dropdown.Item>
+                    <Dropdown.Menu variant="dark" className="bg-white-25">
+                      <Dropdown.Item><Link href="/profile"> profile</Link></Dropdown.Item>
                       <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                       <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                       <Dropdown.Divider />
-                      <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
+                      <Dropdown.Item onClick={() => dispatch(logoutAction())} className="cursor-pointer">Logout</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -126,7 +126,7 @@ const Layout = ({ children, currentUser }) => {
           </div>
         </div>
       </footer>
-    </Fragment>
+    </Fragment >
 
   )
 }

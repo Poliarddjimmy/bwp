@@ -77,12 +77,16 @@ div.sticky {
     color: #fff;
 }
 
-chat-in-color{
+.chat-in-color{
     border: 1px solid aliceblue !important;
 }
 
 .bg-secondary {
     background-color: #263059 !important;
+}
+
+.color-secondary {
+  color: #263059 !important;
 }
 
 .chat-list {
@@ -98,6 +102,9 @@ chat-in-color{
     min-height: 70vh;
 }
 
+.bg-white-25{
+  background-color: #636680;
+}
 
 .leftSideMenu {
     margin-bottom: 20px;
@@ -127,7 +134,7 @@ chat-in-color{
 
   .sside .bi{
     font-size: 0.7em;
-    color: #7c9cb9;
+    /* color: #7c9cb9; */
   }
   
   .sside {
@@ -195,4 +202,8 @@ chat-in-color{
 
 .card-layout {
     border-radius: 20px;
+}
+
+.hh, .hh:hover{
+  color: #070A28;
 }

@@ -1,275 +1,281 @@
-import Image from 'next/image'
-import Layout from '../../components/layouts/layout'
-import withAuth from "../../components/hocs/withAuth"
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { showProfileAction } from '../../redux/actions/profileActionCreators'
-import { useSelector, useDispatch } from 'react-redux'
-import ProfileNav from '../../components/layouts/profileNav'
-import Profileform from '../../components/profile/form'
-import Link from 'next/link'
+import Layout from "../../components/layouts/layout";
+import Image from "next/image";
 
-import Modal from 'react-modal';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    zIndex: 1
-  },
-};
+const Profiles = () => {
 
-const Editprofile = ({ currentUser }) => {
-  const router = useRouter()
-  const { profile } = useSelector(state => state.profile)
-  const dispatch = useDispatch()
+  return (
+    <Layout>
 
-  const [modalIsOpen, setIsOpen] = useState(false);
+      <div className="profile d-flex justify-content-start">
 
-  function openModal() {
-    setIsOpen(true);
-  }
+        <div className="card-one col-md-4">
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  useEffect(() => {
-    if (router.query?.user) {
-      dispatch(showProfileAction(router.query?.user))
-    } else {
-      dispatch(showProfileAction(currentUser?.id))
-    }
-  }, [router.query?.user, currentUser, dispatch])
-
-  return <Layout>
-
-    <Modal
-      isOpen={modalIsOpen}
-      // onAfterOpen={afterOpenModal}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Example Modal"
-    >
-      <Profileform data={profile} />
-    </Modal>
-
-    <div className="profile-banner-large bg-img mt-n4" data-bg="/images/banner/profile-banner.jpg">
-    </div>
-    <div className="profile-menu-area bg-white">
-      <div className="container">
-        <div className={`row align-items-center ${modalIsOpen ? "d-none" : ""}`} >
-          <div className="col-lg-3 col-md-3">
-            <div className="profile-picture-box" >
-              <figure className="profile-picture">
-                {/* <a href="profile.html"> */}
-                <Image width="270" height="270" className="p-2" src="/images/profile/profile-1.jpg" alt="profile picture" />
-                {/* </a> */}
-              </figure>
-            </div>
+          <div className="d-flex justify-content-start">
+            <h4>Profile</h4>
           </div>
-
-          <ProfileNav />
-
-          <div className="col-lg-2 col-md-3 d-none d-md-block">
-            <div className="profile-edit-panel">
-              <button onClick={openModal} className="edit-btn">edit profile</button>
+          <div className="border-danger shadow pb-4 pt-4 rounded">
+            <div className="profile pic m-2 d-flex justify-content-center">
+              <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="100" height="100" />
+            </div>
+            <div className="name d-flex justify-content-center">
+              <h6 className="name p-2">Marc Arold Rosemond</h6>
+            </div>
+            <div className="country d-flex justify-content-start m-2">
+              <i className="fa fa-home btn-sm color-one"></i>
+              <strong className="text-light">Haïti</strong>
+            </div>
+            <div className="location d-flex justify-content-start m-2">
+              <i className="fa fa-map-marker-alt btn-sm color-one"></i>
+              <small className="text-light">St 12, h no 42 new town</small>
+            </div>
+            <div className="passion d-flex justify-content-start m-2">
+              <i className="fa fa-heart btn-sm color-one"></i>
+              <small className="text-light">Travel, Swimming</small>
+            </div>
+            <div className=" follow-btn d-flex justify-content-center">
+              <button type="button" className="btn btn-danger rounded-pill">follow</button>
+            </div>
+            <div className="social-media d-flex justify-content-center m-2">
+              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-facebook-f fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
+              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-twitter fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
+              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-instagram fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
+            </div>
+            <div>
+              <hr className="bg-danger border-1 border-top border-danger m-4" />
+              <small className="color-one d-flex justify-content-center">Member since mar 21, 2021</small>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-3 order-2 order-lg-1">
-          <aside className="widget-area profile-sidebar">
 
-            <div className="card widget-item">
-              <h4 className="widget-title">{profile?.user.name}</h4>
-              <div className="widget-body">
-                {/* <div className="about-author"> */}
-                {/* <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p> */}
-                <ul className="author-into-list">
-                  {/* <li><a href="#"><i className="bi bi-office-bag"></i>Graphic Designer</a></li> */}
-                  <li><a href="#"><i className="bi bi-home"></i>{profile?.city}, {profile?.country}</a></li>
-                  <li><a href="#"><i className="bi bi-location-pointer"></i>{profile?.address}</a></li>
-                  <li><a href="#"><i className="bi bi-heart-beat"></i>Travel, Swimming</a></li>
-                </ul>
-                {/* </div> */}
+        <div className="col-md-8">
+          <div className="">
+            <h4>Notifications</h4>
+          </div>
+          <div className="bg-secondary border-danger p-3 rounded">
+            <div className="">
+              <div className="">
+                Recent Notifications
               </div>
+
             </div>
 
-          </aside>
-        </div>
-
-        <div className="col-lg-6 order-1 order-lg-2">
-
-          <div className="card">
-
-            <div className="post-title d-flex align-items-center">
-
-              <div className="profile-thumb">
-                <a href="#">
-                  <figure className="profile-thumb-middle">
-                    <Image width="700" height="700" src="/images/profile/profile-small-29.jpg" alt="profile picture" />
-                  </figure>
-                </a>
+            <div className="mt-4">
+              <div className="mt-4 d-flex border-bottom-danger pb-2">
+                <div className="">
+                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
+                </div>
+                <div className="w-100">
+                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  <div className="d-flex justify-content-lg-between">
+                    <div className="">
+                      <small className="color-one">Your Chance is here so grab it</small>
+                    </div>
+                    <div className=" d-flex justify-content-end">
+                      <small className="color-one">1 min ago</small>
+                    </div>
+                  </div>
+                </div>
               </div>
 
 
-              <div className="posted-author">
-                <h6 className="author"><a href="profile.html">william henry</a></h6>
-                <span className="post-time">35 min ago</span>
+              <div className="mt-4 d-flex border-bottom-danger pb-2">
+                <div className="">
+                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
+                </div>
+                <div className="w-100">
+                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  <div className="d-flex justify-content-lg-between">
+                    <div className="">
+                      <small className="color-one">Your Chance is here so grab it</small>
+                    </div>
+                    <div className=" d-flex justify-content-end">
+                      <small className="color-one">1 min ago</small>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="post-settings-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-                <div className="post-settings arrow-shape">
-                  <ul>
-                    <li><button>copy link to adda</button></li>
-                    <li><button>edit post</button></li>
-                    <li><button>embed adda</button></li>
-                  </ul>
+              <div className="mt-4 d-flex border-bottom-danger pb-2">
+                <div className="">
+                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
+                </div>
+                <div className="w-100">
+                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  <div className="d-flex justify-content-lg-between">
+                    <div className="">
+                      <small className="color-one">Your Chance is here so grab it</small>
+                    </div>
+                    <div className=" d-flex justify-content-end">
+                      <small className="color-one">1 min ago</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 d-flex border-bottom-danger pb-2">
+                <div className="">
+                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
+                </div>
+                <div className="w-100">
+                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  <div className="d-flex justify-content-lg-between">
+                    <div className="">
+                      <small className="color-one">Your Chance is here so grab it</small>
+                    </div>
+                    <div className=" d-flex justify-content-end">
+                      <small className="color-one">1 min ago</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 d-flex border-bottom-danger pb-2">
+                <div className="">
+                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
+                </div>
+                <div className="w-100">
+                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  <div className="d-flex justify-content-lg-between">
+                    <div className="">
+                      <small className="color-one">Your Chance is here so grab it</small>
+                    </div>
+                    <div className=" d-flex justify-content-end">
+                      <small className="color-one">1 min ago</small>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="post-content">
-              <p className="post-desc">
-                Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                default model text, and a search for  will uncover many web sites still
-                in their infancy.
-              </p>
-              <div className="plyr__video-embed plyr-youtube">
-                <iframe src="https://www.youtube.com/embed/WeA7edXsU40" width="510" height="270" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-              </div>
-              <div className="post-meta">
-                <button className="post-meta-like">
-                  <i className="bi bi-heart-beat"></i>
-                  <span>You and 112 people like this</span>
-                  <strong>112</strong>
-                </button>
-                <ul className="comment-share-meta">
-                  <li>
-                    <button className="post-comment">
-                      <i className="bi bi-chat-bubble"></i>
-                      <span>36</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button className="post-share">
-                      <i className="bi bi-share"></i>
-                      <span>08</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="best-players container mt-4">
+
+        <div className="row">
+          <div className="col-lg-12 d-flex flex-column">
+            <small className="text-light">Best</small>
+            <h4 className="text-light">Players</h4>
           </div>
         </div>
 
-        <div className="col-lg-3 order-3">
-          <aside className="widget-area">
+        <div className="row mt-3">
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
 
-            <div className="card widget-item">
-              <h4 className="widget-title">Recent Notifications</h4>
-              <div className="widget-body">
-                <ul className="like-page-list-wrapper">
-                  <li className="unorder-list">
-
-                    <span className="profile-thumb">
-                      <a href="#">
-                        <figure className="profile-thumb-small">
-                          <Image width="700" height="700" src="/images/profile/profile-small-9.jpg" alt="profile picture" />
-                        </figure>
-                      </a>
-                    </span>
-
-
-                    <span className="unorder-list-info">
-                      <h3 className="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                      <p className="list-subtitle">5 min ago</p>
-                    </span>
-                  </li>
-                  <li className="unorder-list">
-
-                    <span className="profile-thumb">
-                      <a href="#">
-                        <figure className="profile-thumb-small">
-                          <Image width="700" height="700" src="/images/profile/profile-small-35.jpg" alt="profile picture" />
-                        </figure>
-                      </a>
-                    </span>
-
-
-                    <span className="unorder-list-info">
-                      <h3 className="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                      <p className="list-subtitle">10 min ago</p>
-                    </span>
-                  </li>
-                  <li className="unorder-list">
-
-                    <span className="profile-thumb">
-                      <a href="#">
-                        <figure className="profile-thumb-small">
-                          <Image width="700" height="700" src="/images/profile/profile-small-15.jpg" alt="profile picture" />
-                        </figure>
-                      </a>
-                    </span>
-
-
-                    <span className="unorder-list-info">
-                      <h3 className="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                      <p className="list-subtitle">18 min ago</p>
-                    </span>
-                  </li>
-                  <li className="unorder-list">
-
-                    <span className="profile-thumb">
-                      <a href="#">
-                        <figure className="profile-thumb-small">
-                          <Image width="700" height="700" src="/images/profile/profile-small-6.jpg" alt="profile picture" />
-                        </figure>
-                      </a>
-                    </span>
-
-
-                    <span className="unorder-list-info">
-                      <h3 className="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                      <p className="list-subtitle">25 min ago</p>
-                    </span>
-                  </li>
-                  <li className="unorder-list">
-
-                    <span className="profile-thumb">
-                      <a href="#">
-                        <figure className="profile-thumb-small">
-                          <Image width="700" height="700" src="/images/profile/profile-small-34.jpg" alt="profile picture" />
-                        </figure>
-                      </a>
-                    </span>
-
-
-                    <span className="unorder-list-info">
-                      <h3 className="list-title"><a href="#">Any one can join with us if you want</a></h3>
-                      <p className="list-subtitle">39 min ago</p>
-                    </span>
-                  </li>
-                </ul>
+                </div>
               </div>
             </div>
-          </aside>
-        </div>
-      </div>
-    </div>
+          </div>
 
-  </Layout>
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </Layout>
+  )
 }
 
-export default withAuth(Editprofile)
+export default Profiles

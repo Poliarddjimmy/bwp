@@ -51,12 +51,19 @@ const UserReducer = createReducer(initialState, (builder) => {
     })
 
     .addCase(logoutAction.pending, (state, action) => {
-      state.token = null;
-      state.currentUser = null;
+      state.loading = true;
     })
     .addCase(logoutAction.fulfilled, (state, action) => {
-      state.token = null;
-      state.currentUser = null;
+      state.loading = false;
+      if (!action.payload?.error) {
+        state.token = null;
+        state.currentUser = null;
+      } else {
+
+      }
+    })
+    .addCase(logoutAction.rejected, (state, action) => {
+      state.loading = false;
     })
 
 

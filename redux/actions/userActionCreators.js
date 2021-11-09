@@ -29,9 +29,18 @@ export const registerAction = createAsyncThunk(
   }
 )
 
-export const logoutAction = createAsyncThunk(Auth.LOGOUT, async () => {
-  persistor.purge()
-})
+export const logoutAction = createAsyncThunk(
+  Auth.LOGOUT,
+  async () => {
+    try {
+      const response = await API.logout(payload)
+      console.log(response.data)
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)
 
 export const clearMessageAction = createAsyncThunk(Clear.CLEAR, async () => {
   return

@@ -1056,14 +1056,15 @@ select:focus {
 
 /* Footer Area Start */
 .footer {
-  padding-top: 120px;
-  overflow: hidden;
+  /* padding-top: 120px; */
+  /* overflow: hidden;
   position: relative;
   background-color: #070b28;
   background-image: url(../images/footerbg.jpg);
   background-repeat: no-repeat;
   background-position: center 140px;
-  background-size: cover; }
+  background-size: cover;  */
+}
   .footer .footer-logo {
     margin-top: -10px;
     margin-bottom: 25px; }
@@ -1478,7 +1479,7 @@ select:focus {
 /* Features Area End */
 /* Featured Game Area Start */
 .featured-game {
-  padding: 0px 0px 120px;
+  /* padding: 0px 0px 120px; */
   background: url(../images/featuredgame-bg.jpg);
   background-position: center;
   background-size: cover;

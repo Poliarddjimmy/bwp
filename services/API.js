@@ -5,6 +5,10 @@ class API {
     return axiosService.post(`/login`, payload)
   }
 
+  static logout = () => {
+    return axiosService.post(`/logout`)
+  }
+
   static signup = (payload) => {
     return axiosService.post(`/register`, payload)
   }

@@ -81,7 +81,7 @@ const Layout = ({ children, currentUser }) => {
       <section className="featured-game" style={{ minHeight: "95vh" }}>
         <div className="featuress">
           <div className="container" style={{ paddingTop: 60 }}>
-            <div className={`row pt-3 pb-3 ${router.asPath.includes("/auth") ? "d-flex flex-column align-items-center justify-content-center min-vh-70" : ""}`} >
+            <div className={`row pt-4 pb-3 ${router.asPath.includes("/auth") ? "d-flex flex-column align-items-center justify-content-center min-vh-70" : ""}`} >
               {!router.asPath.includes("/auth") &&
                 <div className="col-lg-3" style={{ height: "85vh" }}>
                   <div className="d-flex align-items-center mb-4">

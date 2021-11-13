@@ -4,6 +4,8 @@ import { registerAction, clearMessageAction } from '../../redux/actions/userActi
 import { Alert } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux"
 import { useRouter } from 'next/dist/client/router';
+import Layout from "../../components/layouts/layout";
+import Link from "next/link";
 
 export default function Signup() {
   const router = useRouter()
@@ -41,173 +43,158 @@ export default function Signup() {
     dispatch(clearMessageAction())
   }, [error, setError, dispatch])
 
-  return <main>
-    <div className="signup-form-wrapper">
-      <h1 className="create-acc text-center"></h1>
-      <div className="signup-inner text-center">
-        <h3 className="title">Please create your account</h3>
-        <div className="signup-inner--form">
-          <div className="row">
-            <div className="col-12">
+  return <Layout>
+    <main>
+      <div className="signup-form-wrapper">
+        <h1 className="create-acc"></h1>
+        <div className="signup-inner text-center">
+          <h3 className="title mb-0">SIGN UP</h3>
+          <p className="text-danger mt-0 mb-5">Bet your favorite and earn more</p>
+          <form className="signup-inner--form text-left pt-5" onSubmit={handleSubmit(onSubmit)}>
+            <div className="row">
+              <div className="form-group col-12 mb-4">
+                <label htmlFor="phone">Phone Number</label>
+                <Controller
+                  name="phone"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      autoComplete="off"
+                      placeholder="enter your phone number"
+                      {...field}
+                      className={`form-control ${errors.phone && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{ required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ }}
+                />
 
-              <Controller
-                name="phone"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <input
-                    autoComplete="off"
-                    placeholder="enter your phone number"
-                    {...field}
-                    className={`single-field ${errors.phone && `is-invalid`
-                      }`}
-                  />
+                {errors.phone?.type === "required" && <span className="text-danger">Phone number is required</span>}
+                {errors.phone?.type === "minLength" && <span className="text-danger">Min length of phone number is 8 characters!</span>}
+                {errors.phone?.type === "maxLength" && <span className="text-danger">Max length of phone number is 12 characters!</span>}
+                {errors.phone?.type === "pattern" && <span className="text-danger">Only number please!</span>}
+                {errors.phone?.type === "manual" && <span className="text-danger">{errors.phone.message}</span>}
+
+              </div>
+
+              <div className="col-12 mb-4">
+                <label htmlFor="phone">First Name</label>
+                <Controller
+                  name="first_name"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      autoComplete="off"
+                      placeholder="enter your first name"
+                      {...field}
+                      className={`form-control ${errors.first_name && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{ required: true, minLength: 3, maxLength: 15 }}
+                />
+
+                {errors.first_name?.type === "required" && <span className="text-danger">First name is required</span>}
+                {errors.first_name?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
+                {errors.first_name?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
+
+              </div>
+
+              <div className="col-12 mb-4">
+                <label htmlFor="phone">Last Name</label>
+                <Controller
+                  name="last_name"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      autoComplete="off"
+                      placeholder="enter your last name"
+                      {...field}
+                      className={`form-control ${errors.last_name && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{ required: true, minLength: 3, maxLength: 15 }}
+                />
+                {errors.last_name?.type === "required" && <span className="text-danger">Last name is required</span>}
+                {errors.last_name?.type === "minLength" && <span className="text-danger">Min length of last name is 3 characters!</span>}
+                {errors.last_name?.type === "maxLength" && <span className="text-danger">Max length of last name is 15 characters!</span>}
+
+              </div>
+
+              <div className="col-12 mb-4">
+                <label htmlFor="password">Password</label>
+                <Controller
+                  name="password"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      type="password"
+                      autoComplete="off"
+                      placeholder="enter your password"
+                      {...field}
+                      className={`form-control ${errors.password && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{ required: true, minLength: 4, maxLength: 16 }}
+                />
+                {errors.password?.type === "required" && <span className="text-danger">Password is required</span>}
+                {errors.password?.type === "minLength" && <span className="text-danger">Min length of password is 4 characters!</span>}
+                {errors.password?.type === "maxLength" && <span className="text-danger">Max length of password is 16 characters!</span>}
+
+              </div>
+
+              <div className="col-12">
+                <label htmlFor="password">Confirm Password</label>
+                <Controller
+                  name="confirm_password"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      type="password"
+                      autoComplete="off"
+                      placeholder="Confirm your password"
+                      {...field}
+                      className={`form-control ${errors.confirm_password && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{
+                    required: true,
+                    validate: (value) =>
+                      value === watch("password") ||
+                      "Passwords don't match.",
+                  }}
+                />
+                {errors.confirm_password && (
+                  <span className="text-danger">
+                    {errors.confirm_password.message}
+                  </span>
                 )}
-                rules={{ required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ }}
-              />
-              {errors.phone && (
-                <Alert variant="danger">
-                  {errors.phone?.type === "required" && <p>Phone number is required</p>}
-                  {errors.phone?.type === "minLength" && <p>Min length of phone number is 8 characters!</p>}
-                  {errors.phone?.type === "maxLength" && <p>Max length of phone number is 12 characters!</p>}
-                  {errors.phone?.type === "pattern" && <p>Only number please!</p>}
-                  {errors.phone?.type === "manual" && <p>{errors.phone.message}</p>}
-                </Alert>
-              )}
+              </div>
             </div>
 
-            <div className="col-md-12">
-
-              <Controller
-                name="first_name"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <input
-                    autoComplete="off"
-                    placeholder="enter your first name"
-                    {...field}
-                    className={`single-field ${errors.first_name && `is-invalid`
-                      }`}
-                  />
-                )}
-                rules={{ required: true, minLength: 3, maxLength: 15 }}
-              />
-              {errors.first_name && (
-                <Alert variant="danger">
-
-                  {errors.first_name?.type === "required" && <p>First name is required</p>}
-                  {errors.first_name?.type === "minLength" && <p>Min length of first name is 3 characters!</p>}
-                  {errors.first_name?.type === "maxLength" && <p>Max length of first name is 15 characters!</p>}
-                </Alert>
-              )}
-            </div>
-
-            <div className="col-md-12">
-
-              <Controller
-                name="last_name"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <input
-                    autoComplete="off"
-                    placeholder="enter your last name"
-                    {...field}
-                    className={`single-field ${errors.last_name && `is-invalid`
-                      }`}
-                  />
-                )}
-                rules={{ required: true, minLength: 3, maxLength: 15 }}
-              />
-              {errors.last_name && (
-                <Alert variant="danger">
-                  {errors.last_name?.type === "required" && <p>Last name is required</p>}
-                  {errors.last_name?.type === "minLength" && <p>Min length of last name is 3 characters!</p>}
-                  {errors.last_name?.type === "maxLength" && <p>Max length of last name is 15 characters!</p>}
-                </Alert>
-              )}
-            </div>
-            <div className="col-12">
-
-              <Controller
-                name="password"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <input
-                    type="password"
-                    autoComplete="off"
-                    placeholder="enter your password"
-                    {...field}
-                    className={`single-field ${errors.password && `is-invalid`
-                      }`}
-                  />
-                )}
-                rules={{ required: true, minLength: 4, maxLength: 16 }}
-              />
-              {errors.password && (
-                <Alert variant="danger">
-                  {errors.password?.type === "required" && <p>Password is required</p>}
-                  {errors.password?.type === "minLength" && <p>Min length of password is 4 characters!</p>}
-                  {errors.password?.type === "maxLength" && <p>Max length of password is 16 characters!</p>}
-                </Alert>
-              )}
-            </div>
-            <div className="col-12">
-              <Controller
-                name="confirm_password"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <input
-                    type="password"
-                    autoComplete="off"
-                    placeholder="Confirm your password"
-                    {...field}
-                    className={`single-field ${errors.confirm_password && `is-invalid`
-                      }`}
-                  />
-                )}
-                rules={{
-                  required: true,
-                  validate: (value) =>
-                    value === watch("password") ||
-                    "Passwords don't match.",
-                }}
-              />
-              {errors.confirm_password && (
-                <Alert variant="danger">
-                  {errors.confirm_password.message}
-                </Alert>
-              )}
-            </div>
-          </div>
-          <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" {...register('checkBox', { required: true })} />
-            <label className="form-check-label" htmlFor="flexCheckChecked"> I have read & accepted the <a href="#">terms of use</a>
-              {errors.checkBox &&
-                <Alert variant="danger">
-                  {errors.checkBox?.type === "required" && <p>Terms of use is required</p>}
-                </Alert>
-              }
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label" htmlFor="flexCheckChecked"> If you have an account please <a href="signin">login</a>
-            </label>
-          </div>
-          <div className="col-12">
             <button
-              className="submit-btn"
+              className="btn btn-danger d-block w-100 mt-5"
+              style={{ borderRadius: 30 }}
               onClick={handleSubmit(onSubmit)}
               disabled={loading}
             >
-              {loading ? "...Please wait" : "Create Account"}
+              {loading ? "...Please wait" : "Sign Up"}
             </button>
-          </div>
+
+            <div className="mt-5">
+              Have an account? Please, <Link href="/auth/signin" className="text-danger">Signin</Link>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </Layout>
 }

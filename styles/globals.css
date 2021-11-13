@@ -37,6 +37,10 @@ div.sticky {
     width: 80%;
 }
 
+.w-90 {
+  width: 90%;
+}
+
 .w-40 {
     width: 40%;
 }
@@ -51,6 +55,10 @@ div.sticky {
 
 .border-danger {
     border: 1px solid #dc3545 !important;
+}
+
+.border-light {
+  border: 1px solid #fff !important;
 }
 
 .border-danger-hr {
@@ -85,6 +93,10 @@ div.sticky {
     border: 1px solid aliceblue !important;
 }
 
+.bg-primary-color {
+  background-color: #dc3545;
+}
+
 .bg-secondary {
     background-color: #263059 !important;
 }
@@ -104,6 +116,24 @@ div.sticky {
 
 .min-vh-70 {
     min-height: 70vh;
+}
+
+.min-vh-80 {
+  min-height: 80vh;
+}
+
+.min-vh-90 {
+  min-height: 90vh;
+}
+
+.horse-pic {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: fit-content;
+  height: fit-content;
+  transform: translate(-50%, -50%);
 }
 
 .bg-white-25{

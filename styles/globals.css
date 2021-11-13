@@ -93,6 +93,10 @@ div.sticky {
     border: 1px solid aliceblue !important;
 }
 
+.btn-primary-color {
+  background-color: #dc3545;
+}
+
 .bg-primary-color {
   background-color: #dc3545;
 }

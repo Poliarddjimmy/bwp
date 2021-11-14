@@ -1,10 +1,12 @@
 import Layout from "../../components/layouts/layout";
+import withAuth from "../../components/hocs/withAuth"
 import Image from "next/image";
+import Link from "next/link";
 
 const Horsedetails = ({ currentUser }) => {
 
   return (
-    <Layout>
+    <Layout currentUser={currentUser}>
       <div className="horse-details row p-2 m-2">
 
         <div className="col-lg-6 col-md-8 race-details">
@@ -91,7 +93,7 @@ const Horsedetails = ({ currentUser }) => {
             </div>
             <div className="col-8 d-flex justify-content-around p-1">
               <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3">Play now</button>
-              <button type="button" className="btn btn-transparent rounded-pill text-light border-danger pl-3 pr-3">Primary</button>
+              <Link href="/game/choose-horse"><button type="button" className="btn btn-transparent rounded-pill text-light border-danger pl-3 pr-3">Cancel</button></Link>
             </div>
           </div>
 
@@ -103,4 +105,4 @@ const Horsedetails = ({ currentUser }) => {
   )
 }
 
-export default Horsedetails
+export default withAuth(Horsedetails)

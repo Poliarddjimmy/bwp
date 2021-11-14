@@ -38,7 +38,7 @@ const Home = ({ currentUser }) => {
                   </div>
                 </div>
 
-                <button type="button" className="btn btn-danger d-block w-100 mb-3"> Join now</button>
+                <Link href="/game/choose-horse" passHref><button type="button" className="btn btn-danger d-block w-100 mb-3"> Join now</button></Link>
                 <button type="button" className="btn btn-default border-danger text-white d-block w-100"> View Race</button>
 
               </div>

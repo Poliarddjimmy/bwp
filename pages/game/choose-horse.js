@@ -27,7 +27,6 @@ const Choosehorse = ({ currentUser }) => {
         <div className="container">
 
           <div className="row">
-
             <div className="flip-card col-lg-4 col-md-12">
               <Link href="/game/horse-details" passHref>
                 <div className="flip-card-inner single-bonus border-danger p-2 cursor-pointer">

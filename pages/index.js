@@ -16,7 +16,7 @@ const Home = ({ currentUser }) => {
         <div className="card mt-5 bg-transparent border-0" >
           <div className="row g-0" style={{ height: "" }}>
 
-            <div className="col-12 col-lg-5 col-xl-5">
+            <div className="col-12 col-lg-5">
               <div className="race p-2 rounded text-center" style={{ height: "100%" }}>
                 <h4>Game-12</h4>
                 <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">

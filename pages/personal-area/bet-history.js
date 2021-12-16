@@ -4,21 +4,21 @@ import Image from "next/image"
 
 const BetHistory = ({ currentUser }) => {
   return <Layout currentUser={currentUser}>
-    <main className="personal-area">
+    <main className="personal-area ">
       <div className="history ">
 
-        <div className="header-top bg-secondary text-center rounded p-2">
-          <h3>Bet and Transaction history</h3>
-          <strong className="color-one">
+        <div className="header-top bg-secondary text-center rounded p-2 col-lg-12 col-md-10 col-xs-2">
+          <h3 className="col-lg-12 col-md-10 col-xs-2">Bet and Transaction history</h3>
+          <strong className="color-one col-lg-12 col-md-10 col-xs-2">
             Check your progress
           </strong>
         </div>
 
 
-        <div className="tabs-container d-flex justify-content-center">
-          <div className="w-40 m-2">
+        <div className="tabs-container d-flex justify-content-center col-lg-12 col-md-8 col-xs-3">
+          <div className="w-40 m-2 col-lg-6 col-md-8 col-xs-3">
             <ul className="nav nav-pills border-danger rounded-pill d-flex justify-content-center">
-              <li className="nav-item">
+              <li className="nav-item col-lg-8 col-md-4 col-xs-6">
                 <a className="nav-link rounded-pill" href="#">Transaction History</a>
               </li>
               <li className="nav-item">
@@ -28,7 +28,7 @@ const BetHistory = ({ currentUser }) => {
           </div>
         </div>
 
-        <div className="message p-2 d-flex flex-column border rounded border-danger  m-2 bg-secondary">
+        <div className="message p-2 d-flex flex-column border rounded border-danger  m-2 bg-secondary col-lg-12 col-md-10 col-xs-2">
 
           <div className=" profile d-flex justify-content-center p-3">
             <div className="profile pic m-2">
@@ -60,7 +60,7 @@ const BetHistory = ({ currentUser }) => {
           </div>
         </div>
 
-        <div className=" tablex d-flex flex-column border rounded border-danger min-vh-25 m-2">
+        <div className=" tablex d-flex flex-column border rounded border-danger min-vh-25 m-2 col-lg-12 col-md-10 col-xs-2">
           <table className="table">
             <thead className="text-white bg-secondary">
               <tr>
@@ -107,7 +107,7 @@ const BetHistory = ({ currentUser }) => {
             </tbody>
           </table>
 
-          <div className="d-flex justify-content-end text-light align-middle p-2">
+          <div className="d-flex justify-content-end text-light align-middle p-2 col-lg-12 col-md-10 col-xs-6">
             <p className="align-middle text-light fs-6">Row Per Page</p>
             <div className="dropdown">
               <button className="btn bg-transparent dropdown-toggle border-danger" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

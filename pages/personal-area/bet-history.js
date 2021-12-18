@@ -67,7 +67,7 @@ const BetHistory = ({ currentUser }) => {
 
         <div className="table-bet m-2">
           <div className="row">
-            <div className="tablex d-flex flex-column border rounded border-danger  col-lg-12 col-md-12 col-sm-6 col-12">
+            <div className="tablex d-flex flex-column border rounded border-danger  col-lg-12 col-md-12 col-sm-12 col-12">
               <table className="table ">
                 <thead className="text-white bg-secondary">
                   <tr>
@@ -114,7 +114,7 @@ const BetHistory = ({ currentUser }) => {
                 </tbody>
               </table>
 
-              <div className="d-flex justify-content-end text-light align-middle p-2 col-lg-12 col-md-10 col-sm-6">
+              <div className="d-flex justify-content-end text-light align-middle p-2 col-lg-12 col-md-12 col-sm-12 col-12">
                 <p className="align-middle text-light fs-6">Row Per Page</p>
                 <div className="dropdown">
                   <button className="btn bg-transparent dropdown-toggle border-danger" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

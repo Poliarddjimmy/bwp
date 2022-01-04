@@ -2,9 +2,70 @@ import Link from "next/link"
 import Image from 'next/image'
 import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
+import React, { useState, useRef, useEffect } from 'react'
+
 
 
 const Home = ({ currentUser }) => {
+
+  const Ref = useRef(null);
+  const [timer, setTimer] = useState('00:00:00');
+
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 * 60 * 60) % 24);
+    return {
+      total, hours, minutes, seconds
+    };
+  }
+
+  const startTimer = (e) => {
+    let { total, hours, minutes, seconds }
+      = getTimeRemaining(e);
+    if (total >= 0) {
+
+      setTimer(
+        (hours > 9 ? hours : '0' + hours) + ':' +
+        (minutes > 9 ? minutes : '0' + minutes) + ':'
+        + (seconds > 9 ? seconds : '0' + seconds)
+      )
+    }
+  }
+
+  const clearTimer = (e) => {
+
+    setTimer('00:00:00');
+
+    // If you try to remove this line the 
+    // updating of timer Variable will be
+    // after 1000ms or 1sec
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+      startTimer(e);
+    }, 1000)
+    Ref.current = id;
+  }
+
+  const getDeadTime = () => {
+    let deadline = new Date();
+
+    // This is where you need to adjust if 
+    // you entend to add more time
+    deadline.setSeconds(deadline.getSeconds() + 300);
+    return deadline;
+  }
+
+  // We can use useEffect so that when the component
+  // mount the timer will start as soon as possible
+
+  // We put empty array to act as componentDid
+  // mount only
+  useEffect(() => {
+    clearTimer(getDeadTime());
+  }, []);
+
   return <Layout currentUser={currentUser}>
 
     <main className="content">
@@ -22,11 +83,12 @@ const Home = ({ currentUser }) => {
                 <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
                   <strong>Starting in</strong>
                   <span className="d-flex mb-3">
-                    <span>05</span>
+                    {timer}
+                    {/* <span>05</span>
                     <span className="text-danger mr-3 ml-3">:</span>
                     <span>12</span>
                     <span className="text-danger mr-3 ml-3">:</span>
-                    <span>22</span>
+                    <span>22</span> */}
                   </span>
                   <h6>Total Players</h6>
                   <h5>50</h5>

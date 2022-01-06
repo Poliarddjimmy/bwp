@@ -3,13 +3,24 @@ import Image from 'next/image'
 import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
 import React, { useState, useRef, useEffect } from 'react'
-
+import { useDispatch, useSelector } from "react-redux"
+import { fecthGamesAction } from "../redux/actions/GamesActionsCreators"
 
 
 const Home = ({ currentUser }) => {
 
   const Ref = useRef(null);
   const [timer, setTimer] = useState('00:00:00');
+  const [gameTime, setGameTime] = useState();
+  const { games } = useSelector(state => state.games)
+  const dispatch = useDispatch()
+
+  let current_game = games[games?.length - 1]
+
+  useEffect(() => {
+    dispatch(fecthGamesAction())
+  }, []);
+
 
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
@@ -21,11 +32,15 @@ const Home = ({ currentUser }) => {
     };
   }
 
+
   const startTimer = (e) => {
     let { total, hours, minutes, seconds }
       = getTimeRemaining(e);
     if (total >= 0) {
 
+      // update the timer
+      // check if less than 10 then we need to 
+      // add '0' at the begining of the variable
       setTimer(
         (hours > 9 ? hours : '0' + hours) + ':' +
         (minutes > 9 ? minutes : '0' + minutes) + ':'
@@ -34,9 +49,17 @@ const Home = ({ currentUser }) => {
     }
   }
 
+  let totalRemainig = getTimeRemaining(current_game?.time)
+  let totalSecondsRemaining = (totalRemainig?.minutes * 60)
+
+  console.log("GAME--->> ", totalSecondsRemaining)
+
   const clearTimer = (e) => {
 
-    setTimer('00:00:00');
+    // If you adjust it you should also need to
+    // adjust the Endtime formula we are about
+    // to code next    
+    setTimer('00:10:00');
 
     // If you try to remove this line the 
     // updating of timer Variable will be
@@ -79,16 +102,11 @@ const Home = ({ currentUser }) => {
 
             <div className="col-lg-6 col-md-4 col-sm-2">
               <div className="race p-2 rounded text-center" style={{ height: "100%" }}>
-                <h4>Game-12</h4>
+                {/* <h4>Game-12</h4> */}
                 <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
                   <strong>Starting in</strong>
                   <span className="d-flex mb-3">
                     {timer}
-                    {/* <span>05</span>
-                    <span className="text-danger mr-3 ml-3">:</span>
-                    <span>12</span>
-                    <span className="text-danger mr-3 ml-3">:</span>
-                    <span>22</span> */}
                   </span>
                   <h6>Total Players</h6>
                   <h5>50</h5>

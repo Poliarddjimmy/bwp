@@ -33,6 +33,14 @@ class API {
     return axiosService.get(`/events/${id}`)
   }
 
+  static fetchGames = () => {
+    return axiosService.get(`/games`)
+  }
+
+  static fecthCurrentGame = () => {
+    return axiosService.get(`/game-current`)
+  }
+
 }
 
 export default API

@@ -11,7 +11,7 @@ const Home = ({ currentUser }) => {
 
   const Ref = useRef(null);
   const [timer, setTimer] = useState('00:00:00');
-  const [gameTime, setGameTime] = useState(10);
+  const [gameTime, setGameTime] = useState(0);
   const { games } = useSelector(state => state.games)
   const dispatch = useDispatch()
 
@@ -32,14 +32,6 @@ const Home = ({ currentUser }) => {
     };
   }
 
-  let totalRemainig = getTimeRemaining(current_game?.time)
-  let totalSecondsRemaining = (totalRemainig?.minutes * 60)
-
-
-  useEffect(() => {
-    setGameTime(totalSecondsRemaining)
-  }, [totalRemainig, totalSecondsRemaining])
-
   const startTimer = (e) => {
     let { total, hours, minutes, seconds }
       = getTimeRemaining(e);
@@ -55,13 +47,8 @@ const Home = ({ currentUser }) => {
       )
     }
   }
-  // console.log("TOTAL REMAINING--->> ", totalSecondsRemaining)
-
-
-  console.log("GAME TIME--->> ", gameTime)
 
   const clearTimer = (e) => {
-
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next    
@@ -77,15 +64,21 @@ const Home = ({ currentUser }) => {
     Ref.current = id;
   }
 
+  function getTotalSecondFromTime(hms) {
+    var a = hms?.split(':'); // split it at the colons
+
+    // minutes are worth 60 seconds. Hours are worth 60 minutes.
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    return seconds
+  }
+
 
   const getDeadTime = (totalSeconds) => {
     let deadline = new Date();
 
     // This is where you need to adjust if 
     // you entend to add more time
-    if (totalSeconds > 0) {
-      deadline.setSeconds(deadline.getSeconds() + totalSeconds);
-    }
+    deadline.setSeconds(deadline.getSeconds() + totalSeconds);
     return deadline;
   }
 
@@ -95,8 +88,11 @@ const Home = ({ currentUser }) => {
   // We put empty array to act as componentDid
   // mount only
   useEffect(() => {
-    clearTimer(getDeadTime(gameTime));
-  }, [gameTime]);
+    let total = getTimeRemaining(current_game?.time)
+    let time = total?.hours + ":" + total?.minutes + ":" + total?.seconds
+    let totalSecondsRemaining = getTotalSecondFromTime(time)
+    clearTimer(getDeadTime(totalSecondsRemaining));
+  }, [current_game]);
 
   return <Layout currentUser={currentUser}>
 

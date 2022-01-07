@@ -11,7 +11,7 @@ const Home = ({ currentUser }) => {
 
   const Ref = useRef(null);
   const [timer, setTimer] = useState('00:00:00');
-  const [gameTime, setGameTime] = useState();
+  const [gameTime, setGameTime] = useState(10);
   const { games } = useSelector(state => state.games)
   const dispatch = useDispatch()
 
@@ -32,6 +32,13 @@ const Home = ({ currentUser }) => {
     };
   }
 
+  let totalRemainig = getTimeRemaining(current_game?.time)
+  let totalSecondsRemaining = (totalRemainig?.minutes * 60)
+
+
+  useEffect(() => {
+    setGameTime(totalSecondsRemaining)
+  }, [totalRemainig, totalSecondsRemaining])
 
   const startTimer = (e) => {
     let { total, hours, minutes, seconds }
@@ -48,18 +55,17 @@ const Home = ({ currentUser }) => {
       )
     }
   }
+  // console.log("TOTAL REMAINING--->> ", totalSecondsRemaining)
 
-  let totalRemainig = getTimeRemaining(current_game?.time)
-  let totalSecondsRemaining = (totalRemainig?.minutes * 60)
 
-  console.log("GAME--->> ", totalSecondsRemaining)
+  console.log("GAME TIME--->> ", gameTime)
 
   const clearTimer = (e) => {
 
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next    
-    setTimer('00:10:00');
+    // setTimer('00:10:00');
 
     // If you try to remove this line the 
     // updating of timer Variable will be
@@ -71,12 +77,15 @@ const Home = ({ currentUser }) => {
     Ref.current = id;
   }
 
-  const getDeadTime = () => {
+
+  const getDeadTime = (totalSeconds) => {
     let deadline = new Date();
 
     // This is where you need to adjust if 
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 300);
+    if (totalSeconds > 0) {
+      deadline.setSeconds(deadline.getSeconds() + totalSeconds);
+    }
     return deadline;
   }
 
@@ -86,8 +95,8 @@ const Home = ({ currentUser }) => {
   // We put empty array to act as componentDid
   // mount only
   useEffect(() => {
-    clearTimer(getDeadTime());
-  }, []);
+    clearTimer(getDeadTime(gameTime));
+  }, [gameTime]);
 
   return <Layout currentUser={currentUser}>
 

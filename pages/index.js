@@ -113,7 +113,7 @@ const Home = ({ currentUser }) => {
                     {timer}
                   </span>
                   <h6>Total Players</h6>
-                  <h5>{current_game?.game_users.length}</h5>
+                  <h5>{current_game?.playerCount}</h5>
                   <div className="d-flex align-items-center">
                     <div className="mr-2">
                       <Image src="/images/tikit-icon.png" width={40} height={40} alt="" className="rounded-circle" />

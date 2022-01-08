@@ -21,7 +21,6 @@ const Home = ({ currentUser }) => {
     dispatch(fecthGamesAction())
   }, []);
 
-
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
@@ -114,12 +113,12 @@ const Home = ({ currentUser }) => {
                     {timer}
                   </span>
                   <h6>Total Players</h6>
-                  <h5>50</h5>
+                  <h5>{current_game?.game_users.length}</h5>
                   <div className="d-flex align-items-center">
                     <div className="mr-2">
                       <Image src="/images/tikit-icon.png" width={40} height={40} alt="" className="rounded-circle" />
                     </div>
-                    <small style={{ fontSize: "0.6em" }}><strong className="text-white">Billy Joseph</strong> and many orthers joined</small>
+                    <small style={{ fontSize: "0.6em" }}><strong className="text-white">{current_game?.players[0].name}</strong> and many orthers joined</small>
                   </div>
                 </div>
 

@@ -2,9 +2,19 @@ import Link from "next/link"
 import Image from 'next/image'
 import withAuth from "../../components/hocs/withAuth"
 import Layout from "../../components/layouts/layout"
+import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect } from "react"
+import { fecthHorsesAction } from "../../redux/actions/horsesActionCreators"
 
-// const horseImage = require('/public/images/horses/horse_1_b');
 const Choosehorse = ({ currentUser }) => {
+
+  const dispatch = useDispatch()
+  const { horses } = useSelector(state => state.horses)
+
+  useEffect(() => {
+    dispatch(fecthHorsesAction())
+  }, [])
+
   return (
     <Layout currentUser={currentUser}>
       <div>

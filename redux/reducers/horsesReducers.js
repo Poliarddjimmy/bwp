@@ -1,10 +1,10 @@
-import { fecthHorsesAction, ShowHorseAction } from '../actions/horsesActionsCreators'
+import { fecthHorsesAction, showHorseAction } from '../actions/horsesActionsCreators'
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
-  events: [],
-  event: {},
+  horses: [],
+  horse: {},
   error: null,
 }
 
@@ -16,7 +16,7 @@ const HorsesReducer = createReducer(initialState, (builder) => {
     .addCase(showHorseAction.fulfilled, (state, action) => {
       state.loading = false;
       if (!action.payload?.error) {
-        state.event = action?.payload
+        state.horse = action?.payload
       } else {
       }
     })
@@ -30,7 +30,7 @@ const HorsesReducer = createReducer(initialState, (builder) => {
     .addCase(fecthHorsesAction.fulfilled, (state, action) => {
       state.loading = false;
       if (!action.payload?.error) {
-        state.events = action?.payload
+        state.horses = action?.payload
       } else {
         state.error = "Error"
       }
@@ -41,4 +41,4 @@ const HorsesReducer = createReducer(initialState, (builder) => {
 })
 
 
-export default EventsReducer;
+export default HorsesReducer;

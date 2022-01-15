@@ -15,12 +15,12 @@ export const fecthHorsesAction = createAsyncThunk(
   }
 )
 
-export const ShowHorseAction = createAsyncThunk(
+export const showHorseAction = createAsyncThunk(
   Horses.SHOW_HORSE,
 
   async (id) => {
     try {
-      const response = await API.fecthHorse()
+      const response = await API.showHorse()
       return response.data
     } catch (e) {
       console.log(e)

@@ -8,34 +8,34 @@ const initialState = {
   error: null,
 }
 
-const EventsReducer = createReducer(initialState, (builder) => {
+const HorsesReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(showEventAction.pending, (state, action) => {
+    .addCase(showHorseAction.pending, (state, action) => {
       state.loading = true;
     })
-    .addCase(showEventAction.fulfilled, (state, action) => {
+    .addCase(showHorseAction.fulfilled, (state, action) => {
       state.loading = false;
       if (!action.payload?.error) {
         state.event = action?.payload
       } else {
       }
     })
-    .addCase(showEventAction.rejected, (state, action) => {
+    .addCase(showHorseAction.rejected, (state, action) => {
       state.loading = false;
     })
 
-    .addCase(fecthEventsAction.pending, (state, action) => {
+    .addCase(fecthHorsesAction.pending, (state, action) => {
       state.loading = true;
     })
-    .addCase(fecthEventsAction.fulfilled, (state, action) => {
+    .addCase(fecthHorsesAction.fulfilled, (state, action) => {
       state.loading = false;
       if (!action.payload?.error) {
         state.events = action?.payload
       } else {
-        state.error = "This phone number is already taken"
+        state.error = "Error"
       }
     })
-    .addCase(fecthEventsAction.rejected, (state, action) => {
+    .addCase(fecthHorsesAction.rejected, (state, action) => {
       state.loading = false;
     })
 })

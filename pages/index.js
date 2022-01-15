@@ -15,7 +15,7 @@ const Home = ({ currentUser }) => {
   const { games } = useSelector(state => state.games)
   const dispatch = useDispatch()
 
-  let current_game = games[games?.length - 1]
+  let current_game = games == undefined ? [] : games[games?.length - 1]
 
   useEffect(() => {
     dispatch(fecthGamesAction())
@@ -118,7 +118,7 @@ const Home = ({ currentUser }) => {
                     <div className="mr-2">
                       <Image src="/images/tikit-icon.png" width={40} height={40} alt="" className="rounded-circle" />
                     </div>
-                    <small style={{ fontSize: "0.6em" }}><strong className="text-white">{current_game?.players[0].name}</strong> and many orthers joined</small>
+                    <small style={{ fontSize: "0.6em" }}><strong className="text-white">{current_game?.players && current_game?.players[0]?.name}</strong> and many orthers joined</small>
                   </div>
                 </div>
 

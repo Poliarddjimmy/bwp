@@ -39,7 +39,7 @@ const Choosehorse = ({ currentUser }) => {
           <div className="row">
             {horses?.map(horse => (
               <div className="flip-card col-lg-4 col-md-4 col-sm-4 col-12" key={horse.id}>
-                <Link href="/game/horse-details" href="/horses/${horse.id}">
+                <Link href="/game/horse-details" >
                   <div className="flip-card-inner single-bonus border-danger p-2 cursor-pointer">
                     <div className="flip-card-front d-flex flex-column justify-content-center text-left p-2">
                       <Image className="img-flip" src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="160" />
@@ -73,12 +73,12 @@ const Choosehorse = ({ currentUser }) => {
                           const ratingValue = i + 1;
                           return (
                             <label key={i}>
-                              <span className="icon text-warning">★</span>
+                              <span className="icon text-warning pl-1">★</span>
                             </label>
                           )
                         })}
                         <label>
-                          <span className="icon">★</span>
+                          <span className="icon pl-1">★</span>
                         </label>
                       </div>
                     </div>

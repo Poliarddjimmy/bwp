@@ -37,20 +37,20 @@ const Choosehorse = ({ currentUser }) => {
         <div className="container">
 
           <div className="row">
-            {horses.map(horse => (
+            {horses?.map(horse => (
               <div className="flip-card col-lg-4 col-md-4 col-sm-4 col-12" key={horse.id}>
                 <Link href="/game/horse-details" passHref>
                   <div className="flip-card-inner single-bonus border-danger p-2 cursor-pointer">
                     <div className="flip-card-front d-flex flex-column justify-content-center text-left p-2">
-                      <Image className="img-flip" src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="120" />
+                      <Image className="img-flip" src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="160" />
                       <strong>{horse.name}</strong>
                       <div className="text color-one">
                         <small>{horse.description}</small>
                       </div>
                     </div>
-                    <div className="flip-card-back text-left p-3">
+                    <div className="flip-card-back text-left p-1">
                       <div className="d-flex align-items-center justify-content-center w-100">
-                        <Image src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="80" />
+                        <Image src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="100" />
                       </div>
                       <strong>{horse.name}</strong>
                       <div className="text color-one">
@@ -67,8 +67,8 @@ const Choosehorse = ({ currentUser }) => {
                         </ul>
                       </div>
                       <hr className="border-danger-hr m-1" />
-                      <div className="rating d-flex">
-                        <strong className="mr-3">Ratings:</strong>
+                      <div className="rating d-flex mb-1">
+                        <strong>Ratings:</strong>
                         {[...Array(4)].map((star, i) => {
                           const ratingValue = i + 1;
                           return (

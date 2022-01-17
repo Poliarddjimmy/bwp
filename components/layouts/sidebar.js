@@ -46,7 +46,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="pt-3 sidebar">
+    <div className="pt-3 sidebar ">
       <Accordion defaultActiveKey={`${sidebarSelected()}`}>
 
         <div className="mb-1">

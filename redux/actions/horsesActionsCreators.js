@@ -20,7 +20,7 @@ export const showHorseAction = createAsyncThunk(
 
   async (id) => {
     try {
-      const response = await API.showHorse()
+      const response = await API.showHorse(id)
       return response.data
     } catch (e) {
       console.log(e)

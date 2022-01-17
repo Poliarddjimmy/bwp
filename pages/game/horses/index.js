@@ -1,12 +1,12 @@
 import Link from "next/link"
 import Image from 'next/image'
-import withAuth from "../../components/hocs/withAuth"
-import Layout from "../../components/layouts/layout"
+import withAuth from "../../../components/hocs/withAuth"
+import Layout from "../../../components/layouts/layout"
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
-import { fecthHorsesAction } from "../../redux/actions/horsesActionCreators"
+import { fecthHorsesAction } from "../../../redux/actions/horsesActionCreators"
 
-const Choosehorse = ({ currentUser }) => {
+const Horses = ({ currentUser }) => {
 
   const dispatch = useDispatch()
   const { horses } = useSelector(state => state.horses)
@@ -39,7 +39,7 @@ const Choosehorse = ({ currentUser }) => {
           <div className="row">
             {horses?.map(horse => (
               <div className="flip-card col-lg-4 col-md-4 col-sm-4 col-12" key={horse.id}>
-                <Link href="/game/horse-details" >
+                <Link href={`/game/horses/${horse.id}`} passHref >
                   <div className="flip-card-inner single-bonus border-danger p-2 cursor-pointer">
                     <div className="flip-card-front d-flex flex-column justify-content-center text-left p-2">
                       <Image className="img-flip" src={`/images/horses/horse_${horse.number}_b.png`} alt="" width="150" height="160" />
@@ -92,8 +92,8 @@ const Choosehorse = ({ currentUser }) => {
 
 
 
-    </Layout>
+    </Layout >
   )
 }
 
-export default withAuth(Choosehorse);
+export default withAuth(Horses);

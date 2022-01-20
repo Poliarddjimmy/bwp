@@ -3,8 +3,8 @@ import { persistReducer } from "redux-persist";
 import ProfileReducer from './reducers/profileReducers';
 import storage from 'redux-persist/lib/storage'
 import EventsReducer from './reducers/eventsReducers';
-import GamesReducer from './reducers/GamesReducers';
-import HorsesReducer from './reducers/HorsesReducers';
+import GamesReducer from './reducers/gamesReducers';
+import HorsesReducer from './reducers/horsesReducers';
 
 const userPersistConfig = {
   key: 'user',

@@ -3,6 +3,8 @@ import { persistReducer } from "redux-persist";
 import ProfileReducer from './reducers/profileReducers';
 import storage from 'redux-persist/lib/storage'
 import EventsReducer from './reducers/eventsReducers';
+import GamesReducer from './reducers/GamesReducers';
+import HorsesReducer from './reducers/HorsesReducers';
 
 const userPersistConfig = {
   key: 'user',
@@ -14,7 +16,9 @@ const persistedUserReducer = persistReducer(userPersistConfig, UserReducer)
 const rootReducer = {
   user: persistedUserReducer,
   profile: ProfileReducer,
-  events: EventsReducer
+  events: EventsReducer,
+  games: GamesReducer,
+  horses: HorsesReducer
 }
 
 export default rootReducer;

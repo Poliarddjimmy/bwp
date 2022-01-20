@@ -18,6 +18,12 @@ const EDIT_PROFILE = "users/profile/edit"
 const FETCH_EVENTS = "events"
 const SHOW_EVENT = "events/id"
 
+const FETCH_GAMES = "games"
+const FETCH_CURRENT_GAME = "game-current"
+
+const FETCH_HORSES = "horses"
+const SHOW_HORSE = "horses/id"
+
 const CLEAR = "clear"
 
 const Auth = {
@@ -52,10 +58,22 @@ const Events = {
   SHOW_EVENT
 }
 
+const Games = {
+  FETCH_GAMES,
+  FETCH_CURRENT_GAME
+}
+
+const Horses = {
+  FETCH_HORSES,
+  SHOW_HORSE
+}
+
 export {
   Auth,
   Users,
   Clear,
   Profiles,
-  Events
+  Events,
+  Games,
+  Horses
 }

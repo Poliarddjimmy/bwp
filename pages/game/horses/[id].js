@@ -1,9 +1,22 @@
-import Layout from "../../components/layouts/layout";
-import withAuth from "../../components/hocs/withAuth"
-import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"
+import Image from 'next/image'
+import withAuth from "../../../components/hocs/withAuth"
+import Layout from "../../../components/layouts/layout"
+import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
+import { showHorseAction } from "../../../redux/actions/horsesActionsCreators"
 
-const Horsedetails = ({ currentUser }) => {
+const Horse = ({ currentUser }) => {
+
+  const dispatch = useDispatch()
+  const { horse } = useSelector(state => state.horses)
+  const router = useRouter()
+
+
+  useEffect(() => {
+    dispatch(showHorseAction(router.query?.id))
+  }, [])
 
   return (
     <Layout currentUser={currentUser}>
@@ -11,12 +24,12 @@ const Horsedetails = ({ currentUser }) => {
 
         <div className="col-lg-6 col-md-8 race-details">
           <div className="border-danger race-details bg-primary-color pt-5 pb-5">
-            <Image className="img" src="/images/horses/horse_1_b.png" alt="" width="360" height="360" />
+            <Image className="img" src={`/images/horses/horse_${router.query?.id}_b.png`} alt="" width="360" height="360" />
           </div>
         </div>
 
         <div className="col-lg-6 col-md-8 race-details">
-          <h3 className="text-one">The Rambo</h3>
+          <h3 className="text-one">{horse.name}</h3>
 
           <div className="row">
             <div className="col-lg-6 col-md-12 d-flex justify-content-center">
@@ -30,7 +43,7 @@ const Horsedetails = ({ currentUser }) => {
               </div>
             </div>
           </div>
-          <small className="text-light">The Rambo horse is the most athletic and most powerfull bythe nature has wining streak of 10x of more earning then 4,000.....</small>
+          <small className="text-light">{horse.description}</small>
 
           <div className="tabs-container d-flex justify-content-center">
             <div className="w-90 m-2">
@@ -89,7 +102,7 @@ const Horsedetails = ({ currentUser }) => {
 
           <div className="card border-1 border-danger race-details bg-secondary d-flex align-items-center justify-content-center pt-3 pb-3">
             <div className="text d-flex justify-content-center mb-3">
-              <strong className="text-light">$6,6134.34</strong>
+              <strong className="text-light">50.00 Gourdes</strong>
             </div>
             <div className="col-8 d-flex justify-content-around p-1">
               <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3">Play now</button>
@@ -101,8 +114,9 @@ const Horsedetails = ({ currentUser }) => {
 
       </div>
 
+
     </Layout>
   )
 }
 
-export default withAuth(Horsedetails)
+export default withAuth(Horse);

@@ -33,6 +33,22 @@ class API {
     return axiosService.get(`/events/${id}`)
   }
 
+  static fetchGames = () => {
+    return axiosService.get(`/games`)
+  }
+
+  static fecthCurrentGame = () => {
+    return axiosService.get(`/game-current`)
+  }
+
+  static fetchHorses = () => {
+    return axiosService.get(`/horses`)
+  }
+
+  static showHorse = (id) => {
+    return axiosService.get(`/horses/${id}`)
+  }
+
 }
 
 export default API

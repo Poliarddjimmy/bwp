@@ -1,8 +1,17 @@
 import Layout from "../../components/layouts/layout";
 import Image from "next/image";
-
+import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect } from "react"
+import { showProfileAction } from "../../redux/actions/profileActionCreators";
 
 const Profiles = () => {
+  const dispatch = useDispatch()
+  const { profile } = useSelector(state => state.profile)
+  const { currentUser } = useSelector(state => state.user)
+
+  useEffect(() => {
+    dispatch(showProfileAction())
+  }, [])
 
   return (
     <Layout>
@@ -19,11 +28,11 @@ const Profiles = () => {
               <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="100" height="100" />
             </div>
             <div className="name d-flex justify-content-center">
-              <h6 className="name p-2">Marc Arold Rosemond</h6>
+              <h6 className="name p-2">{currentUser?.name}</h6>
             </div>
             <div className="country d-flex justify-content-start m-2">
               <i className="fa fa-home btn-sm color-one"></i>
-              <strong className="text-light">Haïti</strong>
+              <strong className="text-light">{profile?.country}</strong>
             </div>
             <div className="location d-flex justify-content-start m-2">
               <i className="fa fa-map-marker-alt btn-sm color-one"></i>
@@ -62,11 +71,12 @@ const Profiles = () => {
 
             <div className="mt-4">
               <div className="mt-4 d-flex border-bottom-danger pb-2">
-                <div className="">
-                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
-                </div>
                 <div className="w-100">
-                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+
+                  <li className="color-one">
+                    <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
+                  </li>
+
                   <div className="d-flex justify-content-lg-between">
                     <div className="">
                       <small className="color-one">Your Chance is here so grab it</small>
@@ -78,76 +88,7 @@ const Profiles = () => {
                 </div>
               </div>
 
-
-              <div className="mt-4 d-flex border-bottom-danger pb-2">
-                <div className="">
-                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
-                </div>
-                <div className="w-100">
-                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
-                  <div className="d-flex justify-content-lg-between">
-                    <div className="">
-                      <small className="color-one">Your Chance is here so grab it</small>
-                    </div>
-                    <div className=" d-flex justify-content-end">
-                      <small className="color-one">1 min ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4 d-flex border-bottom-danger pb-2">
-                <div className="">
-                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
-                </div>
-                <div className="w-100">
-                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
-                  <div className="d-flex justify-content-lg-between">
-                    <div className="">
-                      <small className="color-one">Your Chance is here so grab it</small>
-                    </div>
-                    <div className=" d-flex justify-content-end">
-                      <small className="color-one">1 min ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4 d-flex border-bottom-danger pb-2">
-                <div className="">
-                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
-                </div>
-                <div className="w-100">
-                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
-                  <div className="d-flex justify-content-lg-between">
-                    <div className="">
-                      <small className="color-one">Your Chance is here so grab it</small>
-                    </div>
-                    <div className=" d-flex justify-content-end">
-                      <small className="color-one">1 min ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4 d-flex border-bottom-danger pb-2">
-                <div className="">
-                  <a className="btn-floating deep-purple bg-danger btn-sm rounded-circle m-1"><i className="fab fa-cuttlefish fa-sm text-white" aria-hidden="true" /></a>
-                </div>
-                <div className="w-100">
-                  <small className="text-light">Bet, Play Earn or view. A Unique platform for your Races</small>
-                  <div className="d-flex justify-content-lg-between">
-                    <div className="">
-                      <small className="color-one">Your Chance is here so grab it</small>
-                    </div>
-                    <div className=" d-flex justify-content-end">
-                      <small className="color-one">1 min ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-
           </div>
 
         </div>
@@ -164,31 +105,6 @@ const Profiles = () => {
         </div>
 
         <div className="row mt-3">
-          <div className="col-lg-3">
-            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-              <div className="d-flex justify-content-sm-between">
-                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                <div className="card-button d-flex align-items-center">
-                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                </div>
-              </div>
-              <hr className="bg-white border-1 border-top m-2" />
-              <div className="">
-                <div className="profile pic m-2 d-flex justify-content-center">
-                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                </div>
-                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                <div>
-                  <div className="d-flex justify-content-center m-2">
-                    <small className="text-light">2345</small>
-                    <small className="color-one ml-1">Win</small>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="col-lg-3">
             <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
@@ -207,33 +123,10 @@ const Profiles = () => {
                 <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
                 <div>
                   <div className="d-flex justify-content-center m-2">
-                    <small className="text-light">2345</small>
-                    <small className="color-one ml-1">Win</small>
+                    <strong className="ml-1">3998-0784</strong>
                   </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-3">
-            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-              <div className="d-flex justify-content-sm-between">
-                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                <div className="card-button d-flex align-items-center">
-                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                </div>
-              </div>
-              <hr className="bg-white border-1 border-top m-2" />
-              <div className="">
-                <div className="profile pic m-2 d-flex justify-content-center">
-                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                </div>
-                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                <div>
                   <div className="d-flex justify-content-center m-2">
-                    <small className="text-light">2345</small>
+                    <small className="text-light">2330 HTG</small>
                     <small className="color-one ml-1">Win</small>
                   </div>
 
@@ -241,40 +134,13 @@ const Profiles = () => {
               </div>
             </div>
           </div>
-
-          <div className="col-lg-3">
-            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-              <div className="d-flex justify-content-sm-between">
-                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                <div className="card-button d-flex align-items-center">
-                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                </div>
-              </div>
-              <hr className="bg-white border-1 border-top m-2" />
-              <div className="">
-                <div className="profile pic m-2 d-flex justify-content-center">
-                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                </div>
-                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                <div>
-                  <div className="d-flex justify-content-center m-2">
-                    <small className="text-light">2345</small>
-                    <small className="color-one ml-1">Win</small>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </div>
 
 
       </div>
 
-    </Layout>
+    </Layout >
   )
 }
 

@@ -102,7 +102,7 @@ const Horse = ({ currentUser }) => {
 
           <div className="card border-1 border-danger race-details bg-secondary d-flex align-items-center justify-content-center pt-3 pb-3">
             <div className="text d-flex justify-content-center mb-3">
-              <strong className="text-light">50.00 Gourdes</strong>
+              <strong className="text-light">50.00 HTG</strong>
             </div>
             <div className="col-8 d-flex justify-content-around p-1">
               <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3">Play now</button>

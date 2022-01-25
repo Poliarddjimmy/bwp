@@ -106,7 +106,6 @@ const Home = ({ currentUser }) => {
 
             <div className="col-lg-12 col-md-8 col-sm-4 ">
               <div className="race p-2 rounded text-center" style={{ height: "100%" }}>
-                {/* <h4>Game-12</h4> */}
                 <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
                   <h3>Starting in</h3>
                   <h1 className="d-flex mb-3">
@@ -122,135 +121,133 @@ const Home = ({ currentUser }) => {
                   </div>
                 </div>
 
-                <div className="col-lg-8">
-                  <Link href="/game/horses" passHref><button type="button" className="btn btn-danger d-block w-25 mb-3"> Join now</button></Link>
-                  <button type="button" className="btn btn-default border-danger text-white d-block w-25"> View Race</button>
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <Link href="/game/horses" passHref><button type="button" className="btn btn-danger d-block mb-3 w-40 mx-auto "> Join now</button></Link>
+                  <button type="button" className="btn btn-default border-danger text-white d-block disabled w-40 mx-auto"> View Race</button>
                 </div>
+
               </div>
             </div>
 
-            <div className="best-players container mt-4">
-
-              <div className="row">
-                <div className="col-lg-12 d-flex flex-column">
-                  <small className="text-light">Best</small>
-                  <h4 className="text-light">Players</h4>
-                </div>
-              </div>
-
-              <div className="row mt-3">
-                <div className="col-lg-3">
-                  <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-                    <div className="d-flex justify-content-sm-between">
-                      <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                      <div className="card-button d-flex align-items-center">
-                        <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                        <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                      </div>
-                    </div>
-                    <hr className="bg-white border-1 border-top m-2" />
-                    <div className="">
-                      <div className="profile pic m-2 d-flex justify-content-center">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                      </div>
-                      <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                      <div>
-                        <div className="d-flex justify-content-center m-2">
-                          <small className="text-light">2345</small>
-                          <small className="color-one ml-1">Win</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-3">
-                  <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-                    <div className="d-flex justify-content-sm-between">
-                      <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                      <div className="card-button d-flex align-items-center">
-                        <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                        <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                      </div>
-                    </div>
-                    <hr className="bg-white border-1 border-top m-2" />
-                    <div className="">
-                      <div className="profile pic m-2 d-flex justify-content-center">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                      </div>
-                      <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                      <div>
-                        <div className="d-flex justify-content-center m-2">
-                          <small className="text-light">2345</small>
-                          <small className="color-one ml-1">Win</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-3">
-                  <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-                    <div className="d-flex justify-content-sm-between">
-                      <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                      <div className="card-button d-flex align-items-center">
-                        <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                        <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                      </div>
-                    </div>
-                    <hr className="bg-white border-1 border-top m-2" />
-                    <div className="">
-                      <div className="profile pic m-2 d-flex justify-content-center">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                      </div>
-                      <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                      <div>
-                        <div className="d-flex justify-content-center m-2">
-                          <small className="text-light">2345</small>
-                          <small className="color-one ml-1">Win</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-3">
-                  <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
-                    <div className="d-flex justify-content-sm-between">
-                      <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                      <div className="card-button d-flex align-items-center">
-                        <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                        <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                      </div>
-                    </div>
-                    <hr className="bg-white border-1 border-top m-2" />
-                    <div className="">
-                      <div className="profile pic m-2 d-flex justify-content-center">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
-                      </div>
-                      <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
-                      <div>
-                        <div className="d-flex justify-content-center m-2">
-                          <small className="text-light">2345</small>
-                          <small className="color-one ml-1">Win</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-
-
-            </div>
 
 
           </div>
+        </div>
+      </div>
+      <div className="best-players container mt-4">
+
+        <div className="row">
+          <div className="col-lg-12 d-flex flex-column">
+            <small className="text-light">Best</small>
+            <h4 className="text-light">Players</h4>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3">
+            <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
+              <div className="d-flex justify-content-sm-between">
+                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
+                <div className="card-button d-flex align-items-center">
+                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
+                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
+                </div>
+              </div>
+              <hr className="bg-white border-1 border-top m-2" />
+              <div className="">
+                <div className="profile pic m-2 d-flex justify-content-center">
+                  <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
+                </div>
+                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
+                <div>
+                  <div className="d-flex justify-content-center m-2">
+                    <small className="text-light">2345</small>
+                    <small className="color-one ml-1">Win</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>

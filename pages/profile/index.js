@@ -109,18 +109,11 @@ const Profiles = () => {
           <div className="col-lg-3">
             <div className="card-layout min-vh-25 border-danger bg-secondary p-2">
               <div className="d-flex justify-content-sm-between">
-                <span className="badge bp-one text-light rounded-pill m-1 justify-content start"><i className="fas fa-trophy" /> #1</span>
-                <div className="card-button d-flex align-items-center">
-                  <i className="fa fa-plus border-danger color-one p-1 align-items-center d-flex" />
-                  <i className="fa fa-long-arrow-alt-up color-white fa-rotate-0" />
-                </div>
               </div>
-              <hr className="bg-white border-1 border-top m-2" />
               <div className="">
                 <div className="profile pic m-2 d-flex justify-content-center">
                   <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="50" height="50" />
                 </div>
-                <strong className="text-light d-flex justify-content-center">Witty Lowrence</strong>
                 <div>
                   <div className="d-flex justify-content-center m-2">
                     <strong className="ml-1">3998-0784</strong>

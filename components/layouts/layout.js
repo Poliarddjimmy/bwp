@@ -62,7 +62,7 @@ const Layout = ({ children, currentUser }) => {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu variant="dark" className="bg-white-25">
-                        <Dropdown.Item><Link href="/profile"> profile</Link></Dropdown.Item>
+                        <Dropdown.Item><Link href={`/profile/${currentUser?.id}`} passHref> profile</Link></Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                         <Dropdown.Divider />

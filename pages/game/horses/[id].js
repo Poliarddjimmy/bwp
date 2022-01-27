@@ -34,33 +34,33 @@ const Horse = ({ currentUser }) => {
           <div className="row">
             <div className="col-lg-6 col-md-12 d-flex justify-content-center">
               <div className="border-danger rounded w-100 text-center">
-                <small className="color-one fw-bold">10 Wining Streak</small>
+                <small className="color-one fw-bold">10 times winner</small>
               </div>
             </div>
             <div className="col-lg-6 col-md-12 d-flex">
               <div className="justify-content-center border-light rounded w-100 text-center">
-                <small className="text-light fw-bold">Wining Prices</small>
+                <small className="text-light fw-bold">20.000.00 HTG</small>
               </div>
             </div>
           </div>
           <small className="text-light">{horse.description}</small>
 
-          <div className="tabs-container d-flex justify-content-center">
+          {/* <div className="tabs-container d-flex justify-content-center">
             <div className="w-90 m-2">
               <ul className="nav nav-pills border-danger rounded-pill d-flex justify-content-around p-1">
-                <small className="pl-3 pr-3" href="#">Info</small>
+                <small className="pl-3 pr-3" href="info">Info</small>
                 <small className="pl-3 pr-3 bg-danger rounded-pill text-dark" href="#">Plays</small>
                 <small className="pl-3 pr-3" href="#">History</small>
                 <small className="pl-3 pr-3" href="#">Bets</small>
               </ul>
             </div>
-          </div>
+          </div> */}
 
           <div className="table">
             <table className="table">
 
               <tbody>
-                <tr>
+                {/* <tr>
                   <td className="border-bottom">
                     <div className="tab-row d-flex justify-content-start">
                       <div className="img">
@@ -76,9 +76,9 @@ const Horse = ({ currentUser }) => {
                       </div>
                     </div>
                   </td>
-                </tr>
+                </tr> */}
 
-                <tr>
+                {/* <tr>
                   <td className="border-bottom">
                     <div className="tab-row d-flex justify-content-start">
                       <div className="img">
@@ -94,7 +94,7 @@ const Horse = ({ currentUser }) => {
                       </div>
                     </div>
                   </td>
-                </tr>
+                </tr> */}
 
               </tbody>
             </table>

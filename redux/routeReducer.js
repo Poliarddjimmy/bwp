@@ -1,4 +1,4 @@
-import UserReducer from './reducers/userReducer'
+import UserReducer from './reducers/userReducer';
 import { persistReducer } from "redux-persist";
 import ProfileReducer from './reducers/profileReducers';
 import storage from 'redux-persist/lib/storage';

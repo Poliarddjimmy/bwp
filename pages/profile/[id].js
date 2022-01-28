@@ -38,11 +38,11 @@ const Profiles = () => {
             </div>
             <div className="location d-flex justify-content-start m-2">
               <i className="fa fa-map-marker-alt btn-sm color-one"></i>
-              <small className="text-light">St 12, h no 42 new town</small>
+              <small className="text-light">{profile?.address}</small>
             </div>
             <div className="passion d-flex justify-content-start m-2">
               <i className="fa fa-heart btn-sm color-one"></i>
-              <small className="text-light">Travel, Swimming</small>
+              <small className="text-light">Play Games, Bet</small>
             </div>
             <div className=" follow-btn d-flex justify-content-center">
               <button type="button" className="btn btn-danger rounded-pill">follow</button>
@@ -54,7 +54,7 @@ const Profiles = () => {
             </div>
             <div>
               <hr className="bg-danger border-1 border-top border-danger m-4" />
-              <small className="color-one d-flex justify-content-center">Member since mar 21, 2021</small>
+              <small className="color-one d-flex justify-content-center">{`Member since ${new Date(profile?.created_at).toLocaleDateString()}`}</small>
             </div>
           </div>
         </div>

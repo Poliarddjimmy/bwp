@@ -28,31 +28,11 @@ const Layout = ({ children, currentUser }) => {
                         <i className="bi bi-envelope fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
 
-                      {/* <Dropdown.Menu variant="dark">
-                        <Dropdown.Item href="#/action-1" active>
-                          Action
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-                      </Dropdown.Menu> */}
                     </Dropdown>
-
                     <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                         <i className="bi bi-bell fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
-
-                      {/* <Dropdown.Menu variant="dark" className="bg-white-25">
-                        <Dropdown.Item href="#/action-1" active>
-                          Action
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-                      </Dropdown.Menu> */}
                     </Dropdown>
 
 
@@ -62,9 +42,7 @@ const Layout = ({ children, currentUser }) => {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu variant="dark" className="bg-white-25">
-                        <Dropdown.Item><Link href={`/profile/${currentUser?.id}`} passHref> profile</Link></Dropdown.Item>
-                        {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                        <Dropdown.Item><Link href={`/profile/${currentUser?.profile?.id}`} passHref> profile</Link></Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item onClick={() => dispatch(logoutAction())} className="cursor-pointer">Logout</Dropdown.Item>
                       </Dropdown.Menu>

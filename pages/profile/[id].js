@@ -48,13 +48,15 @@ const Profiles = () => {
               <button type="button" className="btn btn-danger rounded-pill">follow</button>
             </div>
             <div className="social-media d-flex justify-content-center m-2">
-              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-facebook-f fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
-              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-twitter fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
-              <a type="button" className="btn-floating deep-purple border-danger btn-sm rounded-circle m-1"><i className="fab fa-instagram fa-sm d-flex justify-content-center align-items-center" aria-hidden="true"></i></a>
+
+              <i className="fab bi bi-facebook fa-sm d-flex justify-content-center align-items-center m-1 color-white" aria-hidden="true" />
+              <i className="fab bi bi-twitter fa-sm d-flex justify-content-center align-items-center m-1 color-white" aria-hidden="true" />
+              <i className="fab bi bi-instagram fa-sm d-flex justify-content-center align-items-center m-1 color-white" aria-hidden="true" />
+
             </div>
             <div>
               <hr className="bg-danger border-1 border-top border-danger m-4" />
-              <small className="color-one d-flex justify-content-center">{`Member since ${new Date(profile?.created_at).toLocaleDateString()}`}</small>
+              <small className="color-white d-flex justify-content-center">{`Member since ${new Date(profile?.created_at).toLocaleDateString()}`}</small>
             </div>
           </div>
         </div>

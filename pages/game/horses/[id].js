@@ -29,12 +29,12 @@ const Horse = ({ currentUser }) => {
         </div>
 
         <div className="col-lg-6 col-md-8 race-details">
-          <h3 className="text-one">{horse.name}</h3>
+          <h3 className="text-one">{horse?.name}</h3>
 
           <div className="row">
             <div className="col-lg-6 col-md-12 d-flex justify-content-center">
               <div className="border-danger rounded w-100 text-center">
-                <small className="color-one fw-bold">10 times winner</small>
+                <small className="color-one fw-bold">{`10 times winner`}</small>
               </div>
             </div>
             <div className="col-lg-6 col-md-12 d-flex">
@@ -43,58 +43,12 @@ const Horse = ({ currentUser }) => {
               </div>
             </div>
           </div>
-          <small className="text-light">{horse.description}</small>
-
-          {/* <div className="tabs-container d-flex justify-content-center">
-            <div className="w-90 m-2">
-              <ul className="nav nav-pills border-danger rounded-pill d-flex justify-content-around p-1">
-                <small className="pl-3 pr-3" href="info">Info</small>
-                <small className="pl-3 pr-3 bg-danger rounded-pill text-dark" href="#">Plays</small>
-                <small className="pl-3 pr-3" href="#">History</small>
-                <small className="pl-3 pr-3" href="#">Bets</small>
-              </ul>
-            </div>
-          </div> */}
+          <small className="text-light">{horse?.description}</small>
 
           <div className="table">
             <table className="table">
 
               <tbody>
-                {/* <tr>
-                  <td className="border-bottom">
-                    <div className="tab-row d-flex justify-content-start">
-                      <div className="img">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-light" width="40" height="40" />
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="row ml-3">
-                          <small className="text-muted">Jasson Parker</small>
-                        </div>
-                        <div className="row ml-3">
-                          <small className="text-light fw-bold">Jasson Parker</small>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr> */}
-
-                {/* <tr>
-                  <td className="border-bottom">
-                    <div className="tab-row d-flex justify-content-start">
-                      <div className="img">
-                        <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-light" width="40" height="40" />
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="row ml-3">
-                          <small className="text-muted">Jasson Parker</small>
-                        </div>
-                        <div className="row ml-3">
-                          <small className="text-light fw-bold">Jasson Parker</small>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr> */}
 
               </tbody>
             </table>
@@ -106,7 +60,7 @@ const Horse = ({ currentUser }) => {
             </div>
             <div className="col-8 d-flex justify-content-around p-1">
               <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3">Play now</button>
-              <Link href="/game/choose-horse"><button type="button" className="btn btn-transparent rounded-pill text-light border-danger pl-3 pr-3">Cancel</button></Link>
+              <Link href="/game/horses" passHref><button type="button" className="btn btn-transparent rounded-pill text-light border-danger pl-3 pr-3">Cancel</button></Link>
             </div>
           </div>
 

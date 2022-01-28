@@ -84,7 +84,7 @@ const Layout = ({ children, currentUser }) => {
             <div className="row">
               <div className="col-lg-5">
                 <div className="left-area">
-                  <p>Copyright © 2019.All Rights Reserved By <a href="#">Dooplo</a>
+                  <p>{`Copyright © ${new Date().getFullYear()} All Rights Reserved By `}<a href="#">Clic Hubs</a>
                   </p>
                 </div>
               </div>
@@ -103,7 +103,7 @@ const Layout = ({ children, currentUser }) => {
                     <a href="#">Aware</a>
                   </li>
                   <li>
-                    <a href="#">Help Cente</a>
+                    <a href="#">Help Center</a>
                   </li>
                 </ul>
               </div>

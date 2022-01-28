@@ -128,7 +128,7 @@ const Messages = ({ currentUser }) => {
 
               </div>
 
-              <div className="input">
+              <div className="input mt-2">
                 <input type="text" className="form-control border-danger bg-transparent text-light" placeholder="Write your message..." />
               </div>
               <div className="button d-flex justify-content-end">

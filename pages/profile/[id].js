@@ -34,7 +34,7 @@ const Profiles = () => {
             </div>
             <div className="country d-flex justify-content-start m-2">
               <i className="fa fa-home btn-sm color-one"></i>
-              <strong className="text-light">{profile?.country}</strong>
+              <strong className="text-light d-flex">{profile?.country}</strong>
             </div>
             <div className="location d-flex justify-content-start m-2">
               <i className="fa fa-map-marker-alt btn-sm color-one"></i>

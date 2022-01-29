@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { Accordion, AccordionContext, useAccordionButton } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
 
 function CustomToggle({ children, eventKey }) {
   const { activeEventKey } = useContext(AccordionContext);
@@ -23,6 +24,7 @@ function CustomToggle({ children, eventKey }) {
 
 const Sidebar = () => {
   const router = useRouter()
+  const { currentUser } = useSelector(state => state.user)
 
   const sidebarSelected = () => {
     let selected
@@ -66,7 +68,7 @@ const Sidebar = () => {
           </Accordion.Collapse>
         </div>
         <div className="mb-1">
-          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> 50938857610  </span></CustomToggle>
+          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i>{`+${currentUser?.phone}`}</span></CustomToggle>
           <Accordion.Collapse eventKey="0">
             <div className="d-flex flex-column sside">
               {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}

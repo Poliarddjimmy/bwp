@@ -76,11 +76,11 @@ const Sidebar = () => {
           </Accordion.Collapse>
         </div>
         <div className="mb-1">
-          <CustomToggle eventKey="2"><span className="cursor-pointer d-flex kk align-items-center"> <i className="fas fa-chess-knight" style={{ marginRight: 10 }}></i> Game  </span></CustomToggle>
+          <CustomToggle eventKey="2"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-controller" style={{ marginRight: 10 }}></i> Game  </span></CustomToggle>
           <Accordion.Collapse eventKey="2">
             <div className="d-flex flex-column sside">
               {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}
-              <Link href="/" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Horse Course</span></Link>
+              <Link href="/" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/" ? "text-danger" : "text-muted"}`}><i className="fas fa-horse"></i> Horse Course</span></Link>
             </div>
           </Accordion.Collapse>
         </div>

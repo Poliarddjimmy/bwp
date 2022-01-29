@@ -50,13 +50,21 @@ const Sidebar = () => {
       <Accordion defaultActiveKey={`${sidebarSelected()}`}>
 
         <div className="mb-1">
-          <CustomToggle eventKey="2">
+          <CustomToggle eventKey="3">
             <Link href="/" passHref><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-house fa-2x" style={{ marginRight: 10 }}></i> Dashboard </span>
             </Link>
           </CustomToggle>
 
         </div>
-
+        <div className="mb-1">
+          <CustomToggle eventKey="2"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> Game  </span></CustomToggle>
+          <Accordion.Collapse eventKey="2">
+            <div className="d-flex flex-column sside">
+              {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}
+              <Link href="/" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/deposit-to-account" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Horse Course</span></Link>
+            </div>
+          </Accordion.Collapse>
+        </div>
         <div className="mb-1">
           <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> 50938857610  </span></CustomToggle>
           <Accordion.Collapse eventKey="0">

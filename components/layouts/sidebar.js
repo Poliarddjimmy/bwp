@@ -47,6 +47,11 @@ const Sidebar = () => {
     return selected
   }
 
+  const phoneNumberFormat = () => {
+    let phone = currentUser?.phone.startsWith("509") ? currentUser?.phone : `509` + currentUser?.phone
+    return phone
+  }
+
   return (
     <div className="pt-3 sidebar ">
       <Accordion defaultActiveKey={`${sidebarSelected()}`}>
@@ -60,7 +65,7 @@ const Sidebar = () => {
         </div>
 
         <div className="mb-1">
-          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i>{`+${currentUser?.phone}`}</span></CustomToggle>
+          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i>{phoneNumberFormat()}</span></CustomToggle>
           <Accordion.Collapse eventKey="0">
             <div className="d-flex flex-column sside">
               {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}

@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const BetHistory = ({ currentUser }) => {
   return <Layout currentUser={currentUser}>
-    <main className="personal-area ">
+    <main className="personal-area">
       <div className="history ">
 
         <div className="header-top bg-secondary rounded p-2">

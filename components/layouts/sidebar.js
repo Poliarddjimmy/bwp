@@ -58,10 +58,10 @@ const Sidebar = () => {
         </div>
 
         <div className="mb-1">
-          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> Personal area  </span></CustomToggle>
+          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> 50938857610  </span></CustomToggle>
           <Accordion.Collapse eventKey="0">
             <div className="d-flex flex-column sside">
-              <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link>
+              {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}
               <Link href="/personal-area/deposit-to-account" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/deposit-to-account" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Deposit and withdraw</span></Link>
               <Link href="/personal-area/withdraw-founds" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/withdraw-founds" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Transfert funds </span></Link>
               <Link href="/personal-area/bet-history" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/bet-history" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Bet history</span></Link>

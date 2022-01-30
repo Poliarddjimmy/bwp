@@ -57,12 +57,13 @@ const Sidebar = () => {
       <Accordion defaultActiveKey={`${sidebarSelected()}`}>
 
         <div className="mb-1">
-          <CustomToggle eventKey="3">
+          <CustomToggle eventKey="2">
             <Link href="/" passHref><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-house fa-2x" style={{ marginRight: 10 }}></i> Dashboard </span>
             </Link>
           </CustomToggle>
 
         </div>
+
         <div className="mb-1">
           <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i>{phoneNumberFormat()}</span></CustomToggle>
           <Accordion.Collapse eventKey="0">

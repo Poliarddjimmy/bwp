@@ -2,13 +2,13 @@ import Layout from "../../components/layouts/layout";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
-import { showProfileAction } from "../../redux/actions/profileActionCreators";
+import { showProfileAction, editProfileAction } from "../../redux/actions/profileActionCreators";
 import { useRouter } from "next/router"
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import { useForm, Controller } from "react-hook-form";
+
 
 const Profiles = () => {
   const dispatch = useDispatch()
@@ -18,6 +18,27 @@ const Profiles = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const {
+    control,
+    handleSubmit,
+    watch,
+    register,
+    setError,
+    formState: { errors, isValid },
+  } = useForm({})
+
+  const onSubmit = formData => {
+    const payload = {
+      id: currentUser?.profile?.id,
+      user_id: currentUser?.id,
+      address: formData.address,
+      country: formData.country,
+      city: formData.city,
+      gender: formData.sex,
+      dob: formData.date,
+    }
+    dispatch(editProfileAction(payload))
+  }
 
   useEffect(() => {
     dispatch(showProfileAction(router.query?.id))
@@ -158,47 +179,188 @@ const Profiles = () => {
           <Form >
             <Form.Group className="mb-3 color-one" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
-              <Form.Control className="text-light" type="name" placeholder="Please digit your Name" value={currentUser.name} />
-              <Form.Text className="text-muted">
-                We'll never share your name with anyone else.
-              </Form.Text>
+              <Controller
+                name="name"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <Form.Control
+                    type="name"
+                    placeholder="Please digit your Name"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.name}
+                    className={` text-light form-control ${errors.name && `is-invalid`
+                      }`}
+                  />
+                )}
+                rules={{ required: true, minLength: 3, maxLength: 15 }}
+              />
+              {errors.name?.type === "required" && <span className="text-danger">Name is required</span>}
+              {errors.name?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
+              {errors.name?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
             </Form.Group>
 
             <Form.Group className="mb-3 color-one" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control className="text-light" type="name" placeholder="Please digit your Email Adress" value={currentUser?.email} />
+              <Controller
+                name="email"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <Form.Control
+                    type="email"
+                    placeholder="Please digit your Email Adress"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.email}
+                    className={` text-light form-control ${errors.email && `is-invalid`
+                      }`}
+                  />
+                )}
+                rules={{ required: true, minLength: 7, maxLength: 25 }}
+              />
+              {errors.email?.type === "required" && <span className="text-danger">Email is required</span>}
+              {errors.email?.type === "minLength" && <span className="text-danger">Min length of first name is 7 characters!</span>}
+              {errors.email?.type === "maxLength" && <span className="text-danger">Max length of first name is 25 characters!</span>}
             </Form.Group>
 
             <Form.Group className="mb-3 color-one" controlId="formBasicAddress">
               <Form.Label>Address</Form.Label>
-              <Form.Control className="text-light" type="name" placeholder="Please digit your Adress" value={currentUser?.profile.address} />
+              <Controller
+                name="address"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <Form.Control
+                    type="address"
+                    placeholder="Please digit your Adress"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.profile?.address}
+                    className={` text-light form-control ${errors.address && `is-invalid`
+                      }`}
+                  />
+                )}
+                rules={{ required: true, minLength: 10, maxLength: 50 }}
+              />
+              {errors.address?.type === "required" && <span className="text-danger">address is required</span>}
+              {errors.address?.type === "minLength" && <span className="text-danger">Min length of first name is 10 characters!</span>}
+              {errors.address?.type === "maxLength" && <span className="text-danger">Max length of first name is 50 characters!</span>}
             </Form.Group>
 
-            <Form.Group className="color-one" controlId="formBasicAddress">
+            <Form.Group className="mb-3 color-one" controlId="formBasicAddress">
               <Form.Label>Sex</Form.Label>
+              <Controller
+                name="sex"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <select
+                    type="sex"
+                    placeholder="Please digit your sex"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.profile?.gender}
+                    className={` text-light form-control ${errors.sex && `is-invalid`
+                      }`}
+                  >
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Others</option>
+                  </select>
+                )}
+                rules={{ required: true, minLength: 3, maxLength: 15 }}
+              />
+              {errors.sex?.type === "required" && <span className="text-danger">sex is required</span>}
+              {errors.sex?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
+              {errors.sex?.type === "maxLength" && <span className="text-danger">Max length of first name is 10 characters!</span>}
             </Form.Group>
-            <Form.Group className="mb-1 color-one" controlId="formBasicVille">
-              <select className="browser-default custom-select">
-                <option>{`Select` && currentUser?.profile?.gender}</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Others</option>
-              </select>
-            </Form.Group>
+
+
 
             <Form.Group className="color-one" controlId="formBasicAddress">
               <Form.Label>Country</Form.Label>
             </Form.Group>
-            <Form.Group className="mb-1 color-one" controlId="formBasicVille">
-              <select className="browser-default custom-select">
-                <option>{`Select` && currentUser?.profile?.city}</option>
-                <option value="1">Option 1</option>
-              </select>
+            <Controller
+              name="country"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <Form.Group className="mb-1 color-one" controlId="formBasicVille">
+                  <select
+                    type="country"
+                    placeholder="Please digit your country"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.profile?.country}
+                    className={` text-light form-control ${errors.address && `is-invalid`
+                      }`}
+                  >
+                    <option value="2">Haiti</option>
+                    <option value="3">Others</option>
+                  </select>
+                </Form.Group>
+              )}
+              rules={{ required: true, minLength: 3, maxLength: 15 }}
+            />
+            {errors.country?.type === "required" && <span className="text-danger">country is required</span>}
+            {errors.country?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
+            {errors.country?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
+
+            <Form.Group className="color-one" controlId="formBasicAddress">
+              <Form.Label>City</Form.Label>
             </Form.Group>
+
+            <Controller
+              name="city"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <Form.Group className="mb-1 color-one" controlId="formBasicVille">
+                  <select
+                    type="city"
+                    placeholder="Please digit your city"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.profile?.city}
+                    className={` text-light form-control ${errors.city && `is-invalid`
+                      }`}
+                  >
+                    <option value="2">Port-au-prince</option>
+                    <option value="3">Others</option>
+                  </select>
+                </Form.Group>
+              )}
+              rules={{ required: true, minLength: 7, maxLength: 15 }}
+            />
+            {errors.city?.type === "required" && <span className="text-danger">city is required</span>}
+            {errors.city?.type === "minLength" && <span className="text-danger">Min length of first name is 7 characters!</span>}
+            {errors.city?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
 
             <Form.Group className="color-one" controlId="formBasicAddress">
               <Form.Label>Date of birth</Form.Label>
-              <Form.Control className="text-light" type="date" name="dob" placeholder="Please choose your date of birth" />
+              <Controller
+                name="date"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <Form.Control
+                    type="date"
+                    placeholder="Please choose your date of birth"
+                    autoComplete="off"
+                    {...field}
+                    value={currentUser?.profile?.dob}
+                    className={` text-light form-control ${errors.date && `is-invalid`
+                      }`}
+                  />
+                )}
+                rules={{ required: true, minLength: 7, maxLength: 15 }}
+              />
+              {errors.date?.type === "required" && <span className="text-danger">date is required</span>}
+              {errors.date?.type === "minLength" && <span className="text-danger">Min length of first name is 7 characters!</span>}
+              {errors.date?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
+
             </Form.Group>
 
           </Form>
@@ -206,7 +368,10 @@ const Profiles = () => {
         </Modal.Body>
         <Modal.Footer>
 
-          <Button className=" btn-danger" >Save</Button>
+          <Button
+            className=" btn-danger"
+            onClick={handleSubmit(onSubmit)}
+          >Save</Button>
         </Modal.Footer>
       </Modal>
 

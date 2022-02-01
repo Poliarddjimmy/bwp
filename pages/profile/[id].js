@@ -4,12 +4,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { showProfileAction } from "../../redux/actions/profileActionCreators";
 import { useRouter } from "next/router"
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 const Profiles = () => {
   const dispatch = useDispatch()
   const { profile } = useSelector(state => state.profile)
   const { currentUser } = useSelector(state => state.user)
   const router = useRouter()
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     dispatch(showProfileAction(router.query?.id))
@@ -44,8 +52,8 @@ const Profiles = () => {
               <i className="fa fa-heart btn-sm color-one"></i>
               <small className="text-light">Play Games, Bet</small>
             </div>
-            <div className=" follow-btn d-flex justify-content-center">
-              <button type="button" className="btn btn-danger rounded-pill">follow</button>
+            <div className=" edit-btn d-flex justify-content-center">
+              <button type="button" className="btn btn-danger rounded-pill" onClick={handleShow} >Edit Profile</button>
             </div>
             <div className="social-media d-flex justify-content-center m-2">
 
@@ -133,9 +141,74 @@ const Profiles = () => {
           </div>
 
         </div>
-
-
       </div>
+
+      {/* Modal Screens */}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        className=""
+      >
+        <Modal.Header closeButton>
+          <Modal.Title className="color-one">Edit Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+          <Form >
+            <Form.Group className="mb-3 color-one" controlId="formBasicName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control className="text-light" type="name" placeholder="Please digit your Name" value={currentUser.name} />
+              <Form.Text className="text-muted">
+                We'll never share your name with anyone else.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3 color-one" controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control className="text-light" type="name" placeholder="Please digit your Email Adress" value={currentUser?.email} />
+            </Form.Group>
+
+            <Form.Group className="mb-3 color-one" controlId="formBasicAddress">
+              <Form.Label>Address</Form.Label>
+              <Form.Control className="text-light" type="name" placeholder="Please digit your Adress" value={currentUser?.profile.address} />
+            </Form.Group>
+
+            <Form.Group className="color-one" controlId="formBasicAddress">
+              <Form.Label>Sex</Form.Label>
+            </Form.Group>
+            <Form.Group className="mb-1 color-one" controlId="formBasicVille">
+              <select className="browser-default custom-select">
+                <option>{`Select` && currentUser?.profile?.gender}</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Others</option>
+              </select>
+            </Form.Group>
+
+            <Form.Group className="color-one" controlId="formBasicAddress">
+              <Form.Label>Country</Form.Label>
+            </Form.Group>
+            <Form.Group className="mb-1 color-one" controlId="formBasicVille">
+              <select className="browser-default custom-select">
+                <option>{`Select` && currentUser?.profile?.city}</option>
+                <option value="1">Option 1</option>
+              </select>
+            </Form.Group>
+
+            <Form.Group className="color-one" controlId="formBasicAddress">
+              <Form.Label>Date of birth</Form.Label>
+              <Form.Control className="text-light" type="date" name="dob" placeholder="Please choose your date of birth" />
+            </Form.Group>
+
+          </Form>
+
+        </Modal.Body>
+        <Modal.Footer>
+
+          <Button className=" btn-danger" >Save</Button>
+        </Modal.Footer>
+      </Modal>
 
     </Layout >
   )

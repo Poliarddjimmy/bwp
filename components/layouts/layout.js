@@ -27,14 +27,34 @@ const Layout = ({ children, currentUser }) => {
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                         <i className="bi bi-envelope fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
-
                     </Dropdown>
+
                     <Dropdown>
-                      <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
+                      <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
                         <i className="bi bi-bell fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
+                      <Dropdown.Menu variant="dark" className="bg-secondary border-primary">
+                        <small className="m-4">Notifications: <span>17</span></small>
+                        <Dropdown.Item className="dropdown bg-secondary">
+                          <Link href={`/`} passHref>
+                            <div className="alert alert-transparent alert-dismissible border-danger">
+                              <div className="profile">
+                                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="40" height="40" />
+                              </div>
+                              <div className="notif-text">
+                                <strong className="title text-light pr-1">Congrats!</strong>
+                                <small className="description text-light">Officia voluptas nemo eveniet eos.Molestiae commodi.…</small>
+                              </div>
+                              <div className="notif-text">
+                                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            </div>
+                          </Link>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
                     </Dropdown>
-
 
                     <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">

@@ -46,10 +46,10 @@ const BetHistory = ({ currentUser }) => {
                   @wiky23
                 </small>
                 <strong className="text-light">
-                  Billy Joseph
+                  {currentUser?.name}
                 </strong>
                 <small className="d-flex text-light fw-bold">
-                  billy@bet.com
+                  {`billy@bet.com`}
                 </small>
               </div>
 

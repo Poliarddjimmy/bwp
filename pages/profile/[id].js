@@ -25,17 +25,19 @@ const Profiles = () => {
     register,
     setError,
     formState: { errors, isValid },
-  } = useForm({})
+  } = useForm({
+    defaultValues: currentUser
+  })
 
   const onSubmit = formData => {
     const payload = {
       id: currentUser?.profile?.id,
       user_id: currentUser?.id,
-      address: formData.address,
-      country: formData.country,
-      city: formData.city,
-      gender: formData.sex,
-      dob: formData.date,
+      // address: formData.address,
+      // country: formData.country,
+      // city: formData.city,
+      // gender: formData.sex,
+      // dob: formData.date,
     }
     dispatch(editProfileAction(payload))
   }
@@ -189,7 +191,6 @@ const Profiles = () => {
                     placeholder="Please digit your Name"
                     autoComplete="off"
                     {...field}
-                    value={currentUser?.name}
                     className={` text-light form-control ${errors.name && `is-invalid`
                       }`}
                   />
@@ -213,7 +214,6 @@ const Profiles = () => {
                     placeholder="Please digit your Email Adress"
                     autoComplete="off"
                     {...field}
-                    value={currentUser?.email}
                     className={` text-light form-control ${errors.email && `is-invalid`
                       }`}
                   />
@@ -237,7 +237,6 @@ const Profiles = () => {
                     placeholder="Please digit your Adress"
                     autoComplete="off"
                     {...field}
-                    value={currentUser?.profile?.address}
                     className={` text-light form-control ${errors.address && `is-invalid`
                       }`}
                   />
@@ -249,7 +248,7 @@ const Profiles = () => {
               {errors.address?.type === "maxLength" && <span className="text-danger">Max length of first name is 50 characters!</span>}
             </Form.Group>
 
-            <Form.Group className="mb-3 color-one" controlId="formBasicAddress">
+            <Form.Group className="mb-3 color-one" controlId="formBasicSex">
               <Form.Label>Sex</Form.Label>
               <Controller
                 name="sex"
@@ -261,7 +260,6 @@ const Profiles = () => {
                     placeholder="Please digit your sex"
                     autoComplete="off"
                     {...field}
-                    value={currentUser?.profile?.gender}
                     className={` text-light form-control ${errors.sex && `is-invalid`
                       }`}
                   >
@@ -270,16 +268,12 @@ const Profiles = () => {
                     <option value="3">Others</option>
                   </select>
                 )}
-                rules={{ required: true, minLength: 3, maxLength: 15 }}
+                rules={{ required: true }}
               />
               {errors.sex?.type === "required" && <span className="text-danger">sex is required</span>}
-              {errors.sex?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
-              {errors.sex?.type === "maxLength" && <span className="text-danger">Max length of first name is 10 characters!</span>}
             </Form.Group>
 
-
-
-            <Form.Group className="color-one" controlId="formBasicAddress">
+            {/* <Form.Group className="color-one" controlId="formBasicAddress">
               <Form.Label>Country</Form.Label>
             </Form.Group>
             <Controller
@@ -306,9 +300,9 @@ const Profiles = () => {
             />
             {errors.country?.type === "required" && <span className="text-danger">country is required</span>}
             {errors.country?.type === "minLength" && <span className="text-danger">Min length of first name is 3 characters!</span>}
-            {errors.country?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
+            {errors.country?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>} */}
 
-            <Form.Group className="color-one" controlId="formBasicAddress">
+            {/* <Form.Group className="color-one" controlId="formBasicAddress">
               <Form.Label>City</Form.Label>
             </Form.Group>
 
@@ -336,9 +330,9 @@ const Profiles = () => {
             />
             {errors.city?.type === "required" && <span className="text-danger">city is required</span>}
             {errors.city?.type === "minLength" && <span className="text-danger">Min length of first name is 7 characters!</span>}
-            {errors.city?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
+            {errors.city?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>} */}
 
-            <Form.Group className="color-one" controlId="formBasicAddress">
+            {/* <Form.Group className="color-one" controlId="formBasicAddress">
               <Form.Label>Date of birth</Form.Label>
               <Controller
                 name="date"
@@ -360,8 +354,7 @@ const Profiles = () => {
               {errors.date?.type === "required" && <span className="text-danger">date is required</span>}
               {errors.date?.type === "minLength" && <span className="text-danger">Min length of first name is 7 characters!</span>}
               {errors.date?.type === "maxLength" && <span className="text-danger">Max length of first name is 15 characters!</span>}
-
-            </Form.Group>
+            </Form.Group> */}
 
           </Form>
 

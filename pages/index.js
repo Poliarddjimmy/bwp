@@ -4,7 +4,7 @@ import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { fecthGamesAction } from "../redux/actions/GamesActionsCreators"
+import { fecthGamesAction, fecthCurrentGameAction } from "../redux/actions/GamesActionsCreators"
 
 
 const Home = ({ currentUser }) => {
@@ -12,13 +12,13 @@ const Home = ({ currentUser }) => {
   const Ref = useRef(null);
   const [timer, setTimer] = useState('00:00:00');
   const [gameTime, setGameTime] = useState(0);
-  const { games } = useSelector(state => state.games)
+  const { games, game } = useSelector(state => state.games)
   const dispatch = useDispatch()
 
-  let current_game = games == undefined ? [] : games[games?.length - 1]
+  let current_game = game
 
   useEffect(() => {
-    dispatch(fecthGamesAction())
+    dispatch(fecthCurrentGameAction())
   }, []);
 
   const getTimeRemaining = (e) => {
@@ -154,7 +154,7 @@ const Home = ({ currentUser }) => {
                 </div>
                 <div>
                   <div className="d-flex justify-content-center m-2">
-                    <strong className="ml-1">3998-0784</strong>
+                    <strong className="ml-1">3998-XXXX</strong>
                   </div>
                   <div className="d-flex justify-content-center m-2">
                     <small className="text-light">2330 HTG</small>

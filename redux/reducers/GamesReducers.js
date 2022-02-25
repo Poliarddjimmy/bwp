@@ -35,7 +35,7 @@ const GamesReducer = createReducer(initialState, (builder) => {
         state.error = "Error"
       }
     })
-    .addCase(fecthCurrentGameAction.rejected, (state, action) => {
+    .addCase(fecthCurrentGameAction.rejected, (state, action) => { //fecthCurrentGameAction
       state.loading = false;
     })
 })

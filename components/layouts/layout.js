@@ -23,25 +23,23 @@ const Layout = ({ children, currentUser }) => {
                 <div className={`${router.asPath.includes("/auth") ? "text-center w-100" : ""}`}><strong>LOGO</strong></div>
                 {!router.asPath.includes("/auth") &&
                   <div className="d-flex align-items-center header-menu">
-                    <Dropdown>
+                    {/* <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                         <i className="bi bi-envelope fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
-                    </Dropdown>
+                    </Dropdown> */}
 
                     <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
                         <i className="bi bi-bell fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
                       <Dropdown.Menu variant="dark" className="bg-secondary border-primary">
-                        <small className="m-4">Notifications: <span>17</span></small>
+                        <small className="m-4">Notifications: <span>1</span></small>
                         <Dropdown.Item className="dropdown bg-secondary">
                           <Link href={`/`} passHref>
-                            <div className="alert alert-transparent alert-dismissible border-danger">
-                              <div className="profile">
-                                <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger" width="40" height="40" />
-                              </div>
-                              <div className="notif-text">
+                            <div className="alert alert-transparent alert-dismissible border-danger row align-items-center">
+                              <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger  col-2" width="40" height="40" />
+                              <div className="notif-text col-4">
                                 <strong className="title text-light pr-1">Congrats!</strong>
                                 <small className="description text-light">Officia voluptas nemo eveniet eos.Molestiae commodi.…</small>
                               </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 const MessageBox = ({ messages, active, messageActive }) => {
   console.log(active)
   return (
-    <div className="col-12 col-lg-7 col-xl-7">
+    <div className="col-12 col-lg-7 col-xl-7 col-md-8">
       <div className="message p-2 d-flex flex-column border rounded border-danger min-vh-70">
 
         <div className="inmessage">

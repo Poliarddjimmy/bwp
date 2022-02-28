@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useForm, Controller } from "react-hook-form";
 import { registerAction, clearMessageAction } from '../../redux/actions/userActionCreators';
-import { Alert } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux"
 import { useRouter } from 'next/dist/client/router';
 import Layout from "../../components/layouts/layout";

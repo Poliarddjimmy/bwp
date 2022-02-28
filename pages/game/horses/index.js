@@ -38,7 +38,7 @@ const Horses = ({ currentUser }) => {
 
           <div className="row">
             {horses?.map(horse => (
-              <div className="flip-card col-lg-4 col-md-4 col-sm-4 col-12" key={horse.id}>
+              <div className="flip-card col-lg-4 col-md-4 col-sm-4 col-9 d-flex mx-auto " key={horse.id}>
                 <Link href={`/game/horses/${horse.id}`} passHref >
                   <div className="flip-card-inner single-bonus border-danger p-2 cursor-pointer">
                     <div className="flip-card-front d-flex flex-column justify-content-center text-left p-2">

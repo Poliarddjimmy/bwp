@@ -1,99 +1,99 @@
-import Image from 'next/image'
-import { useState, useEffect } from "react"
-import { useForm } from "react-hook-form";
-// also Alert component from bootstrap
+import { useEffect } from "react"
+import { useForm, Controller } from "react-hook-form";
+import { registerAction, clearMessageAction } from '../../redux/actions/userActionCreators';
 import { Alert } from 'react-bootstrap';
-import { useRouter } from 'next/router'
+import { useSelector, useDispatch } from "react-redux"
+import { useRouter } from 'next/dist/client/router';
+import Layout from "../../components/layouts/layout";
+import Link from "next/link";
 
-export default function PasswordRecovery() {
-  const [checked, setChecked] = useState(false);
+export default function PasswprdRecovery() {
   const router = useRouter()
-  // useForm()
-  // 1. register -> register input
-  // 2. handleSubmit -> extract data from the form
-  // 3. errors -> object containing errors
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm({
-    defaultValues: {
-      phoneNumber: '',
+  const { loading, currentUser, error } = useSelector(state => state.user)
+  const {
+    control,
+    handleSubmit,
+    watch,
+    register,
+    setError,
+    formState: { errors, isValid },
+  } = useForm({})
 
+  const dispatch = useDispatch()
+
+  const onSubmit = formData => {
+    const payload = {
+      phone: formData.phone,
+      name: `${formData.first_name} ${formData.last_name}`,
+      password: formData.password
     }
-  })
+    dispatch(registerAction(payload))
+  }
 
   useEffect(() => {
-    hideSpinner()
-  });
-  // function to output form data
-  // we need to pass it to onSubmit of form element
-  const onSubmit = formData => {
-    showSpinner()
-    signinProcess(formData.phoneNumber, formData.password)
-  }
+    currentUser && router.push("/")
+  }, [currentUser, router])
 
-  async function signinProcess(phone, password) {
-    const userInfo = {
-      phone: phone,
-      password: password
-    }
+  useEffect(() => {
+    error &&
+      setError("phone", {
+        type: "manual",
+        message: error,
+      })
+    dispatch(clearMessageAction())
+  }, [error, setError, dispatch])
 
-    const signin = await fetch(`http://server.betswinpro.com/api/v1/login`, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userInfo)
-    })
-    // console.log(userInfo)
-    console.log(signin.status)
-    const signinResponse = await signin.json()
-    // console.log(signupResponse)
-    if (signin.status == 200) {
-      hideSpinner()
-      router.push('/profile')
-    } else {
-      alert('Incorrect credentials, please digit your credentials again !')
-    }
-  }
-  // Function to hide the Spinner
-  function hideSpinner() {
-    document.getElementById('spinner')
-      .style.display = 'none';
-  }
+  return <Layout>
+    <main>
+      <div className="signup-form-wrapper">
+        <h1 className="create-acc"></h1>
+        <div className="signup-inner text-center">
+          <h3 className="title mb-0">Password Recovery</h3>
+          <form className="signup-inner--form text-left pt-5" onSubmit={handleSubmit(onSubmit)}>
+            <div className="row">
+              <div className="form-group col-12 mb-4">
+                <label htmlFor="phone">Phone Number</label>
+                <Controller
+                  name="phone"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <input
+                      autoComplete="off"
+                      placeholder="enter your phone number"
+                      {...field}
+                      className={`form-control ${errors.phone && `is-invalid`
+                        }`}
+                    />
+                  )}
+                  rules={{ required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ }}
+                />
 
-  // Function to show the Spinner
-  function showSpinner() {
-    document.getElementById('spinner')
-      .style.display = 'inline-block';
-  }
-  return <main>
-    <div className="signup-form-wrapper">
-      <h1 className="create-acc text-center"></h1>
-      <div className="signup-inner text-center">
-        <h3 className="title">Password Recovery</h3>
-        <form className="signup-inner--form" //onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="row">
-            <div className="col-12">
-              <input type="number" className="single-field" placeholder="Phone Number" {...register('phoneNumber', { required: true, minLength: 8, maxLength: 12, pattern: /^[0-9\s]*$/ })} />
-              {errors.phoneNumber &&
-                <Alert variant="danger">
-                  {errors.phoneNumber?.type === "required" && <p>Phone number is required</p>}
-                  {errors.phoneNumber?.type === "minLength" && <p>Min length of phone number is 8 characters!</p>}
-                  {errors.phoneNumber?.type === "maxLength" && <p>Max length of phone number is 12 characters!</p>}
-                  {errors.phoneNumber?.type === "pattern" && <p>Only number please!</p>}
-                </Alert>
-              }
+                {errors.phone?.type === "required" && <span className="text-danger">Phone number is required</span>}
+                {errors.phone?.type === "minLength" && <span className="text-danger">Min length of phone number is 8 characters!</span>}
+                {errors.phone?.type === "maxLength" && <span className="text-danger">Max length of phone number is 12 characters!</span>}
+                {errors.phone?.type === "pattern" && <span className="text-danger">Only number please!</span>}
+                {errors.phone?.type === "manual" && <span className="text-danger">{errors.phone.message}</span>}
+
+              </div>
+
             </div>
 
-          </div>
-          <div className="col-12">
-            <button className="submit-btn" type="submit" >
-              <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner"></span>
-              Send password
+            <button
+              className="btn btn-danger d-block w-100 mt-5"
+              style={{ borderRadius: 30 }}
+              onClick={handleSubmit(onSubmit)}
+              disabled={loading}
+            >
+              {loading ? "...Please wait" : "Send password SMS"}
             </button>
-          </div>
-        </form>
+
+            <div className="mt-5">
+              Have an account? Please, <Link href="/auth/signin" className="text-danger">Signin</Link>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </Layout>
 }

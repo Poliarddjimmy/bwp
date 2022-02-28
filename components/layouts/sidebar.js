@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { Accordion, AccordionContext, useAccordionButton } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
 
 function CustomToggle({ children, eventKey }) {
   const { activeEventKey } = useContext(AccordionContext);
@@ -23,6 +24,7 @@ function CustomToggle({ children, eventKey }) {
 
 const Sidebar = () => {
   const router = useRouter()
+  const { currentUser } = useSelector(state => state.user)
 
   const sidebarSelected = () => {
     let selected
@@ -45,6 +47,11 @@ const Sidebar = () => {
     return selected
   }
 
+  const phoneNumberFormat = () => {
+    let phone = currentUser?.phone.startsWith("509") ? currentUser?.phone : `509` + currentUser?.phone
+    return phone
+  }
+
   return (
     <div className="pt-3 sidebar ">
       <Accordion defaultActiveKey={`${sidebarSelected()}`}>
@@ -58,20 +65,28 @@ const Sidebar = () => {
         </div>
 
         <div className="mb-1">
-          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i> Personal area  </span></CustomToggle>
+          <CustomToggle eventKey="0"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-person fa-2x" style={{ marginRight: 10 }}></i>{phoneNumberFormat()}</span></CustomToggle>
           <Accordion.Collapse eventKey="0">
             <div className="d-flex flex-column sside">
-              <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link>
-              <Link href="/personal-area/deposit-to-account" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/deposit-to-account" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Deposit to account</span></Link>
-              <Link href="/personal-area/withdraw-founds" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/withdraw-founds" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Withdraw funds </span></Link>
+              {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}
+              <Link href="/personal-area/deposit-to-account" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/deposit-to-account" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Deposit and withdraw</span></Link>
+              <Link href="/personal-area/withdraw-founds" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/withdraw-founds" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Transfert funds </span></Link>
               <Link href="/personal-area/bet-history" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/bet-history" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Bet history</span></Link>
               <Link href="/personal-area/payment-history" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area/payment-history" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> Payment history</span></Link>
             </div>
           </Accordion.Collapse>
         </div>
-
         <div className="mb-1">
-          <CustomToggle eventKey="1"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-cup-straw fa-2x" style={{ marginRight: 10 }}></i> Promotions </span></CustomToggle>
+          <CustomToggle eventKey="2"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-controller" style={{ marginRight: 10 }}></i> Game  </span></CustomToggle>
+          <Accordion.Collapse eventKey="2">
+            <div className="d-flex flex-column sside">
+              {/* <Link href="/personal-area" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/personal-area" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Personal data `}</span></Link> */}
+              <Link href="/" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/" ? "text-danger" : "text-muted"}`}><i className="fas fa-horse"></i> Horse Course</span></Link>
+            </div>
+          </Accordion.Collapse>
+        </div>
+        <div className="mb-1">
+          {/* <CustomToggle eventKey="1"><span className="cursor-pointer d-flex kk align-items-center"> <i className="bi bi-cup-straw fa-2x" style={{ marginRight: 10 }}></i> Promotions </span></CustomToggle> */}
           <Accordion.Collapse eventKey="1">
             <div className="d-flex flex-column sside">
               <Link href="/promotions/top-wins" passHref><span className={`mt-2 cursor-pointer ${router.asPath === "/promotions/top-wins" ? "text-danger" : "text-muted"}`}><i className="bi bi-circle-fill"></i> {`Top Wins`}</span></Link>

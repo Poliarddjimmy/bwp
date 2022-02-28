@@ -23,38 +23,36 @@ const Layout = ({ children, currentUser }) => {
                 <div className={`${router.asPath.includes("/auth") ? "text-center w-100" : ""}`}><strong>LOGO</strong></div>
                 {!router.asPath.includes("/auth") &&
                   <div className="d-flex align-items-center header-menu">
-                    <Dropdown>
+                    {/* <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
                         <i className="bi bi-envelope fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
-
-                      <Dropdown.Menu variant="dark">
-                        <Dropdown.Item href="#/action-1" active>
-                          Action
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
 
                     <Dropdown>
-                      <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
+                      <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center" variant="">
                         <i className="bi bi-bell fa-2x rounded-circle"></i>
                       </Dropdown.Toggle>
-
-                      <Dropdown.Menu variant="dark" className="bg-white-25">
-                        <Dropdown.Item href="#/action-1" active>
-                          Action
+                      <Dropdown.Menu variant="dark" className="bg-secondary border-primary">
+                        <small className="m-4">Notifications: <span>1</span></small>
+                        <Dropdown.Item className="dropdown bg-secondary">
+                          <Link href={`/`} passHref>
+                            <div className="alert alert-transparent alert-dismissible border-danger row align-items-center">
+                              <Image src="/images/profile_pic.jpg" alt="avatar" className="avatar-lg rounded-circle border-danger  col-2" width="40" height="40" />
+                              <div className="notif-text col-4">
+                                <strong className="title text-light pr-1">Congrats!</strong>
+                                <small className="description text-light">Officia voluptas nemo eveniet eos.Molestiae commodi.…</small>
+                              </div>
+                              <div className="notif-text">
+                                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            </div>
+                          </Link>
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-
 
                     <Dropdown>
                       <Dropdown.Toggle id="dropdown-button-dark-example1" className="d-flex align-items-center hh" variant="">
@@ -62,9 +60,7 @@ const Layout = ({ children, currentUser }) => {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu variant="dark" className="bg-white-25">
-                        <Dropdown.Item><Link href="/profile"> profile</Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        <Dropdown.Item><Link href={`/profile/${currentUser?.profile?.id}`} passHref> profile</Link></Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item onClick={() => dispatch(logoutAction())} className="cursor-pointer">Logout</Dropdown.Item>
                       </Dropdown.Menu>
@@ -106,7 +102,7 @@ const Layout = ({ children, currentUser }) => {
             <div className="row">
               <div className="col-lg-5">
                 <div className="left-area">
-                  <p>Copyright © 2019.All Rights Reserved By <a href="#">Dooplo</a>
+                  <p>{`Copyright © ${new Date().getFullYear()} All Rights Reserved By `}<a href="#">Clic Hubs</a>
                   </p>
                 </div>
               </div>
@@ -125,7 +121,7 @@ const Layout = ({ children, currentUser }) => {
                     <a href="#">Aware</a>
                   </li>
                   <li>
-                    <a href="#">Help Cente</a>
+                    <a href="#">Help Center</a>
                   </li>
                 </ul>
               </div>

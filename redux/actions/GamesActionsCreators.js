@@ -18,9 +18,10 @@ export const fecthGamesAction = createAsyncThunk(
 export const fecthCurrentGameAction = createAsyncThunk(
   Games.FETCH_CURRENT_GAME,
 
-  async (id) => {
+  async () => {
     try {
       const response = await API.fecthCurrentGame()
+      console.log("da-- ", response.data)
       return response.data
     } catch (e) {
       console.log(e)

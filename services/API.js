@@ -38,7 +38,7 @@ class API {
   }
 
   static fecthCurrentGame = () => {
-    return axiosService.get(`/game-current`)
+    return axiosService.get(`/current-game`)
   }
 
   static fetchHorses = () => {

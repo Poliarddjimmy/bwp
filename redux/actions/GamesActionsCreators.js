@@ -28,3 +28,17 @@ export const fecthCurrentGameAction = createAsyncThunk(
     }
   }
 )
+
+export const createGameUserAction = createAsyncThunk(
+  Games.GAMES_USERS,
+
+  async (payload) => {
+    try {
+      const response = await API.createGameUser(payload)
+      console.log(response.data)
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)

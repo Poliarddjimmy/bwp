@@ -41,6 +41,10 @@ class API {
     return axiosService.get(`/current-game`)
   }
 
+  static createGameUser = (payload) => {
+    return axiosService.post(`/game_users`, payload)
+  }
+
   static fetchHorses = () => {
     return axiosService.get(`/horses`)
   }

@@ -4,7 +4,7 @@ import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { fecthGamesAction, fecthCurrentGameAction } from "../redux/actions/GamesActionsCreators"
+import { fecthCurrentGameAction } from "../redux/actions/GamesActionsCreators"
 
 
 const Home = ({ currentUser }) => {

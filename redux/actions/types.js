@@ -21,6 +21,8 @@ const SHOW_EVENT = "events/id"
 const FETCH_GAMES = "games"
 const FETCH_CURRENT_GAME = "game-current"
 
+const GAMES_USERS = "game_users"
+
 const FETCH_HORSES = "horses"
 const SHOW_HORSE = "horses/id"
 
@@ -63,6 +65,10 @@ const Games = {
   FETCH_CURRENT_GAME
 }
 
+const GameUsers = {
+  GAMES_USERS,
+}
+
 const Horses = {
   FETCH_HORSES,
   SHOW_HORSE
@@ -75,5 +81,6 @@ export {
   Profiles,
   Events,
   Games,
-  Horses
+  Horses,
+  GameUsers
 }

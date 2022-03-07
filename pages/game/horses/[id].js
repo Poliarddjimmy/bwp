@@ -6,17 +6,28 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import { showHorseAction } from "../../../redux/actions/horsesActionsCreators"
+import { fecthCurrentGameAction, createGameUserAction } from "../../../redux/actions/GamesActionsCreators"
 
 const Horse = ({ currentUser }) => {
 
   const dispatch = useDispatch()
   const { horse } = useSelector(state => state.horses)
   const router = useRouter()
+  const { game } = useSelector(state => state.games)
 
 
   useEffect(() => {
     dispatch(showHorseAction(router.query?.id))
+    dispatch(fecthCurrentGameAction())
   }, [])
+
+  const createGame = () => {
+    const payload = {
+      game_id: game?.id,
+      horse_number: router.query?.id
+    }
+    dispatch(createGameUserAction(payload))
+  }
 
   return (
     <Layout currentUser={currentUser}>
@@ -59,7 +70,7 @@ const Horse = ({ currentUser }) => {
               <strong className="text-light">50.00 HTG</strong>
             </div>
             <div className="col-8 d-flex justify-content-around p-1">
-              <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3">Play now</button>
+              <button type="button" className="btn btn-primary-color rounded-pill text-light pl-3 pr-3" onClick={createGame}>Play now</button>
               <Link href="/game/horses" passHref><button type="button" className="btn btn-transparent rounded-pill text-light border-danger pl-3 pr-3">Cancel</button></Link>
             </div>
           </div>

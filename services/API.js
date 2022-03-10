@@ -41,6 +41,10 @@ class API {
     return axiosService.get(`/current-game`)
   }
 
+  static secondLastGame = () => {
+    return axiosService.get(`/second-last-game`)
+  }
+
   static createGameUser = (payload) => {
     return axiosService.post(`/game_users`, payload)
   }

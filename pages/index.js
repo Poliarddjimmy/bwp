@@ -4,7 +4,7 @@ import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { fecthCurrentGameAction } from "../redux/actions/GamesActionsCreators"
+import { fecthCurrentGameAction, secondLastGameAction } from "../redux/actions/GamesActionsCreators"
 
 
 const Home = ({ currentUser }) => {
@@ -12,13 +12,15 @@ const Home = ({ currentUser }) => {
   const Ref = useRef(null);
   const [timer, setTimer] = useState('00:00:00');
   const [gameTime, setGameTime] = useState(0);
-  const { games, game } = useSelector(state => state.games)
+  const { game, second_last_game } = useSelector(state => state.games)
   const dispatch = useDispatch()
 
   let current_game = game
 
   useEffect(() => {
-    dispatch(fecthCurrentGameAction())
+    dispatch(fecthCurrentGameAction()),
+      dispatch(secondLastGameAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getTimeRemaining = (e) => {
@@ -104,7 +106,7 @@ const Home = ({ currentUser }) => {
         <div className="card mt-5 bg-transparent border-0" >
           <div className="row g-0" style={{ height: "" }}>
 
-            <div className="col-lg-12 col-md-8 col-sm-4 ">
+            <div className="col-lg-6 col-md-6 col-sm-6 ">
               <div className="race p-2 rounded text-center" style={{ height: "100%" }}>
                 <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
                   <h3>Starting in</h3>
@@ -127,6 +129,15 @@ const Home = ({ currentUser }) => {
                 </div>
 
               </div>
+            </div>
+
+            <div className="col-lg-6 col-md-4 col-sm-4 ">
+
+              <h6>View the last game</h6>
+              <video width="380" height="200" controls className="p-1 mb-1 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
+                <source src={second_last_game?.video_url} type="video/mp4" />
+                <source src={second_last_game?.video_url} type="video/ogg" />
+              </video>
             </div>
 
           </div>

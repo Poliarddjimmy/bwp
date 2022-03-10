@@ -1,4 +1,4 @@
-import { fecthGamesAction, fecthCurrentGameAction, createGameUserAction } from "../actions/GamesActionsCreators";
+import { fecthGamesAction, fecthCurrentGameAction, createGameUserAction, secondLastGameAction } from "../actions/GamesActionsCreators";
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -6,7 +6,8 @@ const initialState = {
   games: [],
   game: {},
   error: null,
-  game_user: {}
+  game_user: {},
+  second_last_game: {}
 }
 
 const GamesReducer = createReducer(initialState, (builder) => {
@@ -50,6 +51,19 @@ const GamesReducer = createReducer(initialState, (builder) => {
       }
     })
     .addCase(createGameUserAction.rejected, (state, action) => {
+      state.loading = false;
+    })
+    .addCase(secondLastGameAction.fulfilled, (state, action) => {
+      state.loading = false;
+      if (!action.payload?.error) {
+        state.second_last_game = action?.payload
+      } else {
+      }
+    })
+    .addCase(secondLastGameAction.pending, (state, action) => {
+      state.loading = true;
+    })
+    .addCase(secondLastGameAction.rejected, (state, action) => {
       state.loading = false;
     })
 })

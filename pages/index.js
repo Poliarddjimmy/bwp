@@ -103,7 +103,7 @@ const Home = ({ currentUser }) => {
           The New Etablished Betting Platform
           <small className="text-danger" style={{ fontSize: "0.5em" }}>Bet, Play, Earn or View. A Unique Platform of Your Race</small>
         </h3>
-        <div className="card mt-5 bg-transparent border-0" >
+        <div className="card mt-5 bg-transparent border-1" >
           <div className="row g-0" style={{ height: "" }}>
 
             <div className="col-lg-6 col-md-6 col-sm-6 ">
@@ -133,11 +133,11 @@ const Home = ({ currentUser }) => {
 
             <div className="col-lg-6 col-md-4 col-sm-4 ">
 
-              <h6>View the last game</h6>
-              <video width="380" height="200" controls className="p-1 mb-1 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
+              <video width="380" height="250" controls className="mt-2 p-1 mb-1 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
                 <source src={second_last_game?.video_url} type="video/mp4" />
                 <source src={second_last_game?.video_url} type="video/ogg" />
               </video>
+              <h4 className="d-flex justify-content-center">View the last game</h4>
             </div>
 
           </div>

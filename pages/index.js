@@ -132,13 +132,17 @@ const Home = ({ currentUser }) => {
             </div>
 
             <div className="col-lg-6 col-md-4 col-sm-4 ">
-
-              <video width="380" height="250" controls className="mt-2 p-1 mb-1 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
-                <source src={second_last_game?.video_url} type="video/mp4" />
-                <source src={second_last_game?.video_url} type="video/ogg" />
-              </video>
-              <h4 className="d-flex justify-content-center">View the last game</h4>
+              <div>
+                <video width="380" height="250" autoPlay="autoplay" muted="muted" controls className="mt-2 p-1 mb-1 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
+                  <source src="https://admin.clichubs.com/public/assets/games/videos/UegDqZBUqW9vNzKKmqPvK5ZEQPJUY7ebyY6EzWRu.mp4" type="video/mp4" />
+                  {/* <source src={`https://admin.clichubs.com/public/assets/games/videos/UegDqZBUqW9vNzKKmqPvK5ZEQPJUY7ebyY6EzWRu.mp4`} type="video/ogg" /> */}
+                </video>
+              </div>
+              <div className="d-flex justify-content-center">
+                <h4>View the last game</h4>
+              </div>
             </div>
+
 
           </div>
         </div>

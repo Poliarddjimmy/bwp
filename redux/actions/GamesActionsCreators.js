@@ -48,7 +48,6 @@ export const secondLastGameAction = createAsyncThunk(
   async () => {
     try {
       const response = await API.secondLastGame()
-      console.log("IDT---------------->>", response.data)
       return response.data
     } catch (e) {
       console.log(e)

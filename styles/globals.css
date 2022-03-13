@@ -194,6 +194,10 @@ video::-webkit-media-controls-volume-slider {
   display: none;
 }
 
+video::-webkit-media-controls-panel {
+  display: none;
+}
+
   .leftSideMenu.active .bi {
     background-color: #e74d3c;
     color: #ffffff;

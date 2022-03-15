@@ -21,7 +21,33 @@ export const fecthCurrentGameAction = createAsyncThunk(
   async () => {
     try {
       const response = await API.fecthCurrentGame()
-      console.log("da-- ", response.data)
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)
+
+export const createGameUserAction = createAsyncThunk(
+  Games.GAMES_USERS,
+
+  async (payload) => {
+    try {
+      const response = await API.createGameUser(payload)
+      // console.log(response.data[0])
+      return response.data?.game_user?.game_user
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)
+
+export const secondLastGameAction = createAsyncThunk(
+  Games.SECOND_LAST_GAME,
+
+  async () => {
+    try {
+      const response = await API.secondLastGame()
       return response.data
     } catch (e) {
       console.log(e)

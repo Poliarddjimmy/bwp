@@ -21,10 +21,14 @@ const SHOW_EVENT = "events/id"
 const FETCH_GAMES = "games"
 const FETCH_CURRENT_GAME = "game-current"
 
+const GAMES_USERS = "game_users"
+
 const FETCH_HORSES = "horses"
 const SHOW_HORSE = "horses/id"
 
 const CLEAR = "clear"
+
+const SECOND_LAST_GAME = "second-last-game"
 
 const Auth = {
   LOGIN,
@@ -60,13 +64,19 @@ const Events = {
 
 const Games = {
   FETCH_GAMES,
-  FETCH_CURRENT_GAME
+  FETCH_CURRENT_GAME,
+  SECOND_LAST_GAME
+}
+
+const GameUsers = {
+  GAMES_USERS,
 }
 
 const Horses = {
   FETCH_HORSES,
   SHOW_HORSE
 }
+
 
 export {
   Auth,
@@ -75,5 +85,6 @@ export {
   Profiles,
   Events,
   Games,
-  Horses
+  Horses,
+  GameUsers,
 }

@@ -4,21 +4,26 @@ import Layout from '../components/layouts/layout'
 import withAuth from "../components/hocs/withAuth"
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { fecthGamesAction, fecthCurrentGameAction } from "../redux/actions/GamesActionsCreators"
+import { fecthCurrentGameAction, secondLastGameAction } from "../redux/actions/GamesActionsCreators"
+import CounterComponent from './game/horses/counterComponent'
+import VideosComponent from "./game/horses/videosComponent"
 
 
 const Home = ({ currentUser }) => {
 
   const Ref = useRef(null);
-  const [timer, setTimer] = useState('00:00:00');
+  const [timer, setTimer] = useState('-00:00:00-');
   const [gameTime, setGameTime] = useState(0);
-  const { games, game } = useSelector(state => state.games)
+  const { game, second_last_game } = useSelector(state => state.games)
+  const [totalSecond, setTotalSecond] = useState(0)
   const dispatch = useDispatch()
 
   let current_game = game
 
   useEffect(() => {
-    dispatch(fecthCurrentGameAction())
+    dispatch(fecthCurrentGameAction()),
+      dispatch(secondLastGameAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getTimeRemaining = (e) => {
@@ -32,8 +37,7 @@ const Home = ({ currentUser }) => {
   }
 
   const startTimer = (e) => {
-    let { total, hours, minutes, seconds }
-      = getTimeRemaining(e);
+    let { total, hours, minutes, seconds } = getTimeRemaining(e);
     if (total >= 0) {
 
       // update the timer
@@ -90,44 +94,37 @@ const Home = ({ currentUser }) => {
     let total = getTimeRemaining(current_game?.time)
     let time = total?.hours + ":" + total?.minutes + ":" + total?.seconds
     let totalSecondsRemaining = getTotalSecondFromTime(time)
+
+    setTotalSecond(totalSecondsRemaining)
     clearTimer(getDeadTime(totalSecondsRemaining));
-  }, [current_game]);
+
+  }, [clearTimer, current_game?.time]);
 
   return <Layout currentUser={currentUser}>
 
     <main className="content">
       <div className="container p-0">
-        <h3 className="d-flex flex-column">
-          The New Etablished Betting Platform
-          <small className="text-danger" style={{ fontSize: "0.5em" }}>Bet, Play, Earn or View. A Unique Platform of Your Race</small>
-        </h3>
-        <div className="card mt-5 bg-transparent border-0" >
+        <div className="header-text align-items-center">
+          <h3 className="flex-column d-flex justify-content-center">
+            The New Etablished Betting Platform
+          </h3>
+          <small className="text-danger" style={{ fontSize: "0.8em" }}>Bet, Play, Earn or View. A Unique Platform of Your Race</small>
+        </div>
+
+        <div className="card mt-5 bg-transparent border-1" >
           <div className="row g-0" style={{ height: "" }}>
+            {timer === "00:00:00" ?
+              totalSecond === 0 &&
+              <VideosComponent
+                video_url={"https://admin.clichubs.com/public/assets/games/videos/CDMI8O491TDGOJEBEOmj5o8TAHlOfhWbYdYl5C9x.mp4"}
+              />
+              :
+              <CounterComponent
+                timer={timer}
+                current_game={current_game}
+              />
+            }
 
-            <div className="col-lg-12 col-md-8 col-sm-4 ">
-              <div className="race p-2 rounded text-center" style={{ height: "100%" }}>
-                <div className="p-4 mb-3 race-details d-flex flex-column justify-content-center align-items-center seconary-bg-color border-danger">
-                  <h3>Starting in</h3>
-                  <h1 className="d-flex mb-3">
-                    {timer}
-                  </h1>
-                  <h4>Total Players</h4>
-                  <h5>{current_game?.playerCount}</h5>
-                  <div className="d-flex align-items-center">
-                    <div className="mr-2">
-                      <Image src="/images/tikit-icon.png" width={40} height={40} alt="" className="rounded-circle" />
-                    </div>
-                    <small style={{ fontSize: "0.6em" }}><strong className="text-white">{current_game?.players && current_game?.players[0]?.name}</strong> and many orthers joined</small>
-                  </div>
-                </div>
-
-                <div className="col-lg-12 col-md-12 col-sm-12">
-                  <Link href="/game/horses" passHref><button type="button" className="btn btn-danger d-block mb-3 w-40 mx-auto "> Join now</button></Link>
-                  <button type="button" className="btn btn-default border-danger text-white d-block disabled w-40 mx-auto"> View Race</button>
-                </div>
-
-              </div>
-            </div>
 
           </div>
         </div>

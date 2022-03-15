@@ -50,15 +50,8 @@ const Home = ({ currentUser }) => {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const clearTimer = (e) => {
-    // If you adjust it you should also need to
-    // adjust the Endtime formula we are about
-    // to code next    
-    // setTimer('00:10:00');
-
-    // If you try to remove this line the 
-    // updating of timer Variable will be
-    // after 1000ms or 1sec
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
       startTimer(e);

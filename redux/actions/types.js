@@ -65,11 +65,8 @@ const Events = {
 const Games = {
   FETCH_GAMES,
   FETCH_CURRENT_GAME,
-  SECOND_LAST_GAME
-}
-
-const GameUsers = {
-  GAMES_USERS,
+  SECOND_LAST_GAME,
+  GAMES_USERS
 }
 
 const Horses = {
@@ -86,5 +83,4 @@ export {
   Events,
   Games,
   Horses,
-  GameUsers,
 }

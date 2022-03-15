@@ -21,8 +21,7 @@ const Home = ({ currentUser }) => {
   let current_game = game
 
   useEffect(() => {
-    dispatch(fecthCurrentGameAction()),
-      dispatch(secondLastGameAction())
+    dispatch(fecthCurrentGameAction())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,6 +99,14 @@ const Home = ({ currentUser }) => {
 
   }, [clearTimer, current_game?.time]);
 
+  useEffect(() => {
+    if (totalSecond <= 0) {
+      setTimeout(() => {
+        dispatch(fecthCurrentGameAction())
+      }, 37000);
+    }
+  }, [totalSecond])
+
   return <Layout currentUser={currentUser}>
 
     <main className="content">
@@ -113,8 +120,7 @@ const Home = ({ currentUser }) => {
 
         <div className="card mt-5 bg-transparent border-1" >
           <div className="row g-0" style={{ height: "" }}>
-            {timer === "00:00:00" ?
-              totalSecond === 0 &&
+            {totalSecond === 0 ?
               <VideosComponent
                 video_url={"https://admin.clichubs.com/public/assets/games/videos/CDMI8O491TDGOJEBEOmj5o8TAHlOfhWbYdYl5C9x.mp4"}
               />

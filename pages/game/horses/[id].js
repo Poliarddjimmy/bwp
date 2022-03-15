@@ -13,8 +13,13 @@ const Horse = ({ currentUser }) => {
   const dispatch = useDispatch()
   const { horse } = useSelector(state => state.horses)
   const router = useRouter()
-  const { game } = useSelector(state => state.games)
+  const { game, game_user } = useSelector(state => state.games)
 
+  useEffect(() => {
+    if (game_user?.user_id === currentUser?.id && router?.query?.id === game_user?.horse_number) {
+      router.push('/')
+    }
+  }, [currentUser?.id, game_user, router])
 
   useEffect(() => {
     dispatch(showHorseAction(router.query?.id))
@@ -24,10 +29,12 @@ const Horse = ({ currentUser }) => {
   const createGame = () => {
     const payload = {
       game_id: game?.id,
-      horse_number: router.query?.id
+      horse_number: horse?.number,
     }
     dispatch(createGameUserAction(payload))
   }
+
+  console.log("Game User----- ", game_user)
 
   return (
     <Layout currentUser={currentUser}>

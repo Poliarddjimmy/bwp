@@ -15,6 +15,7 @@ const Home = ({ currentUser }) => {
   const [timer, setTimer] = useState('-00:00:00-');
   const [gameTime, setGameTime] = useState(0);
   const { game, second_last_game } = useSelector(state => state.games)
+  const [totalSecond, setTotalSecond] = useState(0)
   const dispatch = useDispatch()
 
   let current_game = game
@@ -93,23 +94,29 @@ const Home = ({ currentUser }) => {
     let total = getTimeRemaining(current_game?.time)
     let time = total?.hours + ":" + total?.minutes + ":" + total?.seconds
     let totalSecondsRemaining = getTotalSecondFromTime(time)
-    clearTimer(getDeadTime(15));
-  }, [current_game]);
 
+    setTotalSecond(totalSecondsRemaining)
+    clearTimer(getDeadTime(totalSecondsRemaining));
+
+  }, [clearTimer, current_game?.time]);
 
   return <Layout currentUser={currentUser}>
 
     <main className="content">
       <div className="container p-0">
-        <h3 className="d-flex flex-column">
-          The New Etablished Betting Platform
-          <small className="text-danger" style={{ fontSize: "0.5em" }}>Bet, Play, Earn or View. A Unique Platform of Your Race</small>
-        </h3>
+        <div className="header-text align-items-center">
+          <h3 className="flex-column d-flex justify-content-center">
+            The New Etablished Betting Platform
+          </h3>
+          <small className="text-danger" style={{ fontSize: "0.8em" }}>Bet, Play, Earn or View. A Unique Platform of Your Race</small>
+        </div>
+
         <div className="card mt-5 bg-transparent border-1" >
           <div className="row g-0" style={{ height: "" }}>
             {timer === "00:00:00" ?
+              totalSecond === 0 &&
               <VideosComponent
-                video_url="https://admin.clichubs.com/public/assets/games/videos/CDMI8O491TDGOJEBEOmj5o8TAHlOfhWbYdYl5C9x.mp4"
+                video_url={"https://admin.clichubs.com/public/assets/games/videos/CDMI8O491TDGOJEBEOmj5o8TAHlOfhWbYdYl5C9x.mp4"}
               />
               :
               <CounterComponent

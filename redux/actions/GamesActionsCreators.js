@@ -34,8 +34,8 @@ export const createGameUserAction = createAsyncThunk(
   async (payload) => {
     try {
       const response = await API.createGameUser(payload)
-      console.log(response.data)
-      return response.data
+      // console.log(response.data[0])
+      return response.data?.game_user?.game_user
     } catch (e) {
       console.log(e)
     }

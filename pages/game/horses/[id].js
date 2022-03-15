@@ -16,10 +16,10 @@ const Horse = ({ currentUser }) => {
   const { game, game_user } = useSelector(state => state.games)
 
   useEffect(() => {
-    if (game_user?.user_id === currentUser?.id && router?.query?.id === game_user?.horse_number) {
+    if (game_user?.user_id === currentUser?.id && horse?.number === game_user?.horse_number) {
       router.push('/')
     }
-  }, [currentUser?.id, game_user, router])
+  }, [game_user])
 
   useEffect(() => {
     dispatch(showHorseAction(router.query?.id))
